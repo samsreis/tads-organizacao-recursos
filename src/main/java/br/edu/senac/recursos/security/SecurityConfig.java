@@ -1,0 +1,51 @@
+package br.edu.senac.recursos.security;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+@Configuration
+public class SecurityConfig {
+
+    private final JwtFiltro jwtFiltro;
+
+    public SecurityConfig(JwtFiltro jwtFiltro) {
+        this.jwtFiltro = jwtFiltro;
+    }
+
+    @Bean
+    SecurityFilterChain filtro(HttpSecurity http) throws Exception {
+        http.csrf(c -> c.disable())
+            .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            .authorizeHttpRequests(a -> a
+                .requestMatchers("/auth/**").permitAll()
+                .requestMatchers("/actuator/health").permitAll()
+                .requestMatchers(HttpMethod.GET, "/salas/**").authenticated()
+                .requestMatchers(HttpMethod.POST, "/salas/**").hasRole("ADMINISTRADOR")
+                .requestMatchers(HttpMethod.PUT, "/salas/**").hasRole("ADMINISTRADOR")
+                .requestMatchers(HttpMethod.DELETE, "/salas/**").hasRole("ADMINISTRADOR")
+                .requestMatchers("/reservas/*/aprovar").hasAnyRole("RESPONSAVEL", "ADMINISTRADOR")
+                .anyRequest().authenticated()
+            )
+            .addFilterBefore(jwtFiltro, UsernamePasswordAuthenticationFilter.class);
+        return http.build();
+    }
+
+    @Bean
+    PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    AuthenticationManager authenticationManager(AuthenticationConfiguration c) throws Exception {
+        return c.getAuthenticationManager();
+    }
+}
