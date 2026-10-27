@@ -15,10 +15,10 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 public class SecurityConfig {
 
-    private final JwtFiltro jwtFiltro;
+    private final JwtService jwtService;
 
-    public SecurityConfig(JwtFiltro jwtFiltro) {
-        this.jwtFiltro = jwtFiltro;
+    public SecurityConfig(JwtService jwtService) {
+        this.jwtService = jwtService;
     }
 
     @Bean
@@ -26,8 +26,7 @@ public class SecurityConfig {
         http.csrf(c -> c.disable())
             .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(a -> a
-                .requestMatchers("/auth/**").permitAll()
-                .requestMatchers("/actuator/health").permitAll()
+                .requestMatchers("/auth/**", "/actuator/health", "/error").permitAll()
                 .requestMatchers(HttpMethod.GET, "/salas/**").authenticated()
                 .requestMatchers(HttpMethod.POST, "/salas/**").hasRole("ADMINISTRADOR")
                 .requestMatchers(HttpMethod.PUT, "/salas/**").hasRole("ADMINISTRADOR")
@@ -35,7 +34,7 @@ public class SecurityConfig {
                 .requestMatchers("/reservas/*/aprovar").hasAnyRole("RESPONSAVEL", "ADMINISTRADOR")
                 .anyRequest().authenticated()
             )
-            .addFilterBefore(jwtFiltro, UsernamePasswordAuthenticationFilter.class);
+            .addFilterBefore(new JwtFiltro(jwtService), UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
 
