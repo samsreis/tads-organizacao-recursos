@@ -36,3 +36,5 @@ target/
 *.iml
 .env
 resultados/
+jmeter.log
+perf/app.log
