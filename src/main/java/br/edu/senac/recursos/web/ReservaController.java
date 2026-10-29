@@ -24,18 +24,29 @@ public class ReservaController {
     private final ReservaService service;
     private final ReservaRepository reservas;
     private final AuditoriaReservaRepository auditorias;
+    private final TentativaRecusadaService tentativas;
 
     public ReservaController(ReservaService service, ReservaRepository reservas,
-                             AuditoriaReservaRepository auditorias) {
+                             AuditoriaReservaRepository auditorias,
+                             TentativaRecusadaService tentativas) {
         this.service = service;
         this.reservas = reservas;
         this.auditorias = auditorias;
+        this.tentativas = tentativas;
     }
 
     @PostMapping
     public ResponseEntity<ReservaResponse> criar(@Valid @RequestBody ReservaRequest req, Authentication auth) {
-        Reserva r = service.criar(auth.getName(), req);
-        return ResponseEntity.status(HttpStatus.CREATED).body(ReservaResponse.de(r));
+        try {
+            Reserva r = service.criar(auth.getName(), req);
+            return ResponseEntity.status(HttpStatus.CREATED).body(ReservaResponse.de(r));
+        } catch (ResponseStatusException e) {
+            if (e.getStatusCode() == HttpStatus.CONFLICT) {
+                tentativas.registrar(req.salaId(), req.professorId(), req.materialId(),
+                        req.inicio(), req.fim(), "CONFLITO_HORARIO");
+            }
+            throw e;
+        }
     }
 
     @GetMapping("/minhas")
