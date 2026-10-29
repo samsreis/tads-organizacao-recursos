@@ -32,24 +32,34 @@ public class SecurityConfig {
             )
             .authorizeHttpRequests(a -> a
                 .requestMatchers("/auth/**", "/actuator/health", "/error").permitAll()
+
                 .requestMatchers(HttpMethod.GET, "/salas/**").authenticated()
                 .requestMatchers(HttpMethod.POST, "/salas/**").hasRole("ADMINISTRADOR")
                 .requestMatchers(HttpMethod.PUT, "/salas/**").hasRole("ADMINISTRADOR")
                 .requestMatchers(HttpMethod.DELETE, "/salas/**").hasRole("ADMINISTRADOR")
+
                 .requestMatchers(HttpMethod.GET, "/professores/**").authenticated()
                 .requestMatchers(HttpMethod.POST, "/professores/**").hasRole("ADMINISTRADOR")
                 .requestMatchers(HttpMethod.PUT, "/professores/**").hasRole("ADMINISTRADOR")
                 .requestMatchers(HttpMethod.DELETE, "/professores/**").hasRole("ADMINISTRADOR")
+
+                .requestMatchers(HttpMethod.POST, "/materiais/*/retiradas").hasAnyRole("RESPONSAVEL", "ADMINISTRADOR")
+                .requestMatchers(HttpMethod.POST, "/materiais/*/devolucoes").hasAnyRole("RESPONSAVEL", "ADMINISTRADOR")
+                .requestMatchers(HttpMethod.GET, "/materiais/*/saldo").authenticated()
+                .requestMatchers(HttpMethod.GET, "/materiais/*/movimentacoes").hasAnyRole("RESPONSAVEL", "ADMINISTRADOR")
+
                 .requestMatchers(HttpMethod.GET, "/materiais/**").authenticated()
                 .requestMatchers(HttpMethod.POST, "/materiais/**").hasRole("ADMINISTRADOR")
                 .requestMatchers(HttpMethod.PUT, "/materiais/**").hasRole("ADMINISTRADOR")
                 .requestMatchers(HttpMethod.DELETE, "/materiais/**").hasRole("ADMINISTRADOR")
+
                 .requestMatchers("/reservas/*/aprovar").hasAnyRole("RESPONSAVEL", "ADMINISTRADOR")
                 .requestMatchers("/reservas/*/rejeitar").hasAnyRole("RESPONSAVEL", "ADMINISTRADOR")
                 .requestMatchers("/reservas/*/iniciar").hasAnyRole("RESPONSAVEL", "ADMINISTRADOR")
                 .requestMatchers("/reservas/*/concluir").hasAnyRole("RESPONSAVEL", "ADMINISTRADOR")
                 .requestMatchers("/reservas/*/nao-compareceu").hasAnyRole("RESPONSAVEL", "ADMINISTRADOR")
                 .requestMatchers("/reservas/*/historico").hasAnyRole("RESPONSAVEL", "ADMINISTRADOR")
+
                 .requestMatchers("/relatorios/**").hasAnyRole("RESPONSAVEL", "ADMINISTRADOR")
                 .anyRequest().authenticated()
             )
