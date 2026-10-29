@@ -42,16 +42,19 @@ public class ReservaService {
     private final MaterialRepository materiais;
     private final UsuarioRepository usuarios;
     private final AuditoriaService auditoria;
+    private final NotificadorService notificador;
 
     public ReservaService(ReservaRepository reservas, SalaRepository salas,
                           ProfessorRepository professores, MaterialRepository materiais,
-                          UsuarioRepository usuarios, AuditoriaService auditoria) {
+                          UsuarioRepository usuarios, AuditoriaService auditoria,
+                          NotificadorService notificador) {
         this.reservas = reservas;
         this.salas = salas;
         this.professores = professores;
         this.materiais = materiais;
         this.usuarios = usuarios;
         this.auditoria = auditoria;
+        this.notificador = notificador;
     }
 
     @Transactional(isolation = Isolation.SERIALIZABLE)
@@ -99,6 +102,7 @@ public class ReservaService {
             Reserva salva = reservas.saveAndFlush(r);
             auditoria.registrar(salva.getId(), emailSolicitante, null,
                     salva.getStatus().name(), "Reserva criada");
+            notificador.notificar(salva.getId(), salva.getStatus().name(), emailSolicitante);
             return salva;
         } catch (DataIntegrityViolationException e) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Horário indisponível para o recurso selecionado");
@@ -122,6 +126,7 @@ public class ReservaService {
         r.setStatus(novoEstado);
         reservas.saveAndFlush(r);
         auditoria.registrar(r.getId(), emailUsuario, atual.name(), novoEstado.name(), motivo);
+        notificador.notificar(r.getId(), novoEstado.name(), emailUsuario);
         return r;
     }
 
