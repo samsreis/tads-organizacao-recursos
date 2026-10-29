@@ -88,4 +88,41 @@ public class ReservaService {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Horário indisponível para o recurso selecionado");
         }
     }
+
+    @Transactional(isolation = Isolation.SERIALIZABLE)
+    public Reserva alterar(Long id, ReservaRequest req) {
+        Reserva r = reservas.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Reserva não encontrada"));
+        Sala sala = salas.findByIdParaAtualizar(req.salaId())
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Sala não encontrada"));
+        if (Boolean.TRUE.equals(sala.getEmManutencao())) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Sala em manutenção");
+        }
+        Professor professor = null;
+        if (req.professorId() != null) {
+            professor = professores.findById(req.professorId())
+                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Professor não encontrado"));
+            if (!Boolean.TRUE.equals(professor.getAtivo())) {
+                throw new ResponseStatusException(HttpStatus.CONFLICT, "Professor inativo");
+            }
+        }
+        Material material = null;
+        if (req.materialId() != null) {
+            material = materiais.findById(req.materialId())
+                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Material não encontrado"));
+            if (Boolean.TRUE.equals(material.getEmManutencao())) {
+                throw new ResponseStatusException(HttpStatus.CONFLICT, "Material em manutenção");
+            }
+        }
+        r.setSala(sala);
+        r.setProfessor(professor);
+        r.setMaterial(material);
+        r.setInicio(req.inicio());
+        r.setFim(req.fim());
+        try {
+            return reservas.saveAndFlush(r);
+        } catch (DataIntegrityViolationException e) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Horário indisponível para o recurso selecionado");
+        }
+    }
 }

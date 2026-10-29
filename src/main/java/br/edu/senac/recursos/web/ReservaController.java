@@ -56,6 +56,34 @@ public class ReservaController {
                         .body(Map.of("erro", "Reserva não encontrada")));
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<?> alterar(@PathVariable Long id, @Valid @RequestBody ReservaRequest req, Authentication auth) {
+        return reservas.findById(id)
+                .<ResponseEntity<?>>map(r -> {
+                    if (!r.getSolicitante().getEmail().equals(auth.getName())) {
+                        return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                                .body(Map.of("erro", "Só o dono da reserva pode alterar"));
+                    }
+                    if (r.getInicio().isBefore(OffsetDateTime.now())) {
+                        return ResponseEntity.status(HttpStatus.CONFLICT)
+                                .body(Map.of("erro", "Reserva já iniciada não pode ser alterada"));
+                    }
+                    if (!req.fim().isAfter(req.inicio())) {
+                        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                                .body(Map.of("erro", "Término deve ser posterior ao início"));
+                    }
+                    try {
+                        Reserva atualizada = service.alterar(id, req);
+                        return ResponseEntity.ok(ReservaResponse.de(atualizada));
+                    } catch (org.springframework.web.server.ResponseStatusException e) {
+                        return ResponseEntity.status(e.getStatusCode())
+                                .body(Map.of("erro", e.getReason() == null ? "Erro" : e.getReason()));
+                    }
+                })
+                .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND)
+                        .body(Map.of("erro", "Reserva não encontrada")));
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<?> cancelar(@PathVariable Long id, Authentication auth) {
         return reservas.findById(id)
