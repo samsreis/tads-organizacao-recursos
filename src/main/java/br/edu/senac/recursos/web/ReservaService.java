@@ -3,6 +3,7 @@ package br.edu.senac.recursos.web;
 import br.edu.senac.recursos.domain.Material;
 import br.edu.senac.recursos.domain.Professor;
 import br.edu.senac.recursos.domain.Reserva;
+import br.edu.senac.recursos.domain.Reserva.StatusReserva;
 import br.edu.senac.recursos.domain.Sala;
 import br.edu.senac.recursos.domain.Usuario;
 import br.edu.senac.recursos.repository.MaterialRepository;
@@ -18,8 +19,22 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.EnumSet;
+import java.util.Map;
+import java.util.Set;
+
 @Service
 public class ReservaService {
+
+    public static final Map<StatusReserva, Set<StatusReserva>> TRANSICOES = Map.of(
+        StatusReserva.SOLICITADA, EnumSet.of(StatusReserva.APROVADA, StatusReserva.REJEITADA, StatusReserva.CANCELADA),
+        StatusReserva.APROVADA, EnumSet.of(StatusReserva.EM_USO, StatusReserva.CANCELADA, StatusReserva.NAO_COMPARECEU),
+        StatusReserva.EM_USO, EnumSet.of(StatusReserva.CONCLUIDA),
+        StatusReserva.CONCLUIDA, EnumSet.noneOf(StatusReserva.class),
+        StatusReserva.REJEITADA, EnumSet.noneOf(StatusReserva.class),
+        StatusReserva.CANCELADA, EnumSet.noneOf(StatusReserva.class),
+        StatusReserva.NAO_COMPARECEU, EnumSet.noneOf(StatusReserva.class)
+    );
 
     private final ReservaRepository reservas;
     private final SalaRepository salas;
@@ -78,7 +93,7 @@ public class ReservaService {
         r.setSolicitante(solicitante);
         r.setInicio(req.inicio());
         r.setFim(req.fim());
-        r.setStatus(Reserva.StatusReserva.SOLICITADA);
+        r.setStatus(StatusReserva.SOLICITADA);
 
         try {
             Reserva salva = reservas.saveAndFlush(r);
@@ -95,13 +110,18 @@ public class ReservaService {
     }
 
     @Transactional(isolation = Isolation.SERIALIZABLE)
-    public Reserva transicionar(Long id, String emailUsuario, br.edu.senac.recursos.domain.Reserva.StatusReserva novoEstado, String motivo) {
+    public Reserva transicionar(Long id, String emailUsuario, StatusReserva novoEstado, String motivo) {
         Reserva r = reservas.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Reserva não encontrada"));
-        String anterior = r.getStatus() == null ? null : r.getStatus().name();
+        StatusReserva atual = r.getStatus() == null ? StatusReserva.SOLICITADA : r.getStatus();
+        Set<StatusReserva> permitidos = TRANSICOES.getOrDefault(atual, EnumSet.noneOf(StatusReserva.class));
+        if (!permitidos.contains(novoEstado)) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT,
+                    "Transição inválida de " + atual + " para " + novoEstado);
+        }
         r.setStatus(novoEstado);
         reservas.saveAndFlush(r);
-        auditoria.registrar(r.getId(), emailUsuario, anterior, novoEstado.name(), motivo);
+        auditoria.registrar(r.getId(), emailUsuario, atual.name(), novoEstado.name(), motivo);
         return r;
     }
 
