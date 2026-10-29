@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Map;
 
@@ -39,6 +40,22 @@ public class ReservaController {
                 .toList();
     }
 
+    @PostMapping("/{id}/aprovar")
+    public ResponseEntity<?> aprovar(@PathVariable Long id) {
+        return reservas.findById(id)
+                .<ResponseEntity<?>>map(r -> {
+                    if (r.getStatus() != Reserva.StatusReserva.SOLICITADA) {
+                        return ResponseEntity.status(HttpStatus.CONFLICT)
+                                .body(Map.of("erro", "Só é possível aprovar reservas com status SOLICITADA"));
+                    }
+                    r.setStatus(Reserva.StatusReserva.APROVADA);
+                    reservas.save(r);
+                    return ResponseEntity.ok(ReservaResponse.de(r));
+                })
+                .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND)
+                        .body(Map.of("erro", "Reserva não encontrada")));
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<?> cancelar(@PathVariable Long id, Authentication auth) {
         return reservas.findById(id)
@@ -47,10 +64,20 @@ public class ReservaController {
                         return ResponseEntity.status(HttpStatus.FORBIDDEN)
                                 .body(Map.of("erro", "Só o dono da reserva pode cancelar"));
                     }
+                    if (r.getStatus() == Reserva.StatusReserva.CONCLUIDA
+                            || r.getStatus() == Reserva.StatusReserva.CANCELADA) {
+                        return ResponseEntity.status(HttpStatus.CONFLICT)
+                                .body(Map.of("erro", "Reserva já finalizada não pode ser cancelada"));
+                    }
+                    if (r.getInicio().isBefore(OffsetDateTime.now())) {
+                        return ResponseEntity.status(HttpStatus.CONFLICT)
+                                .body(Map.of("erro", "Reserva já iniciada não pode ser cancelada"));
+                    }
                     r.setStatus(Reserva.StatusReserva.CANCELADA);
                     reservas.save(r);
                     return ResponseEntity.noContent().build();
                 })
-                .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("erro", "Reserva não encontrada")));
+                .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND)
+                        .body(Map.of("erro", "Reserva não encontrada")));
     }
 }
