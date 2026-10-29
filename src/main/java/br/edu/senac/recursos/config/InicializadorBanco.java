@@ -16,6 +16,7 @@ public class InicializadorBanco {
     CommandLineRunner aplicarConstraintReservas(JdbcTemplate jdbc) {
         return args -> {
             jdbc.execute("CREATE EXTENSION IF NOT EXISTS btree_gist");
+
             jdbc.execute("""
                 DO $$
                 BEGIN
@@ -31,7 +32,40 @@ public class InicializadorBanco {
                     END IF;
                 END $$;
                 """);
-            log.info("Constraint reserva_sem_sobreposicao aplicada");
+
+            jdbc.execute("""
+                DO $$
+                BEGIN
+                    IF NOT EXISTS (
+                        SELECT 1 FROM pg_constraint WHERE conname = 'reserva_professor_sem_sobreposicao'
+                    ) THEN
+                        ALTER TABLE reservas ADD CONSTRAINT reserva_professor_sem_sobreposicao
+                        EXCLUDE USING gist (
+                            professor_id WITH =,
+                            tstzrange(inicio, fim) WITH &&
+                        )
+                        WHERE (status NOT IN ('CANCELADA', 'REJEITADA') AND professor_id IS NOT NULL);
+                    END IF;
+                END $$;
+                """);
+
+            jdbc.execute("""
+                DO $$
+                BEGIN
+                    IF NOT EXISTS (
+                        SELECT 1 FROM pg_constraint WHERE conname = 'reserva_material_sem_sobreposicao'
+                    ) THEN
+                        ALTER TABLE reservas ADD CONSTRAINT reserva_material_sem_sobreposicao
+                        EXCLUDE USING gist (
+                            material_id WITH =,
+                            tstzrange(inicio, fim) WITH &&
+                        )
+                        WHERE (status NOT IN ('CANCELADA', 'REJEITADA') AND material_id IS NOT NULL);
+                    END IF;
+                END $$;
+                """);
+
+            log.info("Constraints de sobreposicao aplicadas (sala, professor, material)");
         };
     }
 }

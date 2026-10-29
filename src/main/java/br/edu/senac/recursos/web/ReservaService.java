@@ -1,8 +1,12 @@
 package br.edu.senac.recursos.web;
 
+import br.edu.senac.recursos.domain.Material;
+import br.edu.senac.recursos.domain.Professor;
 import br.edu.senac.recursos.domain.Reserva;
 import br.edu.senac.recursos.domain.Sala;
 import br.edu.senac.recursos.domain.Usuario;
+import br.edu.senac.recursos.repository.MaterialRepository;
+import br.edu.senac.recursos.repository.ProfessorRepository;
 import br.edu.senac.recursos.repository.ReservaRepository;
 import br.edu.senac.recursos.repository.SalaRepository;
 import br.edu.senac.recursos.repository.UsuarioRepository;
@@ -19,11 +23,17 @@ public class ReservaService {
 
     private final ReservaRepository reservas;
     private final SalaRepository salas;
+    private final ProfessorRepository professores;
+    private final MaterialRepository materiais;
     private final UsuarioRepository usuarios;
 
-    public ReservaService(ReservaRepository reservas, SalaRepository salas, UsuarioRepository usuarios) {
+    public ReservaService(ReservaRepository reservas, SalaRepository salas,
+                          ProfessorRepository professores, MaterialRepository materiais,
+                          UsuarioRepository usuarios) {
         this.reservas = reservas;
         this.salas = salas;
+        this.professores = professores;
+        this.materiais = materiais;
         this.usuarios = usuarios;
     }
 
@@ -37,11 +47,32 @@ public class ReservaService {
         if (Boolean.TRUE.equals(sala.getEmManutencao())) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Sala em manutenção");
         }
+
+        Professor professor = null;
+        if (req.professorId() != null) {
+            professor = professores.findById(req.professorId())
+                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Professor não encontrado"));
+            if (!Boolean.TRUE.equals(professor.getAtivo())) {
+                throw new ResponseStatusException(HttpStatus.CONFLICT, "Professor inativo");
+            }
+        }
+
+        Material material = null;
+        if (req.materialId() != null) {
+            material = materiais.findById(req.materialId())
+                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Material não encontrado"));
+            if (Boolean.TRUE.equals(material.getEmManutencao())) {
+                throw new ResponseStatusException(HttpStatus.CONFLICT, "Material em manutenção");
+            }
+        }
+
         Usuario solicitante = usuarios.findByEmail(emailSolicitante)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Solicitante inválido"));
 
         Reserva r = new Reserva();
         r.setSala(sala);
+        r.setProfessor(professor);
+        r.setMaterial(material);
         r.setSolicitante(solicitante);
         r.setInicio(req.inicio());
         r.setFim(req.fim());
@@ -50,11 +81,11 @@ public class ReservaService {
         try {
             return reservas.saveAndFlush(r);
         } catch (DataIntegrityViolationException e) {
-            throw new ResponseStatusException(HttpStatus.CONFLICT, "Horário indisponível para esta sala");
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Horário indisponível para o recurso selecionado");
         } catch (org.springframework.dao.CannotAcquireLockException e) {
-            throw new ResponseStatusException(HttpStatus.CONFLICT, "Horário indisponível para esta sala");
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Horário indisponível para o recurso selecionado");
         } catch (org.springframework.dao.PessimisticLockingFailureException e) {
-            throw new ResponseStatusException(HttpStatus.CONFLICT, "Horário indisponível para esta sala");
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Horário indisponível para o recurso selecionado");
         }
     }
 }

@@ -6,6 +6,8 @@ import java.time.OffsetDateTime;
 public record ReservaResponse(
         Long id,
         Long salaId,
+        Long professorId,
+        Long materialId,
         String solicitanteEmail,
         OffsetDateTime inicio,
         OffsetDateTime fim,
@@ -15,6 +17,8 @@ public record ReservaResponse(
         return new ReservaResponse(
                 r.getId(),
                 r.getSala().getId(),
+                r.getProfessor() != null ? r.getProfessor().getId() : null,
+                r.getMaterial() != null ? r.getMaterial().getId() : null,
                 r.getSolicitante().getEmail(),
                 r.getInicio(),
                 r.getFim(),

@@ -15,6 +15,14 @@ public class Reserva {
     @JoinColumn(name = "sala_id")
     private Sala sala;
 
+    @ManyToOne(optional = true)
+    @JoinColumn(name = "professor_id")
+    private Professor professor;
+
+    @ManyToOne(optional = true)
+    @JoinColumn(name = "material_id")
+    private Material material;
+
     @ManyToOne(optional = false)
     @JoinColumn(name = "solicitante_id")
     private Usuario solicitante;
@@ -43,6 +51,10 @@ public class Reserva {
     public void setId(Long id) { this.id = id; }
     public Sala getSala() { return sala; }
     public void setSala(Sala sala) { this.sala = sala; }
+    public Professor getProfessor() { return professor; }
+    public void setProfessor(Professor professor) { this.professor = professor; }
+    public Material getMaterial() { return material; }
+    public void setMaterial(Material material) { this.material = material; }
     public Usuario getSolicitante() { return solicitante; }
     public void setSolicitante(Usuario solicitante) { this.solicitante = solicitante; }
     public OffsetDateTime getInicio() { return inicio; }
