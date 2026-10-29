@@ -10,6 +10,8 @@ import br.edu.senac.recursos.web.dto.ReservaRequest;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
 @Service
@@ -25,11 +27,12 @@ public class ReservaService {
         this.usuarios = usuarios;
     }
 
+    @Transactional(isolation = Isolation.SERIALIZABLE)
     public Reserva criar(String emailSolicitante, ReservaRequest req) {
         if (!req.fim().isAfter(req.inicio())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Término deve ser posterior ao início");
         }
-        Sala sala = salas.findById(req.salaId())
+        Sala sala = salas.findByIdParaAtualizar(req.salaId())
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Sala não encontrada"));
         if (Boolean.TRUE.equals(sala.getEmManutencao())) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Sala em manutenção");
@@ -47,6 +50,10 @@ public class ReservaService {
         try {
             return reservas.saveAndFlush(r);
         } catch (DataIntegrityViolationException e) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Horário indisponível para esta sala");
+        } catch (org.springframework.dao.CannotAcquireLockException e) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Horário indisponível para esta sala");
+        } catch (org.springframework.dao.PessimisticLockingFailureException e) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Horário indisponível para esta sala");
         }
     }
