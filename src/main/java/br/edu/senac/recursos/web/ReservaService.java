@@ -26,15 +26,17 @@ public class ReservaService {
     private final ProfessorRepository professores;
     private final MaterialRepository materiais;
     private final UsuarioRepository usuarios;
+    private final AuditoriaService auditoria;
 
     public ReservaService(ReservaRepository reservas, SalaRepository salas,
                           ProfessorRepository professores, MaterialRepository materiais,
-                          UsuarioRepository usuarios) {
+                          UsuarioRepository usuarios, AuditoriaService auditoria) {
         this.reservas = reservas;
         this.salas = salas;
         this.professores = professores;
         this.materiais = materiais;
         this.usuarios = usuarios;
+        this.auditoria = auditoria;
     }
 
     @Transactional(isolation = Isolation.SERIALIZABLE)
@@ -79,7 +81,10 @@ public class ReservaService {
         r.setStatus(Reserva.StatusReserva.SOLICITADA);
 
         try {
-            return reservas.saveAndFlush(r);
+            Reserva salva = reservas.saveAndFlush(r);
+            auditoria.registrar(salva.getId(), emailSolicitante, null,
+                    salva.getStatus().name(), "Reserva criada");
+            return salva;
         } catch (DataIntegrityViolationException e) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Horário indisponível para o recurso selecionado");
         } catch (org.springframework.dao.CannotAcquireLockException e) {
@@ -87,6 +92,17 @@ public class ReservaService {
         } catch (org.springframework.dao.PessimisticLockingFailureException e) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Horário indisponível para o recurso selecionado");
         }
+    }
+
+    @Transactional(isolation = Isolation.SERIALIZABLE)
+    public Reserva transicionar(Long id, String emailUsuario, br.edu.senac.recursos.domain.Reserva.StatusReserva novoEstado, String motivo) {
+        Reserva r = reservas.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Reserva não encontrada"));
+        String anterior = r.getStatus() == null ? null : r.getStatus().name();
+        r.setStatus(novoEstado);
+        reservas.saveAndFlush(r);
+        auditoria.registrar(r.getId(), emailUsuario, anterior, novoEstado.name(), motivo);
+        return r;
     }
 
     @Transactional(isolation = Isolation.SERIALIZABLE)
