@@ -1,0 +1,10 @@
+# Registro de defeitos
+
+| ID | Titulo | Severidade | Prioridade | Situacao | Commit de correcao |
+|---|---|---|---|---|---|
+| DEF-01 | Sem token retornava 403 em vez de 401 | media | P1 | fechado | c0a8bcc |
+| DEF-02 | Erro de validacao sem mensagem amigavel | media | P1 | fechado | 420677d |
+
+Defeitos adicionais surgidos no desenvolvimento:
+
+- Intermitencia do teste de concorrencia (corrigido em e62e2b8 com lock pessimista na sala, ver ADR-004).
