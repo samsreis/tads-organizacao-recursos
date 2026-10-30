@@ -1,6 +1,6 @@
 # Decisao de qualidade
 
-Data: 2026-10-29.
+Data: 2026-10-30.
 Decisao: liberar com ressalvas.
 
 ## Criterios usados
@@ -19,7 +19,7 @@ Decisao: liberar com ressalvas.
 | Criterio | Evidencia | Situacao |
 |---|---|---|
 | 1 | README.md com passo a passo | atende |
-| 2 | a ser executado no primeiro push | pendente ate o push |
+| 2 | https://github.com/samsreis/tads-organizacao-recursos/actions/runs/41077709011 | atende |
 | 3 | AutorizacaoPorPerfilTest, Matriz de autorizacao | atende |
 | 4 | ConcorrenciaTest, ADR-001, ADR-004 | atende |
 | 5 | 92,70% linha e 75,82% branch | atende |
@@ -32,9 +32,7 @@ Decisao: liberar com ressalvas.
 | Risco | Impacto | Justificativa | Responsavel |
 |---|---|---|---|
 | Login com p95 acima do alvo em carga simultanea | baixo | ambiente local, BCrypt e ajustavel em producao | grupo |
-| Interface HTML parcial | baixo | nao e limitador de nota | grupo |
-| Filtro de sala por capacidade e localizacao incompleto | baixo | nao e limitador de nota | grupo |
-| Pipeline ainda nao executou no GitHub | medio | sera executado no primeiro push | grupo |
+| SonarCloud nao integrado | baixo | requer token, nao e limitador de nota, cobertura JaCoCo cobre o criterio | grupo |
 | Uma unica rodada de carga | baixo | tempo limitado, resultado registrado como indicativo | grupo |
 
 ## Declaracao de cada integrante
@@ -43,4 +41,4 @@ Decisao: liberar com ressalvas.
 
 ## Conclusao
 
-A decisao e liberar com ressalvas. O sistema atende o nucleo critico. Os riscos aceitos tem impacto baixo ou ja tem plano de correcao. Nao e correto afirmar que esta pronto para producao: o pipeline ainda nao executou no GitHub, a carga e local e existem duas pendencias funcionais parciais.
+A decisao e liberar com ressalvas. O sistema atende o nucleo critico, o CI esta verde no commit da tag v1.0.0-rc1 e os 14 requisitos funcionais estao cobertos. Nao e correto afirmar que esta pronto para producao: a carga foi feita em ambiente local, o login ficou acima do alvo de p95 e o SonarCloud nao foi integrado.

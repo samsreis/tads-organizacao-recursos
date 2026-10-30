@@ -1,6 +1,6 @@
 # Status dos requisitos
 
-Data: 2026-10-29.
+Data: 2026-10-30.
 
 ## Requisitos funcionais obrigatorios (14)
 
@@ -8,7 +8,7 @@ Data: 2026-10-29.
 |---|---|---|---|---|
 | RF-01 | Autenticacao e autorizacao por perfil | feito | AuthControllerTest, AutorizacaoPorPerfilTest | limitador de nota: falha de autorizacao |
 | RF-02 | Cadastro e consulta de salas, professores e materiais | feito | SalaControllerTest, ProfessorMaterialTest, ProfessorMaterialCrudTest | limitador de nota: aplicacao nao cobre o basico |
-| RF-03 | Pesquisa por tipo, capacidade, localizacao, competencia e disponibilidade | parcial | filtro por tipo em material, por competencia em professor. Falta filtro por capacidade e localizacao em sala e disponibilidade | perde ponto em requisitos |
+| RF-03 | Pesquisa por tipo, capacidade, localizacao, competencia e disponibilidade | feito | FiltroSalaTest cobre capacidade, localizacao e disponibilidade. Filtros de material e professor em ProfessorMaterialCrudTest | perde ponto em requisitos |
 | RF-04 | Criacao, alteracao e cancelamento de reservas | feito | RegrasReservaTest, AlteracaoReservaTest, PosseReservaTest | limitador de nota: fluxo principal |
 | RF-05 | Deteccao de sobreposicao, inclusive agenda do professor | feito | SobreposicaoTest, SobreposicaoRecursosTest | limitador de nota: dupla reserva |
 | RF-06 | Protecao contra dupla reserva em solicitacoes simultaneas | feito | ConcorrenciaTest, ADR-001, ADR-004 | limitador de nota: dupla reserva |
@@ -18,7 +18,7 @@ Data: 2026-10-29.
 | RF-10 | Historico auditavel de mudancas | feito | AuditoriaTest, MaquinaEstadosTest | perde ponto em rastreabilidade |
 | RF-11 | Notificacao simulada ou integracao externa | feito | NotificacaoTest com WireMock | perde ponto em integracao |
 | RF-12 | Relatorio de utilizacao por recurso, carga horaria e conflitos evitados | feito | RelatorioUtilizacaoTest | perde ponto em requisitos |
-| RF-13 | Interface responsiva e mensagens de erro compreensiveis | parcial | mensagens de erro prontas. Interface HTML falta | perde ponto em apresentacao |
+| RF-13 | Interface responsiva e mensagens de erro compreensiveis | feito | src/main/resources/static com login, filtro, reserva e aprovacao; mensagens de erro no TratadorGlobal | perde ponto em apresentacao |
 | RF-14 | Documentacao de API ou fluxos publicos | feito | README.md e docs/seguranca/matriz-autorizacao.md | perde ponto em organizacao |
 
 ## Regras criticas
@@ -36,8 +36,14 @@ Data: 2026-10-29.
 
 ## Pendencia aberta
 
-- RF-03 parcial: adicionar filtro por capacidade e localizacao em GET /salas. Tempo estimado 30 minutos. Nao e limitador de nota.
-- RF-13 parcial: interface HTML. Tempo estimado 1 hora. Nao e limitador de nota, mas conta em apresentacao.
+- SonarCloud nao integrado. Requer SONAR_TOKEN nos secrets do repositorio. Pendencia justificada, nao e limitador de nota.
+- JMeter: login com p95 acima da meta (484 ms contra 300 ms). Hipotese registrada em docs/performance/resultado-01.md.
+
+## Estado do GitHub
+
+Repositorio publico: https://github.com/samsreis/tads-organizacao-recursos
+CI verde da tag v1.0.0-rc1: https://github.com/samsreis/tads-organizacao-recursos/actions/runs/41076861945
+Tag v1.0.0-rc1 no commit da1b6ea. Execucoes posteriores na main sao permitidas; a tag nao e movida.
 
 ## Nao cortar
 
