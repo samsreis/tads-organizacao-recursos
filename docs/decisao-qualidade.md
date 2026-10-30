@@ -34,6 +34,7 @@ Decisao: liberar com ressalvas.
 | Login com p95 acima do alvo em carga simultanea | baixo | ambiente local, BCrypt e ajustavel em producao | grupo |
 | SonarCloud nao integrado | baixo | requer token, nao e limitador de nota, cobertura JaCoCo cobre o criterio | grupo |
 | Uma unica rodada de carga | baixo | tempo limitado, resultado registrado como indicativo | grupo |
+| Revisao por pares nao realizada | medio | grupo de um unico integrante, sem par disponivel; revisao formal impossivel. Compensado com teste de mutacao manual e matriz de autorizacao | grupo |
 
 ## Declaracao de cada integrante
 

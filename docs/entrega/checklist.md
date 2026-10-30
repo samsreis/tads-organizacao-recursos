@@ -1,7 +1,7 @@
 # Checklist de entrega
 
 Data: 2026-10-30.
-Clone limpo simulado: nao. Executado a partir da pasta de desenvolvimento.
+Clone limpo: sim, executado em /tmp/clone-teste a partir do GitHub em 2026-10-30. 143 testes, cobertura ok, BUILD SUCCESS.
 Aplicacao executa: sim, ./mvnw spring-boot:run sobe em 8 segundos.
 Build verde: sim, ./mvnw -B verify com EXIT 0.
 
