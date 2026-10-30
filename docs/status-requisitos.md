@@ -42,8 +42,7 @@ Data: 2026-10-30.
 ## Estado do GitHub
 
 Repositorio publico: https://github.com/samsreis/tads-organizacao-recursos
-CI verde da tag v1.0.0-rc2: https://github.com/samsreis/tads-organizacao-recursos/actions/runs/41079350944
-Tag v1.0.0-rc2 no commit 2b5d9e7. Tag v1.0.0-rc1 mantida no commit da1b6ea como historico.
+Tag final: v1.0.0 no commit final da main. Historico de release candidates: rc1 em da1b6ea (run 41076861945), rc2 em 2b5d9e7 (run 41079350944).
 
 ## Nao cortar
 

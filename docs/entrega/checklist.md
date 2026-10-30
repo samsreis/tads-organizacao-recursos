@@ -30,12 +30,12 @@ Build verde: sim, ./mvnw -B verify com EXIT 0.
 | Matriz de autorizacao | sim | sim | docs/seguranca/matriz-autorizacao.md |
 | Licoes aprendidas | sim | sim | docs/licoes-aprendidas.md |
 | Revisao integrada | sim | sim | docs/revisao-integrada.md |
-| Tag de release | sim | sim | v1.0.0-rc2 no commit 2b5d9e7 |
+| Tag de release | sim | sim | v1.0.0 no commit final da main. Historico: rc1 da1b6ea, rc2 2b5d9e7 |
 | Repositorio publico no GitHub | sim | sim | https://github.com/samsreis/tads-organizacao-recursos |
 
 ## Bloqueadores
 
-Nenhum. Repositorio publicado, CI verde e tag v1.0.0-rc2 criada no commit da execucao verde.
+Nenhum. Repositorio publicado, CI verde na main. Tag final v1.0.0 no commit da execucao verde.
 
 ## Pendencias nao bloqueantes
 
