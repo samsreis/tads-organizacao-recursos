@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Organizacao de Recursos</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header>
+<h1>Organizacao de Recursos</h1>
+<nav id="nav" hidden>
+<button data-tela="salas">Salas</button>
+<button data-tela="minhas">Minhas reservas</button>
+<button data-tela="aprovar" id="btnAprovar" hidden>Aprovar</button>
+<button id="btnSair">Sair</button>
+</nav>
+</header>
+
+<main>
+<section id="tela-login">
+<h2>Entrar</h2>
+<form id="formLogin">
+<label>E-mail <input type="email" id="loginEmail" required autocomplete="username"></label>
+<label>Senha <input type="password" id="loginSenha" required autocomplete="current-password"></label>
+<button type="submit">Entrar</button>
+</form>
+<p id="msgLogin" class="erro" role="alert"></p>
+</section>
+
+<section id="tela-salas" hidden>
+<h2>Salas</h2>
+<form id="formFiltro" class="filtros">
+<label>Capacidade minima <input type="number" id="filtroCapacidade" min="1"></label>
+<label>Localizacao <input type="text" id="filtroLocal"></label>
+<label>Inicio <input type="datetime-local" id="filtroInicio"></label>
+<label>Fim <input type="datetime-local" id="filtroFim"></label>
+<button type="submit">Filtrar</button>
+</form>
+<p id="msgSalas" class="erro" role="alert"></p>
+<ul id="listaSalas"></ul>
+
+<h2>Nova reserva</h2>
+<form id="formReserva">
+<label>Sala <select id="reservaSala" required></select></label>
+<label>Inicio <input type="datetime-local" id="reservaInicio" required></label>
+<label>Fim <input type="datetime-local" id="reservaFim" required></label>
+<button type="submit">Solicitar</button>
+</form>
+<p id="msgReserva" class="erro" role="alert"></p>
+</section>
+
+<section id="tela-minhas" hidden>
+<h2>Minhas reservas</h2>
+<p id="msgMinhas" class="erro" role="alert"></p>
+<ul id="listaMinhas"></ul>
+</section>
+
+<section id="tela-aprovar" hidden>
+<h2>Reservas pendentes</h2>
+<p id="msgAprovar" class="erro" role="alert"></p>
+<ul id="listaAprovar"></ul>
+</section>
+</main>
+
+<script src="/app.js"></script>
+</body>
+</html>

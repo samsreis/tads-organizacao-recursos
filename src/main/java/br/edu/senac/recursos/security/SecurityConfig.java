@@ -31,7 +31,7 @@ public class SecurityConfig {
                 .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
             )
             .authorizeHttpRequests(a -> a
-                .requestMatchers("/auth/**", "/actuator/health", "/error").permitAll()
+                .requestMatchers("/", "/index.html", "/style.css", "/app.js", "/auth/**", "/actuator/health", "/error").permitAll()
 
                 .requestMatchers(HttpMethod.GET, "/salas/**").authenticated()
                 .requestMatchers(HttpMethod.POST, "/salas/**").hasRole("ADMINISTRADOR")
