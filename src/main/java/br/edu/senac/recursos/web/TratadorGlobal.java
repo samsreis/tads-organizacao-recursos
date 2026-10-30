@@ -38,6 +38,12 @@ public class TratadorGlobal {
                 .body(Map.of("erro", "Corpo da requisição inválido ou malformado"));
     }
 
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<?> tratarArgumento(IllegalArgumentException e) {
+        String motivo = e.getMessage() != null ? e.getMessage() : "Argumento inválido";
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("erro", motivo));
+    }
+
     private String descrever(FieldError erro) {
         String campo = erro.getField();
         String padrao = erro.getCode();
