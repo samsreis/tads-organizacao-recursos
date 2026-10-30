@@ -19,7 +19,7 @@ Decisao: liberar com ressalvas.
 | Criterio | Evidencia | Situacao |
 |---|---|---|
 | 1 | README.md com passo a passo | atende |
-| 2 | https://github.com/samsreis/tads-organizacao-recursos/actions/runs/41077709011 | atende |
+| 2 | https://github.com/samsreis/tads-organizacao-recursos/actions/runs/41079350944 | atende |
 | 3 | AutorizacaoPorPerfilTest, Matriz de autorizacao | atende |
 | 4 | ConcorrenciaTest, ADR-001, ADR-004 | atende |
 | 5 | 92,70% linha e 75,82% branch | atende |
@@ -42,4 +42,4 @@ Decisao: liberar com ressalvas.
 
 ## Conclusao
 
-A decisao e liberar com ressalvas. O sistema atende o nucleo critico, o CI esta verde no commit da tag v1.0.0-rc1 e os 14 requisitos funcionais estao cobertos. Nao e correto afirmar que esta pronto para producao: a carga foi feita em ambiente local, o login ficou acima do alvo de p95 e o SonarCloud nao foi integrado.
+A decisao e liberar com ressalvas. O sistema atende o nucleo critico, o CI esta verde no commit da tag v1.0.0-rc2 e os 14 requisitos funcionais estao cobertos. Nao e correto afirmar que esta pronto para producao: a carga foi feita em ambiente local, o login ficou acima do alvo de p95 e o SonarCloud nao foi integrado.

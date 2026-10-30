@@ -1,6 +1,6 @@
 # Pacote de evidencias
 
-Tag avaliada: v1.0.0-rc1. Repositorio: https://github.com/samsreis/tads-organizacao-recursos. Commit da tag: da1b6ea9024282db103099b17f38628a5a5422df.
+Tag avaliada: v1.0.0-rc2. Repositorio: https://github.com/samsreis/tads-organizacao-recursos. Commit da tag: 2b5d9e7. Historico: v1.0.0-rc1 no commit da1b6ea.
 
 ## Indice
 
@@ -28,7 +28,7 @@ Tag avaliada: v1.0.0-rc1. Repositorio: https://github.com/samsreis/tads-organiza
 
 ## Execucao do CI
 
-Execucao verde: https://github.com/samsreis/tads-organizacao-recursos/actions/runs/41076861945. Commit: da1b6ea9024282db103099b17f38628a5a5422df. Tag: https://github.com/samsreis/tads-organizacao-recursos/releases/tag/v1.0.0-rc1.
+Execucao verde da tag v1.0.0-rc2: https://github.com/samsreis/tads-organizacao-recursos/actions/runs/41079350944. Commit: 2b5d9e7. Tag: https://github.com/samsreis/tads-organizacao-recursos/releases/tag/v1.0.0-rc2.
 
 ## Relatorio JaCoCo
 
