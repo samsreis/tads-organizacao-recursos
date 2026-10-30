@@ -1,6 +1,6 @@
 # Checklist de entrega
 
-Data: 2026-10-29.
+Data: 2026-10-30.
 Clone limpo simulado: nao. Executado a partir da pasta de desenvolvimento.
 Aplicacao executa: sim, ./mvnw spring-boot:run sobe em 8 segundos.
 Build verde: sim, ./mvnw -B verify com EXIT 0.
@@ -18,7 +18,7 @@ Build verde: sim, ./mvnw -B verify com EXIT 0.
 | Relatorio de testes | sim | sim | docs/testes/relatorio.md |
 | Mutacao manual | sim | sim | docs/testes/mutacao-manual.md |
 | Pipeline CI | sim, arquivo presente | sim | .github/workflows/ci.yml |
-| Execucao do CI no GitHub | nao | nao | precisa do primeiro push |
+| Execucao do CI no GitHub | sim | sim | https://github.com/samsreis/tads-organizacao-recursos/actions/runs/41076861945 |
 | JaCoCo | sim | sim | pom.xml e target/site/jacoco |
 | SonarCloud | nao | nao | pendente, requer SONAR_TOKEN |
 | Plano de carga | sim | sim | docs/performance/plano.md e perf/reservas.jmx |
@@ -30,16 +30,14 @@ Build verde: sim, ./mvnw -B verify com EXIT 0.
 | Matriz de autorizacao | sim | sim | docs/seguranca/matriz-autorizacao.md |
 | Licoes aprendidas | sim | sim | docs/licoes-aprendidas.md |
 | Revisao integrada | sim | sim | docs/revisao-integrada.md |
-| Tag de release | nao | nao | sera criada apos push e CI verde |
-| Repositorio publico no GitHub | nao | nao | sera feito no bloco final |
+| Tag de release | sim | sim | v1.0.0-rc1 no commit da1b6ea |
+| Repositorio publico no GitHub | sim | sim | https://github.com/samsreis/tads-organizacao-recursos |
 
 ## Bloqueadores
 
-1. Repositorio ainda nao foi publicado no GitHub. Enquanto isso, o limitador "pipeline ausente" esta ativo.
-2. Tag v1.0.0-rc1 so pode ser criada depois do CI verde.
+Nenhum. Repositorio publicado, CI verde e tag v1.0.0-rc1 criada no commit da execucao verde.
 
 ## Pendencias nao bloqueantes
 
 - SonarCloud sem token.
-- Interface HTML parcial.
-- Filtro de sala por capacidade e localizacao incompleto.
+- Interface HTML implementada com login, filtro de sala, reserva e aprovacao, mas sem animacao por escolha de design.

@@ -1,6 +1,6 @@
 # Pacote de evidencias
 
-Tag avaliada: v1.0.0-rc1 (sera criada apos o primeiro push verde).
+Tag avaliada: v1.0.0-rc1. Repositorio: https://github.com/samsreis/tads-organizacao-recursos. Commit da tag: da1b6ea9024282db103099b17f38628a5a5422df.
 
 ## Indice
 
@@ -28,7 +28,7 @@ Tag avaliada: v1.0.0-rc1 (sera criada apos o primeiro push verde).
 
 ## Execucao do CI
 
-Link sera preenchido apos o primeiro push na main. O commit da tag sera o mesmo do CI verde.
+Execucao verde: https://github.com/samsreis/tads-organizacao-recursos/actions/runs/41076861945. Commit: da1b6ea9024282db103099b17f38628a5a5422df. Tag: https://github.com/samsreis/tads-organizacao-recursos/releases/tag/v1.0.0-rc1.
 
 ## Relatorio JaCoCo
 
