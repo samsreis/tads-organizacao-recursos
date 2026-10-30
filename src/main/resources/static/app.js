@@ -119,7 +119,7 @@ async function carregarMinhas() {
 async function carregarAprovar() {
   mostrar("msgAprovar", "");
   try {
-    const lista = await api("/reservas/minhas");
+    const lista = await api("/reservas");
     const ul = el("listaAprovar"); ul.innerHTML = "";
     lista.forEach(r => {
       const li = document.createElement("li");

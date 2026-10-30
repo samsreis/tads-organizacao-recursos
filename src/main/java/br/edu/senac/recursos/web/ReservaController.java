@@ -51,6 +51,13 @@ public class ReservaController {
         }
     }
 
+    @GetMapping
+    public List<ReservaResponse> listarTodas() {
+        return reservas.findAll().stream()
+                .map(ReservaResponse::de)
+                .toList();
+    }
+
     @GetMapping("/minhas")
     public List<ReservaResponse> minhas(Authentication auth) {
         return reservas.findAll().stream()
