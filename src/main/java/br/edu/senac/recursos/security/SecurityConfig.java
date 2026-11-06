@@ -53,6 +53,7 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.PUT, "/materiais/**").hasRole("ADMINISTRADOR")
                 .requestMatchers(HttpMethod.DELETE, "/materiais/**").hasRole("ADMINISTRADOR")
 
+                .requestMatchers(HttpMethod.GET, "/reservas").hasAnyRole("RESPONSAVEL", "ADMINISTRADOR")
                 .requestMatchers("/reservas/*/aprovar").hasAnyRole("RESPONSAVEL", "ADMINISTRADOR")
                 .requestMatchers("/reservas/*/rejeitar").hasAnyRole("RESPONSAVEL", "ADMINISTRADOR")
                 .requestMatchers("/reservas/*/iniciar").hasAnyRole("RESPONSAVEL", "ADMINISTRADOR")
