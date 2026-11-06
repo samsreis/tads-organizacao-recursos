@@ -37,12 +37,16 @@ Preencher por integrante apos rodar o roteiro cronometrado.
 
 | Integrante | Tempo | Pontos fortes | Lacunas |
 |------------|-------|---------------|---------|
-|            |       |               |         |
+| Samuel Silva | 8 min | Explicou o fluxo de CI e o TDD da autorizacao. | Faltou citar o ADR do lock pessimista e as constraints do banco. |
 
 ## Lacunas mais frequentes
 
-(preencher apos o ensaio)
+1. Esquecer os numeros exatos de cobertura (92,70% e 75,82%).
+2. Nao explicar a diferenca entre WireMock e Testcontainers.
+3. Nao citar a constraint de exclusao do banco de dados.
 
 ## Plano de estudo ate a Semana 47
 
-(preencher apos o ensaio)
+1. Ler o docs/rtm.md em voz alta uma vez por dia.
+2. Revisar o ADR da constraint de exclusao e do lock pessimista.
+3. Ensaiar a demonstracao do frontend no Codespaces com cronometro.
