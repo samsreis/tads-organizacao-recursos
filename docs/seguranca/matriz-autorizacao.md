@@ -57,6 +57,7 @@ Regra de posse: SOLICITANTE so altera e cancela reserva em que ele e o solicitan
 |---|---|---|---|---|---|
 | POST /reservas | 401 | 201 / 409 | 201 / 409 | 201 / 409 | 201 / 409 |
 | GET /reservas/minhas | 401 | 200 | 200 | 200 | 200 |
+| GET /reservas | 401 | 403 | 200 | 200 |
 | PUT /reservas/{id} | 401 | 200 / 404 / 409 | 403 | 200 / 404 / 409 | 200 / 404 / 409 |
 | DELETE /reservas/{id} | 401 | 204 / 404 / 409 | 403 | 204 / 404 / 409 | 204 / 404 / 409 |
 
