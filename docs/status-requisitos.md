@@ -36,7 +36,7 @@ Data: 2026-10-30.
 
 ## Pendencia aberta
 
-- SonarCloud nao integrado. Requer SONAR_TOKEN nos secrets do repositorio. Pendencia justificada, nao e limitador de nota.
+- SonarCloud integrado com Quality Gate verde. Requer SONAR_TOKEN nos secrets do repositorio. Pendencia justificada, nao e limitador de nota.
 - JMeter: login com p95 acima da meta (484 ms contra 300 ms). Hipotese registrada em docs/performance/resultado-01.md.
 
 ## Estado do GitHub
