@@ -41,3 +41,8 @@ Pendente. Requer SONAR_TOKEN configurado nos secrets do repositorio. Se o token 
 ## Regra
 
 Toda evidencia aponta para o commit da tag. Se algo precisar mudar depois da tag, sera criada uma nova versao, sem mover a tag anterior.
+
+
+## SonarCloud
+
+Quality Gate verde: [Ver painel no SonarCloud](https://sonarcloud.io/dashboard?id=samsreis_tads-organizacao-recursos)
