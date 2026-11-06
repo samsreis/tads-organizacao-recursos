@@ -18,6 +18,7 @@ Cada linha liga requisito critico, risco, teste automatizado localizavel por arq
 | RF-05 sobreposicao de professor | professor em dois lugares | SobreposicaoRecursosTest.professorSobrepostoBloqueado | integracao | pipeline verde |
 | RF-05 sobreposicao de material | material em dois lugares | SobreposicaoRecursosTest.materialSobrepostoBloqueado | integracao | pipeline verde |
 | RF-06 dupla reserva simultanea | duas reservas aceitas | ConcorrenciaTest.dezRequisicoesApenasUmaAceita | integracao com Testcontainers e threads | pipeline verde |
+| RNF-AUT listagem de todas as reservas | vazamento de reservas entre perfis | AutorizacaoPorPerfilTest.matrizDeAutorizacao | api com MockMvc e tokens | pipeline verde |
 | RF-07 aprovacao por responsavel | solicitante aprova a si mesmo | AprovacaoTest.responsavelAprovaReserva201 | API caixa-preta | pipeline verde |
 | RF-07 solicitante nao aprova | escalada | AprovacaoTest.solicitanteNaoPodeAprovar403 | API caixa-preta | pipeline verde |
 | RF-07 nao aprovar duas vezes | estado invalido | AprovacaoTest.naoAprovaReservaJaAprovada409 | API caixa-preta | pipeline verde |
