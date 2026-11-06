@@ -1,6 +1,6 @@
 # Pacote de evidencias
 
-Tag avaliada: v1.0.0. Repositorio: https://github.com/samsreis/tads-organizacao-recursos. Historico de release candidates: v1.0.0-rc1 no commit da1b6ea, v1.0.0-rc2 no commit 2b5d9e7.
+Tag avaliada: v1.1.0. Repositorio: https://github.com/samsreis/tads-organizacao-recursos. Historico: v1.0.0-rc1, v1.0.0-rc2 e v1.0.0.
 
 ## Indice
 
@@ -28,7 +28,7 @@ Tag avaliada: v1.0.0. Repositorio: https://github.com/samsreis/tads-organizacao-
 
 ## Execucao do CI
 
-Execucao verde da tag v1.0.0 sera preenchida no commit final da tag. Historico: rc1 em https://github.com/samsreis/tads-organizacao-recursos/actions/runs/41076861945, rc2 em https://github.com/samsreis/tads-organizacao-recursos/actions/runs/41079350944.
+Execucao verde da tag v1.1.0: https://github.com/samsreis/tads-organizacao-recursos/actions/runs/42165085123. Historico de rc1 e rc2 mantidos nas tags anteriores.
 
 ## Relatorio JaCoCo
 
@@ -40,4 +40,4 @@ Pendente. Requer SONAR_TOKEN configurado nos secrets do repositorio. Se o token 
 
 ## Regra
 
-Toda evidencia aponta para o commit da tag. Se algo precisar mudar depois da tag, sera criada v1.0.0-rc2, sem mover a tag anterior.
+Toda evidencia aponta para o commit da tag. Se algo precisar mudar depois da tag, sera criada uma nova versao, sem mover a tag anterior.

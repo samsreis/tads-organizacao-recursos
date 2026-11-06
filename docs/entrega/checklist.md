@@ -18,7 +18,7 @@ Build verde: sim, ./mvnw -B verify com EXIT 0.
 | Relatorio de testes | sim | sim | docs/testes/relatorio.md |
 | Mutacao manual | sim | sim | docs/testes/mutacao-manual.md |
 | Pipeline CI | sim, arquivo presente | sim | .github/workflows/ci.yml |
-| Execucao do CI no GitHub | sim | sim | https://github.com/samsreis/tads-organizacao-recursos/actions/runs/41076861945 |
+| Execucao do CI no GitHub | sim | sim | https://github.com/samsreis/tads-organizacao-recursos/actions/runs/42165085123 |
 | JaCoCo | sim | sim | pom.xml e target/site/jacoco |
 | SonarCloud | nao | nao | pendente, requer SONAR_TOKEN |
 | Plano de carga | sim | sim | docs/performance/plano.md e perf/reservas.jmx |
@@ -30,12 +30,12 @@ Build verde: sim, ./mvnw -B verify com EXIT 0.
 | Matriz de autorizacao | sim | sim | docs/seguranca/matriz-autorizacao.md |
 | Licoes aprendidas | sim | sim | docs/licoes-aprendidas.md |
 | Revisao integrada | sim | sim | docs/revisao-integrada.md |
-| Tag de release | sim | sim | v1.0.0 no commit final da main. Historico: rc1 da1b6ea, rc2 2b5d9e7 |
+| Tag de release | sim | sim | v1.1.0 no commit final da main. Historico: rc1 11c8165, rc2 11c8165 |
 | Repositorio publico no GitHub | sim | sim | https://github.com/samsreis/tads-organizacao-recursos |
 
 ## Bloqueadores
 
-Nenhum. Repositorio publicado, CI verde na main. Tag final v1.0.0 no commit da execucao verde.
+Nenhum. Repositorio publicado, CI verde na main. Tag final v1.1.0 no commit da execucao verde.
 
 ## Pendencias nao bloqueantes
 
