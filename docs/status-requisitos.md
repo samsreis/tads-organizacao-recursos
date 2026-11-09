@@ -42,7 +42,7 @@ Data: 2026-10-30.
 ## Estado do GitHub
 
 Repositorio publico: https://github.com/samsreis/tads-organizacao-recursos
-Tag final: v1.2.2 no commit final da main. Historico de release candidates: rc1 em da1b6ea (run 41076861945), rc2 em 2b5d9e7 (run 41079350944), v1.2.0 em 8d098ec, v1.2.1 em cbf282f.
+Tag final: v1.2.3 no commit final da main. Historico de release candidates: rc1 em da1b6ea (run 41076861945), rc2 em 2b5d9e7 (run 41079350944), v1.2.0 em 8d098ec, v1.2.1 em cbf282f.
 
 ## Nao cortar
 
