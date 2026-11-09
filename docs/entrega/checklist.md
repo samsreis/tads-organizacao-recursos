@@ -1,7 +1,7 @@
 # Checklist de entrega
 
 Data: 2026-10-30.
-Clone limpo: sim, executado em /tmp/clone-teste a partir do GitHub em 2026-10-30. 143 testes, cobertura ok, BUILD SUCCESS.
+Clone limpo: sim, executado em /tmp/clone-teste a partir do GitHub em 2026-10-30. 144 testes, cobertura acima das metas, BUILD SUCCESS.
 Aplicacao executa: sim, ./mvnw spring-boot:run sobe em 8 segundos.
 Build verde: sim, ./mvnw -B verify com EXIT 0.
 Reverificacao: 2026-11-09, apos correcao do DEF-03. 144 testes, cobertura acima das metas, BUILD SUCCESS.
@@ -21,7 +21,7 @@ Reverificacao: 2026-11-09, apos correcao do DEF-03. 144 testes, cobertura acima 
 | Pipeline CI | sim, arquivo presente | sim | .github/workflows/ci.yml |
 | Execucao do CI no GitHub | sim | sim | https://github.com/samsreis/tads-organizacao-recursos/actions/runs/42165085123 |
 | JaCoCo | sim | sim | pom.xml e target/site/jacoco |
-| SonarCloud | nao | nao | pendente, requer SONAR_TOKEN |
+| SonarCloud | sim | sim | https://sonarcloud.io/project/overview?id=samsreis_tads-organizacao-recursos |
 | Plano de carga | sim | sim | docs/performance/plano.md e perf/reservas.jmx |
 | Resultado de carga | sim | sim | docs/performance/resultado-01.md |
 | Defeitos registrados | sim | sim | docs/defeitos/ |
@@ -31,7 +31,7 @@ Reverificacao: 2026-11-09, apos correcao do DEF-03. 144 testes, cobertura acima 
 | Matriz de autorizacao | sim | sim | docs/seguranca/matriz-autorizacao.md |
 | Licoes aprendidas | sim | sim | docs/licoes-aprendidas.md |
 | Revisao integrada | sim | sim | docs/revisao-integrada.md |
-| Tag de release | sim | sim | v1.2.6 no commit final da main. Historico: rc1 11c8165, rc2 11c8165, v1.2.0 8d098ec, v1.2.1 cbf282f |
+| Tag de release | sim | sim | v1.2.6 no commit final da main. Historico: v1.0.0-rc1, v1.0.0-rc2, v1.0.0, v1.1.0, v1.2.0, v1.2.1, v1.2.2, v1.2.3, v1.2.4, v1.2.5 e v1.2.6 |
 | Repositorio publico no GitHub | sim | sim | https://github.com/samsreis/tads-organizacao-recursos |
 
 ## Bloqueadores
@@ -40,5 +40,4 @@ Nenhum. Repositorio publicado, CI verde na main. Tag final v1.2.6 no commit da e
 
 ## Pendencias nao bloqueantes
 
-- SonarCloud sem token.
 - Interface HTML implementada com login, filtro de sala, reserva e aprovacao, mas sem animacao por escolha de design.
