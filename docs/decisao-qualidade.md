@@ -19,7 +19,7 @@ Decisao: liberar com ressalvas.
 | Criterio | Evidencia | Situacao |
 |---|---|---|
 | 1 | README.md com passo a passo | atende |
-| 2 | https://github.com/samsreis/tads-organizacao-recursos/actions?query=branch%3Av1.2.6. Tag final v1.2.6 no commit final da main. | atende |
+| 2 | https://github.com/samsreis/tads-organizacao-recursos/actions/runs/42669345357. Tag final v1.2.7 no commit 01eac53, execucao 42669345357. | atende |
 | 3 | AutorizacaoPorPerfilTest, Matriz de autorizacao | atende |
 | 4 | ConcorrenciaTest, ADR-001, ADR-004 | atende |
 | 5 | 92,70% linha e 77,1% branch | atende |
