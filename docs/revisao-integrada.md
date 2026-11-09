@@ -1,24 +1,24 @@
 # Revisao integrada - regras criticas
 
-Data: 2026-10-29. Revisao: 2026-11-09, sobre a tag v1.3.0 no commit final da main, CI verde na execucao da tag v1.3.0.
+Data: 2026-10-29. Revisao: 2026-11-09, sobre a tag v1.3.1 no commit final da main, CI verde na execucao da tag v1.3.1.
 
 | Regra critica | Requisito | Risco | Tecnica usada | Automacao | Evidencia | Decisao |
 |---|---|---|---|---|---|---|
-| Termino posterior ao inicio | RF-04 | estado invalido aceito | caixa-preta | ValidacaoEntradaTest, RegrasReservaTest | execucao da tag v1.3.0, tag v1.3.0 | manter |
-| Sobreposicao de sala | RF-05 | dupla reserva | integracao Testcontainers | SobreposicaoTest, RegrasReservaTest | execucao da tag v1.3.0, tag v1.3.0 | manter |
-| Sobreposicao de professor | RF-05 | professor em dois lugares | integracao | SobreposicaoRecursosTest | execucao da tag v1.3.0, tag v1.3.0 | manter |
-| Sobreposicao de material | RF-05 | material em dois lugares | integracao | SobreposicaoRecursosTest | execucao da tag v1.3.0, tag v1.3.0 | manter |
-| Dupla reserva simultanea | RF-06 | duas reservas aceitas | integracao com threads | ConcorrenciaTest | execucao da tag v1.3.0, tag v1.3.0 | manter |
-| Manutencao de sala | RF-08 | reserva de sala em obra | caixa-preta | RegrasReservaTest | execucao da tag v1.3.0, tag v1.3.0 | manter |
-| Manutencao de material | RF-08 | retirada em conserto | caixa-preta | MovimentacaoMaterialTest | execucao da tag v1.3.0, tag v1.3.0 | manter |
-| Aprovacao de restrito | RF-07 | solicitante aprova a si mesmo | caixa-preta | AprovacaoTest | execucao da tag v1.3.0, tag v1.3.0 | manter |
-| Maquina de estados | RF-07 | estado invalido | caixa-preta | MaquinaEstadosTest | execucao da tag v1.3.0, tag v1.3.0 | manter |
-| Auditoria | RF-10 | historico perdido | integracao | AuditoriaTest, MaquinaEstadosTest | execucao da tag v1.3.0, tag v1.3.0 | manter |
-| Autorizacao | RF-01 | escalada de permissao | caixa-preta parametrizada | AutorizacaoPorPerfilTest | execucao da tag v1.3.0, tag v1.3.0 | manter |
+| Termino posterior ao inicio | RF-04 | estado invalido aceito | caixa-preta | ValidacaoEntradaTest, RegrasReservaTest | execucao da tag v1.3.1, tag v1.3.1 | manter |
+| Sobreposicao de sala | RF-05 | dupla reserva | integracao Testcontainers | SobreposicaoTest, RegrasReservaTest | execucao da tag v1.3.1, tag v1.3.1 | manter |
+| Sobreposicao de professor | RF-05 | professor em dois lugares | integracao | SobreposicaoRecursosTest | execucao da tag v1.3.1, tag v1.3.1 | manter |
+| Sobreposicao de material | RF-05 | material em dois lugares | integracao | SobreposicaoRecursosTest | execucao da tag v1.3.1, tag v1.3.1 | manter |
+| Dupla reserva simultanea | RF-06 | duas reservas aceitas | integracao com threads | ConcorrenciaTest | execucao da tag v1.3.1, tag v1.3.1 | manter |
+| Manutencao de sala | RF-08 | reserva de sala em obra | caixa-preta | RegrasReservaTest | execucao da tag v1.3.1, tag v1.3.1 | manter |
+| Manutencao de material | RF-08 | retirada em conserto | caixa-preta | MovimentacaoMaterialTest | execucao da tag v1.3.1, tag v1.3.1 | manter |
+| Aprovacao de restrito | RF-07 | solicitante aprova a si mesmo | caixa-preta | AprovacaoTest | execucao da tag v1.3.1, tag v1.3.1 | manter |
+| Maquina de estados | RF-07 | estado invalido | caixa-preta | MaquinaEstadosTest | execucao da tag v1.3.1, tag v1.3.1 | manter |
+| Auditoria | RF-10 | historico perdido | integracao | AuditoriaTest, MaquinaEstadosTest | execucao da tag v1.3.1, tag v1.3.1 | manter |
+| Autorizacao | RF-01 | escalada de permissao | caixa-preta parametrizada | AutorizacaoPorPerfilTest | execucao da tag v1.3.1, tag v1.3.1 | manter |
 
 ## Celulas vazias
 
-Nenhuma. Todas as regras criticas tem teste localizavel e evidencia na execucao da tag v1.3.0.
+Nenhuma. Todas as regras criticas tem teste localizavel e evidencia na execucao da tag v1.3.1.
 
 ## Prova de que o teste protege a regra
 
