@@ -60,12 +60,16 @@ Formato: pergunta, resposta curta de referencia, evidencia no repositorio.
 
 ## CI, cobertura e analise estatica
 
-14. Quais as metas de cobertura?
-    Resposta: 80% linha, 70% branch. Check ativo no pom.
-    Estado atual: 92,70% linha, 75,82% branch.
+14. Quais as metas de cobertura e qual o estado atual?
+    Resposta: meta 80% linha e 70% branch, com check ativo no pom. Estado atual medido em 2026-11-09: 91% linha (333 de 3.741) e 77% branch (40 de 175) pelo JaCoCo, e 89,1% no SonarCloud.
+    Evidencia: target/site/jacoco/index.html, SonarCloud samsreis_tads-organizacao-recursos.
 
 15. O que o workflow faz?
-    Resposta: build, testes, cobertura a cada pull request. .github/workflows/ci.yml.
+    Resposta: build, testes, cobertura e analise Sonar com qualitygate.wait=true a cada pull request, push na main e push de tag v*. .github/workflows/ci.yml.
+
+15a. O SonarCloud esta integrado?
+    Resposta: sim. Quality Gate Passed, 0 issues, 0 security issues, 0 hotspots, Security A, Reliability A, Maintainability A, cobertura 89,1%, duplicacao 2,4%, 1.8k linhas.
+    Evidencia: https://sonarcloud.io/project/overview?id=samsreis_tads-organizacao-recursos.
 
 ## Performance
 
@@ -85,4 +89,11 @@ Formato: pergunta, resposta curta de referencia, evidencia no repositorio.
     Resposta: ver docs/decisao-qualidade.md.
 
 20. O que ficou de fora?
-    Resposta: SonarCloud (pendencia justificada), interface simples, sem animacao.
+    Resposta: interface simples, sem animacao. Carga unica em ambiente local. Sem revisao por pares, por grupo de um integrante.
+
+21. Qual a tag final de entrega?
+    Resposta: v1.2.8 no commit 953a3a3, CI verde na execucao 42671018717. Historico completo em docs/evidencias/README.md.
+
+22. Como se prova que um teste protege a regra?
+    Resposta: mutacao manual. Quebra a regra, roda o teste, espera vermelho, restaura com git restore. Dez regras registradas, duas reexecutadas em 2026-11-09.
+    Evidencia: docs/testes/mutacao-manual.md.

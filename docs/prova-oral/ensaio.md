@@ -18,8 +18,8 @@ Roteiro de 8 minutos por integrante.
    - Interface em /index.html.
 
 4. Testes e CI (1 min 30)
-   - 142+ testes, Testcontainers, MockMvc, WireMock.
-   - Cobertura 92,70% linha, 75,82% branch.
+   - 144 testes, Testcontainers, MockMvc, WireMock.
+   - Cobertura 91% linha, 77% branch locais, 89,1% no SonarCloud.
    - Workflow no GitHub Actions.
 
 5. RTM e relatorio (1 min)
@@ -28,8 +28,8 @@ Roteiro de 8 minutos por integrante.
 
 6. Limitacoes (1 min)
    - Login acima da meta de p95.
-   - SonarCloud nao integrado.
-   - Interface minima.
+   - Carga unica em ambiente local.
+   - Interface minima, sem animacao.
 
 ## Pontuacao do ensaio
 
@@ -41,7 +41,7 @@ Preencher por integrante apos rodar o roteiro cronometrado.
 
 ## Lacunas mais frequentes
 
-1. Esquecer os numeros exatos de cobertura (92,70% e 75,82%).
+1. Esquecer os numeros exatos de cobertura (91% linha, 77% branch, 89,1% SonarCloud).
 2. Nao explicar a diferenca entre WireMock e Testcontainers.
 3. Nao citar a constraint de exclusao do banco de dados.
 
@@ -50,3 +50,4 @@ Preencher por integrante apos rodar o roteiro cronometrado.
 1. Ler o docs/rtm.md em voz alta uma vez por dia.
 2. Revisar o ADR da constraint de exclusao e do lock pessimista.
 3. Ensaiar a demonstracao do frontend no Codespaces com cronometro.
+4. Decorar o ID da execucao verde da tag v1.2.8: 42671018717.
