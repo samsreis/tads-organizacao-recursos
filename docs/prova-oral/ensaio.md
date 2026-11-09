@@ -51,4 +51,4 @@ Preencher por integrante apos rodar o roteiro cronometrado.
 1. Ler o docs/rtm.md em voz alta uma vez por dia.
 2. Revisar o ADR da constraint de exclusao e do lock pessimista.
 3. Ensaiar a demonstracao do frontend no Codespaces com cronometro.
-4. Decorar o ID da execucao verde da tag v1.2.8: 42671018717.
+4. Decorar o ID da execucao verde da tag v1.2.9: ver link da tag v1.2.9.
