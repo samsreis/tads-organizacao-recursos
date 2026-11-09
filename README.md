@@ -36,19 +36,18 @@ Regra de cobertura do build: 80% linha e 70% branch. Se cair abaixo, o build fal
 
 ## Usuarios de teste para desenvolvimento manual
 
-Se voce subir a aplicacao com o banco vazio, crie os usuarios pelo endpoint de registro.
+O cadastro publico cria sempre o perfil SOLICITANTE. Mesmo que o corpo envie outro perfil, o sistema grava SOLICITANTE, como protecao contra elevacao de privilegio (ver DEF-03).
 
     curl -X POST http://localhost:8080/auth/registrar \
       -H "Content-Type: application/json" \
       -d '{"email":"sol@teste.com","senha":"123456","nome":"Solicitante","perfil":"SOLICITANTE"}'
 
-    curl -X POST http://localhost:8080/auth/registrar \
-      -H "Content-Type: application/json" \
-      -d '{"email":"res@teste.com","senha":"123456","nome":"Responsavel","perfil":"RESPONSAVEL"}'
+Contas RESPONSAVEL e ADMINISTRADOR nao sao criadas pelo endpoint publico. Elas devem ser inseridas direto no banco, com a senha ja codificada em BCrypt, ou por carga inicial controlada. Exemplo de insercao via psql:
 
-    curl -X POST http://localhost:8080/auth/registrar \
-      -H "Content-Type: application/json" \
-      -d '{"email":"adm@teste.com","senha":"123456","nome":"Administrador","perfil":"ADMINISTRADOR"}'
+    INSERT INTO usuarios (email, senha_hash, nome, perfil)
+    VALUES ('adm@teste.com', '<hash-bcrypt>', 'Administrador', 'ADMINISTRADOR');
+
+O hash BCrypt pode ser gerado no proprio projeto Java com new BCryptPasswordEncoder().encode("123456").
 
 ## Perfis
 

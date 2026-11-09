@@ -1,8 +1,8 @@
 # Relatorio final de qualidade
 
-Data: 2026-10-29.
-Repositorio: projeto local (a ser publicado).
-Commit avaliado: sera o da tag v1.2.5.
+Data: 2026-11-09.
+Repositorio: https://github.com/samsreis/tads-organizacao-recursos.
+Commit avaliado: tag v1.2.6.
 Ambiente de medicao: Linux Mint, Java 21, Maven wrapper, Docker com Testcontainers e Postgres 16.
 
 ## Escopo avaliado
@@ -38,7 +38,7 @@ Ambiente de medicao: Linux Mint, Java 21, Maven wrapper, Docker com Testcontaine
 | Meta | Valor alvo | Medido | Situacao |
 |---|---|---|---|
 | Cobertura de linha | 80% | 92,70% | atende |
-| Cobertura de branch | 70% | 75,82% | atende |
+| Cobertura de branch | 70% | 77,14% | atende |
 | Requisitos criticos na RTM | 100% | 100% (todas as linhas com teste localizavel) | atende |
 | Bugs ou vulnerabilidades criticas | 0 | 0 identificados nas revisoes | atende |
 

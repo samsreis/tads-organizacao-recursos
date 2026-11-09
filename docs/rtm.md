@@ -44,7 +44,7 @@ Cada linha liga requisito critico, risco, teste automatizado localizavel por arq
 
 ## Requisitos sem evidencia de execucao no commit avaliado
 
-Nenhum nesta lista. A evidencia de cada linha e o pipeline verde no commit da tag v1.2.5, que sera registrado no README do pacote de evidencias.
+Nenhum nesta lista. A evidencia de cada linha e o pipeline verde no commit da tag v1.2.6, que sera registrado no README do pacote de evidencias.
 
 ## Nota
 
