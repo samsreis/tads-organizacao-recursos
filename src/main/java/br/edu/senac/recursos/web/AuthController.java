@@ -1,5 +1,6 @@
 package br.edu.senac.recursos.web;
 
+import br.edu.senac.recursos.domain.Perfil;
 import br.edu.senac.recursos.domain.Usuario;
 import br.edu.senac.recursos.repository.UsuarioRepository;
 import br.edu.senac.recursos.security.JwtService;
@@ -39,7 +40,9 @@ public class AuthController {
         u.setEmail(req.email());
         u.setSenhaHash(encoder.encode(req.senha()));
         u.setNome(req.nome());
-        u.setPerfil(req.perfil());
+        // Cadastro publico sempre cria SOLICITANTE. Perfis privilegiados
+        // so podem ser criados pela carga inicial ou por endpoint protegido.
+        u.setPerfil(Perfil.SOLICITANTE);
         usuarios.save(u);
         return ResponseEntity.status(HttpStatus.CREATED).body(Map.of("id", u.getId()));
     }
