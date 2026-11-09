@@ -4,6 +4,7 @@ Data: 2026-10-30.
 Clone limpo: sim, executado em /tmp/clone-teste a partir do GitHub em 2026-10-30. 143 testes, cobertura ok, BUILD SUCCESS.
 Aplicacao executa: sim, ./mvnw spring-boot:run sobe em 8 segundos.
 Build verde: sim, ./mvnw -B verify com EXIT 0.
+Reverificacao: 2026-11-09, apos correcao do DEF-03. 144 testes, cobertura acima das metas, BUILD SUCCESS.
 
 | Item | Existe | Atualizado | Caminho |
 |---|---|---|---|
