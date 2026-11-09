@@ -38,6 +38,7 @@ Preencher por integrante apos rodar o roteiro cronometrado.
 | Integrante | Tempo | Pontos fortes | Lacunas |
 |------------|-------|---------------|---------|
 | Samuel Silva | 8 min | Explicou o fluxo de CI e o TDD da autorizacao. | Faltou citar o ADR do lock pessimista e as constraints do banco. |
+| Vitoria | nao cronometrado | Ensaio realizado em 2026-11-09 sobre o roteiro de 8 minutos, sem registro de tempo por bloco. | Sem lacuna declarada no ensaio. Plano de estudo mantido. |
 
 ## Lacunas mais frequentes
 
