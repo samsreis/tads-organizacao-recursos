@@ -16,7 +16,7 @@ Metodo: quebrar a regra no codigo de producao, rodar o teste ligado a ela, regis
 
 Nenhuma quebra ficou no codigo de producao. Todas desfeitas com git restore antes da proxima.
 
-## Provas reexecutadas em 2026-11-09 no commit 953a3a3
+## Provas reexecutadas em 2026-11-09 no commit final da main
 
 | Regra | Quebra aplicada | Teste executado | Resultado | Restauracao |
 |---|---|---|---|---|
