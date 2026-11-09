@@ -2,7 +2,7 @@
 
 Data: 2026-10-29.
 Repositorio: projeto local (a ser publicado).
-Commit avaliado: sera o da tag v1.2.4.
+Commit avaliado: sera o da tag v1.2.5.
 Ambiente de medicao: Linux Mint, Java 21, Maven wrapper, Docker com Testcontainers e Postgres 16.
 
 ## Escopo avaliado
@@ -44,9 +44,9 @@ Ambiente de medicao: Linux Mint, Java 21, Maven wrapper, Docker com Testcontaine
 
 ## Contagem de testes
 
-- Mais de 130 metodos de teste em cerca de 21 classes.
+- 144 metodos de teste em cerca de 21 classes.
 - Todos passam no ./mvnw -B verify local.
-- Pipeline do GitHub Actions configurado, sera executado no primeiro push.
+- Pipeline do GitHub Actions executado com sucesso nas tags v1.2.2, v1.2.3 e v1.2.4, com Quality Gate obrigatorio.
 
 ## Defeitos
 

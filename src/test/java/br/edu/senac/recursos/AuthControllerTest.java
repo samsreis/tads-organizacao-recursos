@@ -55,4 +55,16 @@ class AuthControllerTest extends BaseIntegracaoTest {
             .andExpect(jsonPath("$.token").exists())
             .andExpect(jsonPath("$.perfil").value("SOLICITANTE"));
     }
+
+    @Test
+    void cadastroComPerfilAdministradorGravaSolicitante() throws Exception {
+        mvc.perform(post("/auth/registrar")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{\"email\":\"tentativaadm@teste.com\",\"senha\":\"123456\",\"nome\":\"Tentativa\",\"perfil\":\"ADMINISTRADOR\"}"))
+            .andExpect(status().isCreated());
+
+        var criado = usuarios.findByEmail("tentativaadm@teste.com").orElseThrow();
+        org.junit.jupiter.api.Assertions.assertEquals(
+            br.edu.senac.recursos.domain.Perfil.SOLICITANTE, criado.getPerfil());
+    }
 }
