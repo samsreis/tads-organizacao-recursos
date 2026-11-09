@@ -23,6 +23,11 @@ public class SecurityConfig {
         this.jwtService = jwtService;
     }
 
+    // Sonar S4502: CSRF desabilitado intencionalmente.
+    // API stateless (SessionCreationPolicy.STATELESS) com autenticacao por JWT
+    // no cabecalho Authorization. Nao ha cookie de sessao, portanto nao
+    // existe vetor de ataque CSRF. Decisao alinhada a orientacao do Spring Security.
+    @SuppressWarnings("java:S4502")
     @Bean
     SecurityFilterChain filtro(HttpSecurity http) throws Exception {
         http.csrf(c -> c.disable())
