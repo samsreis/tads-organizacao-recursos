@@ -2,7 +2,7 @@
 
 Data: 2026-11-09.
 Repositorio: https://github.com/samsreis/tads-organizacao-recursos.
-Commit avaliado: tag v1.2.6.
+Commit avaliado: tag v1.2.8 (commit 953a3a3), com documentos posteriores ja integrados na main em d545ba9.
 Ambiente de medicao: Linux Mint, Java 21, Maven wrapper, Docker com Testcontainers e Postgres 16.
 
 ## Escopo avaliado
@@ -31,22 +31,23 @@ Ambiente de medicao: Linux Mint, Java 21, Maven wrapper, Docker com Testcontaine
 | API caixa-preta | MockMvc + tokens reais | AutorizacaoPorPerfilTest, RegrasReservaTest, AprovacaoTest, MaquinaEstadosTest |
 | Integracao externa | WireMock | NotificacaoTest |
 | Carga | JMeter 5.6.3 CLI | perf/reservas.jmx |
-| Mutacao manual | execucao controlada | docs/testes/mutacao-manual.md |
+| Mutacao manual | execucao controlada | docs/testes/mutacao-manual.md, com 10 regras e duas provas reexecutadas em 2026-11-09 |
 
 ## Resultados contra as metas
 
 | Meta | Valor alvo | Medido | Situacao |
 |---|---|---|---|
-| Cobertura de linha | 80% | 92,70% | atende |
-| Cobertura de branch | 70% | 77,14% | atende |
+| Cobertura de linha | 80% | 91% local (333 de 3.741 linhas, JaCoCo) e 89,1% no SonarCloud | atende |
+| Cobertura de branch | 70% | 77% local (40 de 175 branches, JaCoCo) | atende |
 | Requisitos criticos na RTM | 100% | 100% (todas as linhas com teste localizavel) | atende |
-| Bugs ou vulnerabilidades criticas | 0 | 0 identificados nas revisoes | atende |
+| Bugs ou vulnerabilidades criticas | 0 | 0 issues, 0 security issues, 0 hotspots no SonarCloud, Security A, Reliability A, Maintainability A | atende |
 
 ## Contagem de testes
 
 - 144 metodos de teste em cerca de 21 classes.
 - Todos passam no ./mvnw -B verify local.
-- Pipeline do GitHub Actions executado com sucesso nas tags v1.2.2, v1.2.3 e v1.2.4, com Quality Gate obrigatorio.
+- Pipeline do GitHub Actions verde nas tags v1.2.2, v1.2.3, v1.2.4, v1.2.5, v1.2.6, v1.2.7 e v1.2.8, sempre com Quality Gate obrigatorio.
+- SonarCloud: projeto publico, Quality Gate Passed, 0 issues, 0 security issues, 0 hotspots, Security A, Reliability A, Maintainability A, coverage 89,1%, duplicacao 2,4%, 1.8k linhas.
 
 ## Defeitos
 
