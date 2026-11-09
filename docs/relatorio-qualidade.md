@@ -2,7 +2,7 @@
 
 Data: 2026-11-09.
 Repositorio: https://github.com/samsreis/tads-organizacao-recursos.
-Commit avaliado: tag v1.3.1 no commit final da main, com documentos posteriores ja integrados na main em d545ba9.
+Commit avaliado: tag v1.3.2 no commit final da main, com documentos posteriores ja integrados na main em d545ba9.
 Ambiente de medicao: Linux Mint, Java 21, Maven wrapper, Docker com Testcontainers e Postgres 16.
 
 ## Escopo avaliado
@@ -46,7 +46,7 @@ Ambiente de medicao: Linux Mint, Java 21, Maven wrapper, Docker com Testcontaine
 
 - 144 metodos de teste em cerca de 21 classes.
 - Todos passam no ./mvnw -B verify local.
-- Pipeline do GitHub Actions verde nas tags v1.2.2, v1.2.3, v1.2.4, v1.2.5, v1.2.6, v1.2.7, v1.2.8 e v1.3.1, sempre com Quality Gate obrigatorio.
+- Pipeline do GitHub Actions verde nas tags v1.2.2, v1.2.3, v1.2.4, v1.2.5, v1.2.6, v1.2.7, v1.2.8 e v1.3.2, sempre com Quality Gate obrigatorio.
 - SonarCloud: projeto publico, Quality Gate Passed, 0 issues, 0 security issues, 0 hotspots, Security A, Reliability A, Maintainability A, coverage 89,1%, duplicacao 2,4%, 1.8k linhas.
 
 ## Defeitos

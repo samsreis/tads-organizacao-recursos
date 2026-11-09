@@ -27,6 +27,7 @@ function trocarTela(nome) {
   ["login","salas","minhas","aprovar"].forEach(t => {
     el("tela-" + t).hidden = (t !== nome);
   });
+  ["msgLogin","msgSalas","msgMinhas","msgReserva","msgAprovar"].forEach(m => mostrar(m, ""));
   el("nav").hidden = !estado.token;
   if (nome === "salas") carregarSalas();
   if (nome === "minhas") carregarMinhas();
@@ -119,12 +120,18 @@ async function carregarMinhas() {
 async function carregarAprovar() {
   mostrar("msgAprovar", "");
   try {
-    const lista = await api("/reservas");
+    const todas = await api("/reservas");
+    const acoesPorEstado = {
+      SOLICITADA: ["aprovar","rejeitar"],
+      APROVADA: ["iniciar"],
+      EM_USO: ["concluir"]
+    };
+    const lista = todas.filter(r => acoesPorEstado[r.status]);
     const ul = el("listaAprovar"); ul.innerHTML = "";
     lista.forEach(r => {
       const li = document.createElement("li");
       li.textContent = "Reserva " + r.id + " | " + formatarData(r.inicio) + " | " + r.status + " ";
-      ["aprovar","rejeitar","iniciar","concluir"].forEach(acao => {
+      (acoesPorEstado[r.status] || []).forEach(acao => {
         const b = document.createElement("button");
         b.textContent = acao;
         b.addEventListener("click", async () => {
