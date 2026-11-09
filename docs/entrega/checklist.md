@@ -31,12 +31,12 @@ Reverificacao: 2026-11-09, apos correcao do DEF-03. 144 testes, cobertura acima 
 | Matriz de autorizacao | sim | sim | docs/seguranca/matriz-autorizacao.md |
 | Licoes aprendidas | sim | sim | docs/licoes-aprendidas.md |
 | Revisao integrada | sim | sim | docs/revisao-integrada.md |
-| Tag de release | sim | sim | v1.2.4 no commit final da main. Historico: rc1 11c8165, rc2 11c8165, v1.2.0 8d098ec, v1.2.1 cbf282f |
+| Tag de release | sim | sim | v1.2.5 no commit final da main. Historico: rc1 11c8165, rc2 11c8165, v1.2.0 8d098ec, v1.2.1 cbf282f |
 | Repositorio publico no GitHub | sim | sim | https://github.com/samsreis/tads-organizacao-recursos |
 
 ## Bloqueadores
 
-Nenhum. Repositorio publicado, CI verde na main. Tag final v1.2.4 no commit da execucao verde.
+Nenhum. Repositorio publicado, CI verde na main. Tag final v1.2.5 no commit da execucao verde.
 
 ## Pendencias nao bloqueantes
 

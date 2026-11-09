@@ -2,7 +2,7 @@
 
 Data: 2026-10-29.
 Repositorio: projeto local (a ser publicado).
-Commit avaliado: sera o da tag v1.2.4.
+Commit avaliado: sera o da tag v1.2.5.
 Ambiente de medicao: Linux Mint, Java 21, Maven wrapper, Docker com Testcontainers e Postgres 16.
 
 ## Escopo avaliado
