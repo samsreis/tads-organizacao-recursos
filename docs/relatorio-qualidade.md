@@ -2,7 +2,7 @@
 
 Data: 2026-10-29.
 Repositorio: projeto local (a ser publicado).
-Commit avaliado: sera o da tag v1.2.3.
+Commit avaliado: sera o da tag v1.2.4.
 Ambiente de medicao: Linux Mint, Java 21, Maven wrapper, Docker com Testcontainers e Postgres 16.
 
 ## Escopo avaliado
@@ -70,3 +70,4 @@ Ambiente de medicao: Linux Mint, Java 21, Maven wrapper, Docker com Testcontaine
 ## Conclusao
 
 O sistema atende os requisitos criticos e as metas mensuraveis. As pendencias sao parciais e nao bloqueiam a entrega. A decisao final esta em docs/decisao-qualidade.md.
+Quality Gate do SonarCloud: https://sonarcloud.io/project/overview?id=samsreis_tads-organizacao-recursos
