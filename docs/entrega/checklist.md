@@ -31,12 +31,12 @@ Reverificacao: 2026-11-09, apos correcao do DEF-03. 144 testes, cobertura acima 
 | Matriz de autorizacao | sim | sim | docs/seguranca/matriz-autorizacao.md |
 | Licoes aprendidas | sim | sim | docs/licoes-aprendidas.md |
 | Revisao integrada | sim | sim | docs/revisao-integrada.md |
-| Tag de release | sim | sim | v1.2.7 no commit 01eac53. Historico: v1.0.0-rc1, v1.0.0-rc2, v1.0.0, v1.1.0, v1.2.0, v1.2.1, v1.2.2, v1.2.3, v1.2.4, v1.2.5, v1.2.6 e v1.2.7. Execucao verde: https://github.com/samsreis/tads-organizacao-recursos/actions/runs/42669345357 |
+| Tag de release | sim | sim | v1.2.8 no commit final da main. Historico: v1.0.0-rc1, v1.0.0-rc2, v1.0.0, v1.1.0, v1.2.0, v1.2.1, v1.2.2, v1.2.3, v1.2.4, v1.2.5, v1.2.6, v1.2.7 e v1.2.8. Execucao: https://github.com/samsreis/tads-organizacao-recursos/actions?query=branch%3Av1.2.8 |
 | Repositorio publico no GitHub | sim | sim | https://github.com/samsreis/tads-organizacao-recursos |
 
 ## Bloqueadores
 
-Nenhum. Repositorio publicado, CI verde. Tag final v1.2.7 com execucao verde 42669345357.
+Nenhum. Repositorio publicado, CI verde. Tag final v1.2.8, CI verde na execucao da tag.
 
 ## Pendencias nao bloqueantes
 
