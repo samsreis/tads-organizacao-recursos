@@ -86,6 +86,7 @@ O login devolve um token JWT. Envie em todas as chamadas protegidas:
 | GET | /materiais/{id}/saldo | autenticado | Consulta saldo |
 | GET | /materiais/{id}/movimentacoes | RESPONSAVEL, ADMINISTRADOR | Lista movimentacoes |
 | POST | /reservas | autenticado | Cria reserva |
+| GET | /reservas | RESPONSAVEL, ADMINISTRADOR | Lista todas as reservas |
 | GET | /reservas/minhas | autenticado | Lista as proprias reservas |
 | PUT | /reservas/{id} | dono | Altera reserva propria |
 | DELETE | /reservas/{id} | dono | Cancela reserva propria |
