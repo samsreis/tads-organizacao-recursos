@@ -1,10 +1,10 @@
 # Plano de desempenho - Sistema de Organizacao de Recursos
 
-Status: proposta a validar pelo grupo.
+Status: executado em 2026-10-29, resultado em docs/performance/resultado-01.md.
 Data: 2026-10-29.
 Ambiente: notebook Linux Mint, aplicacao local, banco Postgres em container.
 
-## Requisitos de desempenho propostos
+## Requisitos de desempenho
 
 RNF-01 Consulta de disponibilidade
 - 50 usuarios simultaneos
