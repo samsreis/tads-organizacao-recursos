@@ -1,6 +1,6 @@
 # Pacote de evidencias
 
-Tag avaliada: v1.2.9. Repositorio: https://github.com/samsreis/tads-organizacao-recursos. Historico: v1.0.0-rc1, v1.0.0-rc2, v1.0.0, v1.1.0, v1.2.0, v1.2.1, v1.2.2, v1.2.3, v1.2.4, v1.2.5, v1.2.6, v1.2.7, v1.2.8 e v1.2.9.
+Tag avaliada: v1.3.0. Repositorio: https://github.com/samsreis/tads-organizacao-recursos. Historico: v1.0.0-rc1, v1.0.0-rc2, v1.0.0, v1.1.0, v1.2.0, v1.2.1, v1.2.2, v1.2.3, v1.2.4, v1.2.5, v1.2.6, v1.2.7, v1.2.8 e v1.3.0.
 
 ## Indice
 
@@ -28,7 +28,7 @@ Tag avaliada: v1.2.9. Repositorio: https://github.com/samsreis/tads-organizacao-
 
 ## Execucao do CI
 
-Execucao verde da tag v1.2.9: https://github.com/samsreis/tads-organizacao-recursos/actions?query=branch%3Av1.2.9. Historico de tags anteriores preservado.
+Execucao verde da tag v1.3.0: https://github.com/samsreis/tads-organizacao-recursos/actions?query=branch%3Av1.3.0. Historico de tags anteriores preservado.
 
 ## Relatorio JaCoCo
 

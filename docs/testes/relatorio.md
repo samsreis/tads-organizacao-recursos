@@ -6,8 +6,8 @@ Data: 2026-11-09.
 
 - Total: 144 metodos.
 - Taxa de sucesso local: 100%.
-- Cobertura de linha: 92,70%.
-- Cobertura de branch: 77,14%.
+- Cobertura de linha: 90% (clone limpo, 2026-11-09).
+- Cobertura de branch: 75% (clone limpo, 2026-11-09).
 
 ## Distribuicao por classe
 

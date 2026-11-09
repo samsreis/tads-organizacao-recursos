@@ -61,7 +61,7 @@ Formato: pergunta, resposta curta de referencia, evidencia no repositorio.
 ## CI, cobertura e analise estatica
 
 14. Quais as metas de cobertura e qual o estado atual?
-    Resposta: meta 80% linha e 70% branch, com check ativo no pom. Estado atual medido em 2026-11-09: 91% linha (333 de 3.741) e 77% branch (40 de 175) pelo JaCoCo, e 89,1% no SonarCloud.
+    Resposta: meta 80% linha e 70% branch, com check ativo no pom. Estado atual medido em 2026-11-09: 90% linha (3.396 de 3.741) e 75% branch pelo JaCoCo, e 89,1% no SonarCloud.
     Evidencia: target/site/jacoco/index.html, SonarCloud samsreis_tads-organizacao-recursos.
 
 15. O que o workflow faz?
@@ -92,7 +92,7 @@ Formato: pergunta, resposta curta de referencia, evidencia no repositorio.
     Resposta: interface simples, sem animacao. Carga unica em ambiente local. Sem revisao por pares, por grupo de um integrante.
 
 21. Qual a tag final de entrega?
-    Resposta: v1.2.9 no commit final da main, CI verde na execucao da tag v1.2.9. Historico completo em docs/evidencias/README.md.
+    Resposta: v1.3.0 no commit final da main, CI verde na execucao da tag v1.3.0. Historico completo em docs/evidencias/README.md.
 
 22. Como se prova que um teste protege a regra?
     Resposta: mutacao manual. Quebra a regra, roda o teste, espera vermelho, restaura com git restore. Dez regras registradas, duas reexecutadas em 2026-11-09.
