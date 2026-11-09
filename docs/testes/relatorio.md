@@ -1,13 +1,13 @@
 # Relatorio de testes
 
-Data: 2026-10-29.
+Data: 2026-11-09.
 
 ## Resumo
 
-- Total: mais de 130 metodos.
+- Total: 144 metodos.
 - Taxa de sucesso local: 100%.
 - Cobertura de linha: 92,70%.
-- Cobertura de branch: 75,82%.
+- Cobertura de branch: 77,14%.
 
 ## Distribuicao por classe
 
