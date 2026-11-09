@@ -1,6 +1,6 @@
 # Pacote de evidencias
 
-Tag avaliada: v1.2.6. Repositorio: https://github.com/samsreis/tads-organizacao-recursos. Historico: v1.0.0-rc1, v1.0.0-rc2, v1.0.0, v1.1.0, v1.2.0 e v1.2.1.
+Tag avaliada: v1.2.6. Repositorio: https://github.com/samsreis/tads-organizacao-recursos. Historico: v1.0.0-rc1, v1.0.0-rc2, v1.0.0, v1.1.0, v1.2.0, v1.2.1, v1.2.2, v1.2.3, v1.2.4, v1.2.5 e v1.2.6.
 
 ## Indice
 
@@ -36,7 +36,7 @@ Artefato publicado pelo workflow em cada execucao. Caminho local: target/site/ja
 
 ## Quality Gate do SonarCloud
 
-Pendente. Requer SONAR_TOKEN configurado nos secrets do repositorio. Se o token nao for configurado, sera registrado como pendencia justificada em docs/status-requisitos.md.
+Ativo. Token SONAR_TOKEN configurado nos secrets do repositorio. Quality Gate verde na ultima analise. Link: https://sonarcloud.io/project/overview?id=samsreis_tads-organizacao-recursos
 
 ## Regra
 
