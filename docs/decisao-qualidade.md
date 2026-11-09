@@ -19,7 +19,7 @@ Decisao: liberar com ressalvas.
 | Criterio | Evidencia | Situacao |
 |---|---|---|
 | 1 | README.md com passo a passo | atende |
-| 2 | https://github.com/samsreis/tads-organizacao-recursos/actions?query=branch%3Av1.2.3. Tag final v1.2.3 no commit final da main. | atende |
+| 2 | https://github.com/samsreis/tads-organizacao-recursos/actions?query=branch%3Av1.2.4. Tag final v1.2.4 no commit final da main. | atende |
 | 3 | AutorizacaoPorPerfilTest, Matriz de autorizacao | atende |
 | 4 | ConcorrenciaTest, ADR-001, ADR-004 | atende |
 | 5 | 92,70% linha e 75,82% branch | atende |
@@ -43,3 +43,4 @@ Decisao: liberar com ressalvas.
 ## Conclusao
 
 A decisao e liberar com ressalvas. O sistema atende o nucleo critico, o CI esta verde na main e os 14 requisitos funcionais estao cobertos. Nao e correto afirmar que esta pronto para producao: a carga foi feita em ambiente local, o login ficou acima do alvo de p95 e o SonarCloud nao foi integrado.
+Quality Gate do SonarCloud: https://sonarcloud.io/project/overview?id=samsreis_tads-organizacao-recursos
