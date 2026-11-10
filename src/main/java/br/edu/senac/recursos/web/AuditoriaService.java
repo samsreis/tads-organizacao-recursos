@@ -6,15 +6,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.Clock;
 import java.time.OffsetDateTime;
 
 @Service
 public class AuditoriaService {
 
     private final AuditoriaReservaRepository auditorias;
+    private final Clock clock;
 
-    public AuditoriaService(AuditoriaReservaRepository auditorias) {
+    public AuditoriaService(AuditoriaReservaRepository auditorias, Clock clock) {
         this.auditorias = auditorias;
+        this.clock = clock;
     }
 
     @Transactional(propagation = Propagation.MANDATORY)
@@ -23,7 +26,7 @@ public class AuditoriaService {
         AuditoriaReserva a = new AuditoriaReserva();
         a.setReservaId(reservaId);
         a.setUsuarioEmail(usuarioEmail);
-        a.setInstante(OffsetDateTime.now());
+        a.setInstante(OffsetDateTime.now(clock));
         a.setEstadoAnterior(estadoAnterior);
         a.setEstadoNovo(estadoNovo);
         a.setMotivo(motivo);

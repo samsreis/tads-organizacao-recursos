@@ -1,20 +1,27 @@
 package br.edu.senac.recursos;
 
+import br.edu.senac.recursos.domain.Professor;
 import br.edu.senac.recursos.domain.Sala;
+import br.edu.senac.recursos.repository.ProfessorRepository;
 import br.edu.senac.recursos.suporte.BaseIntegracaoTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 
+import java.util.UUID;
 import java.util.stream.Stream;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 class AutorizacaoPorPerfilTest extends BaseIntegracaoTest {
+
+    @Autowired
+    private ProfessorRepository professores;
 
     static Stream<Arguments> matriz() {
         return Stream.of(
@@ -62,5 +69,25 @@ class AutorizacaoPorPerfilTest extends BaseIntegracaoTest {
                      .content("{\"salaId\":" + salaId + ",\"inicio\":\"2026-12-01T10:00:00-03:00\",\"fim\":\"2026-12-01T11:00:00-03:00\"}");
         }
         mvc.perform(req).andExpect(status().is(esperado));
+    }
+
+    @Test
+    void solicitanteConsultaSalaPorId200() throws Exception {
+        mvc.perform(get("/salas/" + salaId)
+                .header("Authorization", "Bearer " + tokenSol))
+            .andExpect(status().isOk());
+    }
+
+    @Test
+    void solicitanteConsultaProfessorPorId200() throws Exception {
+        Professor professor = new Professor();
+        professor.setNome("Professor de teste");
+        professor.setEmail(UUID.randomUUID() + "@teste.com");
+        professor.setCompetencia("Qualidade de Software");
+        Long professorId = professores.save(professor).getId();
+
+        mvc.perform(get("/professores/" + professorId)
+                .header("Authorization", "Bearer " + tokenSol))
+            .andExpect(status().isOk());
     }
 }

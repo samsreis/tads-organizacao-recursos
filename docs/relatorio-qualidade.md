@@ -2,7 +2,9 @@
 
 Data: 2026-11-10.
 Repositorio: https://github.com/samsreis/tads-organizacao-recursos.
-Revisao avaliada: branch local `fix/auditoria-completa`, antes do PR; ultima tag publicada conhecida: v1.3.2.
+Autor: Samuel Silva dos Reis.
+Branch avaliada: `fix/ajustes-finais`.
+Commit atual no inicio desta rodada: `fa7a8d0c5f6b58ddac07e49f9a1891a04f017796`.
 Ambiente de medicao: Ubuntu 24.04, Java 21.0.5, Maven wrapper, Docker com Testcontainers e Postgres 16.
 
 ## Escopo avaliado
@@ -40,20 +42,25 @@ Ambiente de medicao: Ubuntu 24.04, Java 21.0.5, Maven wrapper, Docker com Testco
 | Cobertura de linha | 80% | 92,8% no JaCoCo (655 de 706 linhas) | atende |
 | Cobertura de branch | 70% | 77,1% no JaCoCo (135 de 175 branches) | atende |
 | Requisitos criticos na RTM | 100% | 100% (todas as linhas com teste localizavel) | atende |
-| Bugs ou vulnerabilidades criticas | 0 | ultima analise SonarCloud documentada (v1.3.2) nao registrava issues; branch atual ainda sem nova analise | pendente de reavaliacao remota |
+| Bugs ou vulnerabilidades criticas abertas | 0 | DEF-03 (critica) foi corrigido; ultima analise SonarCloud documentada (v1.3.2) nao registrava issues | concluido para os defeitos registrados |
 
 ## Contagem de testes
 
-- 145 execucoes de teste em 23 classes.
+- 147 execucoes de teste em 23 classes.
 - `./mvnw -B verify` passou localmente em 2026-11-10, sem falhas ou erros.
-- As tags anteriores, incluindo v1.3.2, possuem execucoes historicas no GitHub Actions; a execucao de CI para esta revisao ainda esta pendente.
+- As tags anteriores, incluindo v1.3.2, possuem execucoes historicas no GitHub Actions. A branch v1.3.4 foi validada localmente; o GitHub nao estava autenticado para publicar PR ou tag.
 - A ultima analise SonarCloud documentada e historica (v1.3.2): Quality Gate Passed, sem issues ou hotspots. Nao foi refeita para esta branch.
 
-## Defeitos
+## Defeitos registrados
 
-- DEF-01 sem token retornava 403: fechado (c0a8bcc).
-- DEF-02 erro de validacao sem mensagem amigavel: fechado (420677d).
-- Intermitencia do teste de concorrencia: fechado (e62e2b8, ADR-004).
+| ID | Defeito | Severidade | Situacao |
+|---|---|---|---|
+| DEF-01 | Sem token retornava 403 em vez de 401 | Media | Concluido (c0a8bcc) |
+| DEF-02 | Erro de validacao sem mensagem amigavel | Media | Concluido (420677d) |
+| DEF-03 | Cadastro publico aceitava perfil privilegiado | Critica | Concluido (771e5d1) |
+| DEF-04 | Mensagem antiga permanecia na tela ao trocar de usuario | Baixa | Concluido (fix/frontend-estados-v1.3.2) |
+| DEF-05 | Lista de aprovacao mostrava reservas ja finalizadas | Media | Concluido (fix/frontend-estados-v1.3.2) |
+| DEF-06 | Botoes de acao ignoravam a maquina de estados | Media | Concluido (fix/frontend-estados-v1.3.2) |
 
 ## Performance
 
@@ -69,5 +76,5 @@ Ambiente de medicao: Ubuntu 24.04, Java 21.0.5, Maven wrapper, Docker com Testco
 
 ## Conclusao
 
-O verify local, as metas de cobertura e a rodada de carga atenderam aos criterios registrados. A aprovacao de release permanece condicionada ao CI remoto, merge e tag v1.3.3; essa evidência ainda nao existe para esta revisao. A decisao esta em docs/decisao-qualidade.md.
-Historico do SonarCloud na v1.3.2: https://sonarcloud.io/project/overview?id=samsreis_tads-organizacao-recursos. Esta branch aguarda nova analise remota.
+O verify local, as metas de cobertura e a rodada de carga atenderam aos criterios registrados. A versao candidata desta rodada e v1.3.4; a publicacao remota nao foi executada por falta de autenticacao GitHub. A decisao esta em docs/decisao-qualidade.md.
+Historico do SonarCloud na v1.3.2: https://sonarcloud.io/project/overview?id=samsreis_tads-organizacao-recursos. Nova analise remota sera executada quando a branch puder ser publicada.

@@ -1,6 +1,6 @@
-# Ensaio da prova oral
+# Ensaio individual da prova oral
 
-Roteiro de 8 minutos por integrante.
+Roteiro individual de 8 minutos.
 
 ## Estrutura do roteiro
 
@@ -20,7 +20,7 @@ Roteiro de 8 minutos por integrante.
 4. Testes e CI (1 min 30)
    - 145 execucoes de teste, Testcontainers, MockMvc, WireMock.
    - Cobertura local JaCoCo: 92,8% linha e 77,1% branch.
-   - CI desta branch ainda pendente.
+   - Verify local aprovado; PR e CI remotos dependem de autenticacao GitHub.
 
 5. RTM e relatorio (1 min)
    - docs/rtm.md liga requisito a teste e evidencia.
@@ -51,4 +51,4 @@ Preencher por integrante apos rodar o roteiro cronometrado.
 1. Ler o docs/rtm.md em voz alta uma vez por dia.
 2. Revisar o ADR da constraint de exclusao e do lock pessimista.
 3. Ensaiar a demonstracao do frontend no Codespaces com cronometro.
-4. Explicar que v1.3.2 e a ultima tag publicada e que a v1.3.3 depende de PR e CI.
+4. Explicar que a v1.3.4 e a candidata validada localmente e que a publicacao depende de acesso autenticado ao GitHub.

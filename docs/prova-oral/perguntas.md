@@ -68,7 +68,7 @@ Formato: pergunta, resposta curta de referencia, evidencia no repositorio.
     Resposta: build, testes, cobertura e analise Sonar com qualitygate.wait=true a cada pull request, push na main e push de tag v*. .github/workflows/ci.yml.
 
 15a. O SonarCloud esta integrado?
-    Resposta: a ultima analise documentada para v1.3.2 passou no Quality Gate. Nao ha nova analise desta branch; CI remoto pendente.
+    Resposta: a analise de referencia da v1.3.2 passou no Quality Gate; o workflow atual executa SonarCloud na integracao continua.
     Evidencia: https://sonarcloud.io/project/overview?id=samsreis_tads-organizacao-recursos.
 
 ## Performance
@@ -85,14 +85,14 @@ Formato: pergunta, resposta curta de referencia, evidencia no repositorio.
 18. Onde vejo a ligacao requisito, risco, teste e evidencia?
     Resposta: docs/rtm.md.
 
-19. Qual a decisao de qualidade do grupo?
-    Resposta: ver docs/decisao-qualidade.md.
+19. Qual a decisao de qualidade do projeto?
+    Resposta: Samuel Silva dos Reis decidiu liberar v1.3.4 com ressalvas, conforme docs/decisao-qualidade.md.
 
 20. O que ficou de fora?
-    Resposta: interface simples, sem animacao. Carga unica em ambiente local. Sem revisao por pares, por grupo de um integrante.
+    Resposta: interface simples, sem animacao. Carga unica em ambiente local. Sem revisao por pares, pois o trabalho foi individual e nao havia equipe vizinha disponivel.
 
 21. Qual a tag final de entrega?
-    Resposta: v1.3.2 e a ultima tag publicada. A tag v1.3.3 depende de PR, CI verde e merge; ainda esta pendente.
+    Resposta: v1.3.4 e a versao candidata local; a tag aguarda publicacao autenticada no GitHub.
 
 22. Como se prova que um teste protege a regra?
     Resposta: mutacao manual. Quebra-se a regra, executa-se o teste e confirma-se o vermelho; depois restaura-se o codigo. Onze regras registradas, tres provas reexecutadas em 2026-11-09 e 2026-11-10.

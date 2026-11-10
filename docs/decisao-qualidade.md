@@ -1,7 +1,7 @@
 # Decisao de qualidade
 
 Data: 2026-11-10.
-Decisao: liberar com ressalvas.
+Decisao: liberar com ressalvas apos o CI remoto.
 
 ## Criterios usados
 
@@ -19,7 +19,7 @@ Decisao: liberar com ressalvas.
 | Criterio | Evidencia | Situacao |
 |---|---|---|
 | 1 | README.md com passo a passo | atende |
-| 2 | `./mvnw -B verify`: BUILD SUCCESS, 145 testes locais. CI remoto e tag v1.3.3 pendentes. | atende localmente; CI pendente |
+| 2 | `./mvnw -B verify`: BUILD SUCCESS local. CI remoto nao executado: ambiente sem autenticacao GitHub. | parcial |
 | 3 | AutorizacaoPorPerfilTest, Matriz de autorizacao | atende |
 | 4 | ConcorrenciaTest, ADR-001, ADR-004 | atende |
 | 5 | 92,8% linha (655/706) e 77,1% branch (135/175), JaCoCo local | atende |
@@ -31,8 +31,8 @@ Decisao: liberar com ressalvas.
 
 | Risco | Impacto | Justificativa | Responsavel |
 |---|---|---|---|
-| Medicoes de carga feitas em uma unica rodada no Codespace | baixo | Ambiente local compartilhado; resultado indicativo, nao representa producao | grupo |
-| Revisao por pares nao realizada | medio | grupo de um unico integrante, sem par disponivel; revisao formal impossivel. Compensado com teste de mutacao manual e matriz de autorizacao | grupo |
+| Medicoes de carga feitas em uma unica rodada no Codespace | baixo | Ambiente local compartilhado; resultado indicativo, nao representa producao | Samuel Silva dos Reis |
+| Revisao por pares nao realizada | medio | Trabalho individual, sem equipe vizinha disponivel; revisao formal impossivel. Compensado com teste de mutacao manual e matriz de autorizacao | Samuel Silva dos Reis |
 
 ## Declaracao de cada integrante
 
@@ -40,5 +40,5 @@ Decisao: liberar com ressalvas.
 
 ## Conclusao
 
-A decisao local e liberar com ressalvas: verify passou com 145 execucoes, e a rodada JMeter de 2026-11-10 atendeu os p95 definidos. Isso nao equivale a aprovacao de release: o CI remoto da branch, o merge e a tag v1.3.3 ainda estao pendentes. A carga foi feita uma unica vez em ambiente local e nao comprova desempenho em producao.
+A decisao local e liberar v1.3.4 com ressalvas apos CI remoto: verify passou, e a rodada JMeter de 2026-11-10 atendeu os p95 definidos. A publicacao remota nao foi executada por falta de autenticacao GitHub. A carga foi feita uma unica vez em ambiente local e nao comprova desempenho em producao.
 Historico do SonarCloud na v1.3.2: https://sonarcloud.io/project/overview?id=samsreis_tads-organizacao-recursos. A branch atual aguarda nova analise remota.

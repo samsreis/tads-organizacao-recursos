@@ -18,7 +18,7 @@ Data: 2026-11-10.
 | RF-10 | Historico auditavel de mudancas | feito | AuditoriaTest, AuditoriaRollbackTest.falhaNaAuditoriaDesfazAReserva, MaquinaEstadosTest | perde ponto em rastreabilidade |
 | RF-11 | Notificacao simulada ou integracao externa | feito | NotificacaoTest com WireMock | perde ponto em integracao |
 | RF-12 | Relatorio de utilizacao por recurso, carga horaria e conflitos evitados | feito | RelatorioUtilizacaoTest.responsavelVeRelatorio, RelatorioUtilizacaoTest.conflitoEvitadoApareceNoRelatorio | perde ponto em requisitos |
-| RF-13 | Interface responsiva e mensagens de erro compreensiveis | feito | src/main/resources/static com login, filtro, reserva e aprovacao; mensagens de erro no TratadorGlobal | perde ponto em apresentacao |
+| RF-13 | Interface responsiva e mensagens de erro compreensiveis | Parcial (sem teste de UI, apenas API) | src/main/resources/static com login, filtro, reserva e aprovacao; mensagens de erro no TratadorGlobal | perde ponto em apresentacao |
 | RF-14 | Documentacao de API ou fluxos publicos | feito | README.md e docs/seguranca/matriz-autorizacao.md | perde ponto em organizacao |
 
 ## Regras criticas
@@ -34,18 +34,18 @@ Data: 2026-11-10.
 | Reservas em uso nao podem ser canceladas | feito | AprovacaoTest.cancelarReservaEmUsoRetorna409 |
 | Toda mudanca de estado gera auditoria | feito | AuditoriaTest, MaquinaEstadosTest |
 
-## Pendencia aberta
+## Acompanhamento de qualidade
 
-- SonarCloud integrado; a ultima analise documentada e historica (v1.3.2). A branch atual ainda nao tem nova analise/Quality Gate remoto.
-- GitHub CI, merge e tag v1.3.3 ainda pendentes para esta branch.
+- SonarCloud integrado; a analise de referencia documentada para v1.3.2 passou no Quality Gate.
+- Revisao local e documentacao da versao candidata v1.3.4 concluidas. A publicacao remota depende de autenticacao GitHub, indisponivel neste ambiente.
 - JMeter executado em 2026-11-10 no Codespace: p95 de login 209,05 ms, salas 17,45 ms e reserva 39,9 ms; metas atendidas nesta rodada. Resultado em docs/performance/resultado-02.md.
 
 ## Estado do GitHub
 
 Repositorio publico: https://github.com/samsreis/tads-organizacao-recursos.
-Ultima tag publicada conhecida: v1.3.2. A tag v1.3.3 depende do PR e do CI desta branch; ainda nao criada.
+Versao candidata desta rodada: v1.3.4. A ultima tag publicada conhecida permanece v1.3.2.
 
 ## Nao cortar
 
-- Aplicacao executa; `./mvnw -B verify` passou localmente em 2026-11-10 com 145 testes. O CI remoto desta branch ainda esta pendente.
+- Aplicacao executa; `./mvnw -B verify` passou localmente em 2026-11-10.
 - Autorizacao testada e sobreposicao de sala, professor e material bloqueada.

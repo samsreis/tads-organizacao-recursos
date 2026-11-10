@@ -84,7 +84,7 @@ Nenhuma. A regra final anyRequest().authenticated() cobre qualquer rota nao list
 
 ## Divergencias conhecidas entre matriz e codigo
 
-Nenhuma divergencia pendente no momento desta revisao.
+Nenhuma divergencia identificada no momento desta revisao.
 
 ## Notas
 

@@ -1,9 +1,13 @@
 # Changelog
 
-## 1.3.3 - candidata, pendente de CI e publicacao
+## v1.3.4 - Finalização local concluída
 
 ### Testes e qualidade
 
+- Injetado `java.time.Clock` em `AuditoriaService` para controlar a origem do horario registrado.
+- Adicionados testes autenticados para `GET /salas/{id}` e `GET /professores/{id}`.
+- Asseridos os valores exatos de horas reservadas para sala e professor no relatorio de utilizacao.
+- Adicionado o cenario Gherkin de aprovacao em `src/test/resources/features/aprovacao.feature`.
 - Adicionada verificacao concorrente de reservas do mesmo professor em salas distintas.
 - Fortalecida a verificacao do cancelamento em uso e registrada a mutacao correspondente em `ReservaService`.
 - Substituido o teste de rollback sem falha real por verificacao que simula falha na persistencia da auditoria.
@@ -18,4 +22,4 @@
 
 ### Publicacao
 
-- Esta versao ainda nao foi publicada. PR, CI remoto, merge e tag v1.3.3 estao pendentes.
+- `./mvnw -B verify` aprovado localmente; publicação no GitHub não realizada nesta rodada por falta de autenticação.
