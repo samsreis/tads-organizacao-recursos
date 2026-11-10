@@ -4,7 +4,7 @@ Data: 2026-11-10.
 Repositorio: https://github.com/samsreis/tads-organizacao-recursos.
 Autor: Samuel Silva dos Reis.
 Branch avaliada: `fix/ajustes-finais`.
-Commit atual no inicio desta rodada: `fa7a8d0c5f6b58ddac07e49f9a1891a04f017796`.
+Commit atual no inicio desta rodada: `e1ff823c5f6b58ddac07e49f9a1891a04f017796`.
 Ambiente de medicao: Ubuntu 24.04, Java 21.0.5, Maven wrapper, Docker com Testcontainers e Postgres 16.
 
 ## Escopo avaliado
