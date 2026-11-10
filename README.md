@@ -160,7 +160,7 @@ Aprovar a reserva.
 - docs/performance/: plano e resultado do teste de carga.
 - plano-tdd.md, CHANGELOG.md e retrospectiva-final.md: registro desta revisao.
 - docs/relatorio-qualidade.md: relatorio final de qualidade.
-- docs/decisao-qualidade.md: decisao do grupo sobre liberar ou nao.
+- docs/decisao-qualidade.md: decisao de qualidade de Samuel Silva dos Reis sobre a liberacao.
 
 ## Como rodar o teste de carga
 

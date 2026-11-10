@@ -5,6 +5,8 @@ Ambiente: Codespace Ubuntu 24.04, Java 21.0.5, JMeter 5.6.3, aplicacao local e P
 Plano: perf/reservas.jmx.
 CSV: perf/usuarios.csv.
 
+O arquivo .jtl bruto não é versionado por boas práticas (é um artefato de build), mas as métricas resumidas estão neste documento e podem ser reproduzidas com perf/reservas.jmx.
+
 ## Carga aplicada
 
 - 50 usuarios, ramp-up de 10 segundos e 5 iteracoes por usuario.

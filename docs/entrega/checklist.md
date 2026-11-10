@@ -2,7 +2,7 @@
 
 Data: 2026-11-10.
 Clone limpo e execucao de 2026-10-30 sao evidencias historicas.
-Reverificacao local desta branch: `./mvnw -B verify`, 145 execucoes, zero falhas/erros, BUILD SUCCESS; JaCoCo 92,8% linha e 77,1% branch.
+Reverificacao local desta branch: `./mvnw -B verify`, 147 execucoes, zero falhas/erros, BUILD SUCCESS; JaCoCo 92,8% linha e 77,1% branch.
 JMeter: rodada local em 2026-11-10, detalhada em docs/performance/resultado-02.md.
 
 | Item | Existe | Atualizado | Caminho |
@@ -18,7 +18,7 @@ JMeter: rodada local em 2026-11-10, detalhada em docs/performance/resultado-02.m
 | Relatorio de testes | sim | sim | docs/testes/relatorio.md |
 | Mutacao manual | sim | sim | docs/testes/mutacao-manual.md |
 | Pipeline CI | sim, arquivo presente | sim | .github/workflows/ci.yml |
-| Execucao do CI no GitHub | existe para revisoes anteriores | nao para esta branch | https://github.com/samsreis/tads-organizacao-recursos/actions/runs/42165085123 |
+| Execucao do CI no GitHub | nao executada | Requer autenticacao GitHub | https://github.com/samsreis/tads-organizacao-recursos/actions |
 | JaCoCo | sim | sim | pom.xml e target/site/jacoco |
 | SonarCloud | integrado em revisao anterior | sem nova analise nesta branch | https://sonarcloud.io/project/overview?id=samsreis_tads-organizacao-recursos |
 | Plano de carga | sim | sim | docs/performance/plano.md e perf/reservas.jmx |
@@ -30,13 +30,13 @@ JMeter: rodada local em 2026-11-10, detalhada em docs/performance/resultado-02.m
 | Matriz de autorizacao | sim | sim | docs/seguranca/matriz-autorizacao.md |
 | Licoes aprendidas | sim | sim | docs/licoes-aprendidas.md |
 | Revisao integrada | sim | sim | docs/revisao-integrada.md |
-| Tag de release | existe historicamente | nao atualizada nesta branch | Ultima tag publicada v1.3.2; v1.3.3 depende do PR, CI e merge. Historico em docs/evidencias/README.md |
+| Tag de release | v1.3.2 e anteriores | v1.3.4 preparada localmente; tag nao enviada | docs/evidencias/README.md |
 | Repositorio publico no GitHub | sim | sim | https://github.com/samsreis/tads-organizacao-recursos |
 
-## Bloqueadores
+## Publicacao remota nao executada
 
-CI remoto, PR, merge e tag v1.3.3 ainda pendentes para esta revisao.
+O ambiente nao tinha credencial GitHub valida para criar PR, fazer push, merge ou publicar a tag v1.3.4.
 
-## Pendencias nao bloqueantes
+## Limites aceitos
 
 - Interface HTML implementada com login, filtro de sala, reserva e aprovacao, mas sem animacao por escolha de design.

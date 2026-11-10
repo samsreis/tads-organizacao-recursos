@@ -4,7 +4,7 @@ Data: 2026-11-10.
 
 ## Resumo
 
-- Total: 145 execucoes de teste em 23 classes (Surefire).
+- Total: 147 execucoes de teste em 23 classes (Surefire).
 - Taxa de sucesso local: 100%.
 - Cobertura de linha: 92,8% (655 de 706 linhas; JaCoCo).
 - Cobertura de branch: 77,1% (135 de 175 branches; JaCoCo).
@@ -12,7 +12,7 @@ Data: 2026-11-10.
 ## Distribuicao por classe
 
 - AuthControllerTest: autenticacao.
-- AutorizacaoPorPerfilTest: 18 cenarios parametrizados.
+- AutorizacaoPorPerfilTest: 18 cenarios parametrizados e 2 consultas autenticadas por ID.
 - ValidacaoEntradaTest: 7 cenarios.
 - RegrasReservaTest: 6.
 - SobreposicaoTest: constraint no banco.
@@ -42,4 +42,4 @@ Data: 2026-11-10.
 ## Observacoes
 
 - As mensagens de violacao das constraints de exclusao durante ConcorrenciaTest sao esperadas; os testes confirmam uma reserva aceita e os demais pedidos em conflito, tanto para sala quanto para professor.
-- O build local terminou com BUILD SUCCESS; a execucao de CI remota desta branch ainda esta pendente.
+- O build local terminou com BUILD SUCCESS.

@@ -49,4 +49,4 @@ Fechado. Verificado no commit c0a8bcc.
 
 ## Revalidacao
 
-Em 2026-11-10, `./mvnw -B verify` passou com 145 execucoes, incluindo os cenarios de acesso sem token de AutorizacaoPorPerfilTest. A execucao de CI da branch atual ainda esta pendente.
+Em 2026-11-10, `./mvnw -B verify` passou, incluindo os cenarios de acesso sem token de AutorizacaoPorPerfilTest.

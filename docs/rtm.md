@@ -1,13 +1,15 @@
 # RTM - Matriz de rastreabilidade
 
 Data: 2026-11-10.
-Cada linha liga requisito critico, risco, teste automatizado localizavel por arquivo e nome de metodo, e evidencia. Todos os testes listados estao incluidos no `./mvnw -B verify` local desta revisao (145 execucoes, sem falhas); a execucao de CI desta branch ainda esta pendente. As celulas `pipeline verde` sao evidencia historica da release anterior, nao afirmacao de CI verde para esta branch.
+Cada linha liga requisito critico, risco, teste automatizado localizavel por arquivo e nome de metodo, e evidencia. Todos os testes listados estao incluidos no `./mvnw -B verify` local desta revisao (147 execucoes, sem falhas). As celulas `pipeline verde` sao evidencia historica da release anterior.
 
 | Requisito | Risco | Teste (arquivo e metodo) | Nivel | Evidencia |
 |---|---|---|---|---|
 | RF-01 autenticacao por perfil | qualquer pessoa acessar dado alheio | AutorizacaoPorPerfilTest.matrizDeAutorizacao | API caixa-preta | pipeline verde |
 | RF-01 perfil errado recebe 403 | escalada de permissao | AutorizacaoPorPerfilTest.matrizDeAutorizacao | API caixa-preta | pipeline verde |
 | RF-01 sem token recebe 401 | acesso anonimo | AutorizacaoPorPerfilTest.matrizDeAutorizacao | API caixa-preta | pipeline verde |
+| RF-02 consulta sala por id | recurso existente nao e retornado | AutorizacaoPorPerfilTest.solicitanteConsultaSalaPorId200 | API caixa-preta | verify local |
+| RF-02 consulta professor por id | recurso existente nao e retornado | AutorizacaoPorPerfilTest.solicitanteConsultaProfessorPorId200 | API caixa-preta | verify local |
 | RF-04 criar reserva | fluxo principal quebrado | E2ETest.fluxoCompletoCadastroLoginReservaAprovacaoUsoConclusao | API caixa-preta | pipeline verde |
 | RF-04 alterar reserva pelo dono | dono nao consegue ajustar | AlteracaoReservaTest.donoAlteraPropriaReserva200 | API caixa-preta | pipeline verde |
 | RF-04 alterar reserva de outro | posse violada | AlteracaoReservaTest.outroSolicitanteNaoPodeAlterar403 | API caixa-preta | pipeline verde |
@@ -34,7 +36,7 @@ Cada linha liga requisito critico, risco, teste automatizado localizavel por arq
 | RF-11 notificacao externa | integracao ausente | NotificacaoTest.aprovarEnviaNotificacaoParaProvedor | integracao com WireMock | pipeline verde |
 | RF-11 tolerancia a falha do provedor | falha do provedor derruba o fluxo | NotificacaoTest.provedorComErro500NaoQuebraTransicao | integracao com WireMock | pipeline verde |
 | RF-11 timeout do provedor | resposta lenta derruba o fluxo | NotificacaoTest.provedorLentoNaoQuebraTransicao | integracao com WireMock | pipeline verde |
-| RF-12 relatorio de utilizacao | numero errado | RelatorioUtilizacaoTest.responsavelVeRelatorio | API caixa-preta | pipeline verde |
+| RF-12 relatorio de utilizacao e carga horaria | numero errado | RelatorioUtilizacaoTest.responsavelVeRelatorio | API caixa-preta, assertivas de horas exatas | verify local |
 | RF-12 conflitos evitados no relatorio | contador incorreto | RelatorioUtilizacaoTest.conflitoEvitadoApareceNoRelatorio | API caixa-preta, assertiva do valor | verify local |
 | RF-12 relatorio so para responsavel e admin | dado sensivel exposto | RelatorioUtilizacaoTest.solicitanteNaoVeRelatorio403 | API caixa-preta | pipeline verde |
 | RF-13 mensagem de erro amigavel | stack trace exposto | ValidacaoEntradaTest.validacao | API caixa-preta | pipeline verde |
@@ -46,7 +48,7 @@ Cada linha liga requisito critico, risco, teste automatizado localizavel por arq
 
 ## Evidencia do commit avaliado
 
-Os testes locais desta RTM passaram no verify de 2026-11-10. A evidencia de CI para a branch atual sera acrescentada depois da execucao remota; a tag v1.3.2 permanece como ultima release publicada.
+Os testes locais desta RTM passaram no verify de 2026-11-10. A versao candidata desta rodada e v1.3.4; o CI remoto nao foi executado porque nao havia autenticacao GitHub.
 
 ## Nota
 

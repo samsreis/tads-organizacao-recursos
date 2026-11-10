@@ -1,6 +1,6 @@
 # Revisao integrada - regras criticas
 
-Data: 2026-11-10. Revisao local da branch de auditoria; `./mvnw -B verify` passou com 145 execucoes. CI remoto ainda pendente.
+Data: 2026-11-10. Revisao local da branch `fix/ajustes-finais`; `./mvnw -B verify` passou com 147 execucoes. A versao candidata desta rodada e v1.3.4.
 
 | Regra critica | Requisito | Risco | Tecnica usada | Automacao | Evidencia | Decisao |
 |---|---|---|---|---|---|---|
@@ -34,4 +34,4 @@ Cada regra critica tem par de tecnica: teste automatizado mais mutacao manual re
 
 ## Entregaveis da Aula 16 fora de escopo
 
-Revisao cruzada depende de repositorio de equipe vizinha, combinado em sala. Incidente simulado depende de branch descartavel e equipe para localizar o defeito. Grupo de um integrante nao tem par para esses dois exercicios. Registrado como risco aceito em docs/decisao-qualidade.md.
+Revisao cruzada depende de repositorio de equipe vizinha, combinado em sala. Incidente simulado depende de branch descartavel e equipe para localizar o defeito. O trabalho individual de Samuel Silva dos Reis nao teve equipe vizinha disponivel para esses dois exercicios. Registrado como risco aceito em docs/decisao-qualidade.md.
