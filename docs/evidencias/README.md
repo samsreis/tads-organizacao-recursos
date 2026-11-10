@@ -1,6 +1,8 @@
 # Pacote de evidencias
 
-Tag avaliada: v1.3.2. Repositorio: https://github.com/samsreis/tads-organizacao-recursos. Historico: v1.0.0-rc1, v1.0.0-rc2, v1.0.0, v1.1.0, v1.2.0, v1.2.1, v1.2.2, v1.2.3, v1.2.4, v1.2.5, v1.2.6, v1.2.7, v1.2.8 e v1.3.2.
+Ultima tag publicada: v1.3.2. Repositorio: https://github.com/samsreis/tads-organizacao-recursos. Historico: v1.0.0-rc1, v1.0.0-rc2, v1.0.0, v1.1.0, v1.2.0, v1.2.1, v1.2.2, v1.2.3, v1.2.4, v1.2.5, v1.2.6, v1.2.7, v1.2.8 e v1.3.2.
+
+Verificacao local desta revisao: `./mvnw -B verify`, 145 execucoes sem falhas, 92,8% de cobertura de linha e 77,1% de branch. PR, CI remoto, merge e tag v1.3.3 ainda pendentes.
 
 ## Indice
 
@@ -14,6 +16,9 @@ Tag avaliada: v1.3.2. Repositorio: https://github.com/samsreis/tads-organizacao-
 | Plano de testes | docs/testes/plano.md |
 | Relatorio de testes | docs/testes/relatorio.md |
 | Mutacao manual | docs/testes/mutacao-manual.md |
+| Plano TDD desta revisao | plano-tdd.md |
+| Changelog desta revisao | CHANGELOG.md |
+| Retrospectiva | retrospectiva-final.md |
 | Defeitos | docs/defeitos/ |
 | Relatorio de qualidade | docs/relatorio-qualidade.md |
 | Decisao de qualidade | docs/decisao-qualidade.md |
@@ -22,13 +27,14 @@ Tag avaliada: v1.3.2. Repositorio: https://github.com/samsreis/tads-organizacao-
 | ADRs | docs/adr/ |
 | Plano de carga | docs/performance/plano.md |
 | Resultado de carga | docs/performance/resultado-01.md |
+| Resultado de carga mais recente | docs/performance/resultado-02.md |
 | Checklist de entrega | docs/entrega/checklist.md |
 | Pipeline | .github/workflows/ci.yml |
 | Relatorio JaCoCo | target/site/jacoco/index.html gerado pelo build |
 
 ## Execucao do CI
 
-Execucao verde da tag v1.3.2: https://github.com/samsreis/tads-organizacao-recursos/actions?query=branch%3Av1.3.2. Historico de tags anteriores preservado.
+Execucao da tag v1.3.2: https://github.com/samsreis/tads-organizacao-recursos/actions?query=branch%3Av1.3.2. Esta evidencia historica nao representa CI da branch atual; essa execucao ainda esta pendente.
 
 ## Relatorio JaCoCo
 
@@ -36,13 +42,13 @@ Artefato publicado pelo workflow em cada execucao. Caminho local: target/site/ja
 
 ## Quality Gate do SonarCloud
 
-Ativo. Token SONAR_TOKEN configurado nos secrets do repositorio. Quality Gate verde na ultima analise. Link: https://sonarcloud.io/project/overview?id=samsreis_tads-organizacao-recursos
+Integracao e analise historica da v1.3.2 documentadas. A branch atual ainda nao recebeu nova analise/Quality Gate remoto. Link: https://sonarcloud.io/project/overview?id=samsreis_tads-organizacao-recursos
 
 ## Regra
 
-Toda evidencia aponta para o commit da tag. Se algo precisar mudar depois da tag, sera criada uma nova versao, sem mover a tag anterior.
+Evidencias da tag v1.3.2 continuam imutaveis. As novas evidencias locais desta revisao devem ser associadas ao commit candidato e atualizadas com o CI antes da tag v1.3.3.
 
 
 ## SonarCloud
 
-Quality Gate verde: [Ver painel no SonarCloud](https://sonarcloud.io/project/overview?id=samsreis_tads-organizacao-recursos)
+Historico da analise da v1.3.2: [Ver painel no SonarCloud](https://sonarcloud.io/project/overview?id=samsreis_tads-organizacao-recursos)

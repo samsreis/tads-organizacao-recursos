@@ -21,7 +21,7 @@
     </TestPlan>
     <hashTree>
       <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Usuarios" enabled="true">
-        <stringProp name="filename">/home/vitoria/projetos/organizacao-recursos/perf/usuarios.csv</stringProp>
+        <stringProp name="filename">${__P(csv,perf/usuarios.csv)}</stringProp>
         <stringProp name="fileEncoding">UTF-8</stringProp>
         <stringProp name="variableNames">email,senha</stringProp>
         <boolProp name="ignoreFirstLine">true</boolProp>
@@ -42,6 +42,8 @@
         </elementProp>
       </ThreadGroup>
       <hashTree>
+        <OnceOnlyController guiclass="OnceOnlyControllerGui" testclass="OnceOnlyController" testname="Login uma vez por usuario" enabled="true"/>
+        <hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST login" enabled="true">
           <stringProp name="HTTPSampler.domain">${HOST}</stringProp>
           <stringProp name="HTTPSampler.port">${PORT}</stringProp>
@@ -85,6 +87,7 @@
             <intProp name="Assertion.test_type">8</intProp>
           </ResponseAssertion>
           <hashTree/>
+        </hashTree>
         </hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET salas" enabled="true">
           <stringProp name="HTTPSampler.domain">${HOST}</stringProp>
@@ -145,7 +148,7 @@
             </collectionProp>
             <stringProp name="Assertion.custom_message">So 201 ou 409, nunca 500</stringProp>
             <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-            <boolProp name="Assertion.assume_success">false</boolProp>
+            <boolProp name="Assertion.assume_success">true</boolProp>
             <intProp name="Assertion.test_type">40</intProp>
           </ResponseAssertion>
           <hashTree/>

@@ -1,8 +1,10 @@
 package br.edu.senac.recursos;
 
 import br.edu.senac.recursos.domain.Perfil;
+import br.edu.senac.recursos.domain.Professor;
 import br.edu.senac.recursos.domain.Sala;
 import br.edu.senac.recursos.domain.Usuario;
+import br.edu.senac.recursos.repository.ProfessorRepository;
 import br.edu.senac.recursos.repository.ReservaRepository;
 import br.edu.senac.recursos.repository.SalaRepository;
 import br.edu.senac.recursos.repository.UsuarioRepository;
@@ -55,6 +57,7 @@ class ConcorrenciaTest {
     @Autowired TestRestTemplate http;
     @Autowired JwtService jwt;
     @Autowired SalaRepository salas;
+    @Autowired ProfessorRepository professores;
     @Autowired UsuarioRepository usuarios;
     @Autowired ReservaRepository reservas;
     @Autowired PasswordEncoder encoder;
@@ -122,5 +125,68 @@ class ConcorrenciaTest {
                 .filter(r -> r.getSala().getId().equals(salaId))
                 .count();
         assertThat(gravadas).as("uma unica reserva no banco").isEqualTo(1L);
+    }
+
+    @Test
+    void apenasUmaReservaAceitaParaProfessorEmSolicitacoesSimultaneas() throws Exception {
+        int n = 10;
+        Professor professor = new Professor();
+        professor.setNome("Professor Concorrente");
+        professor.setEmail("prof.concorrente@teste.com");
+        professor.setCompetencia("Qualidade");
+        professor.setAtivo(true);
+        professor = professores.save(professor);
+        Long professorId = professor.getId();
+
+        List<Long> salasIds = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            Sala sala = new Sala();
+            sala.setNome("Sala Professor Conc " + i + " " + System.nanoTime());
+            sala.setCapacidade(20);
+            sala.setLocalizacao("Bloco P");
+            sala.setEmManutencao(false);
+            salasIds.add(salas.save(sala).getId());
+        }
+
+        ExecutorService pool = Executors.newFixedThreadPool(n);
+        CountDownLatch largada = new CountDownLatch(1);
+        List<Future<Integer>> futuros = new ArrayList<>();
+        for (Long idSala : salasIds) {
+            futuros.add(pool.submit(() -> {
+                largada.await();
+                HttpHeaders h = new HttpHeaders();
+                h.setContentType(MediaType.APPLICATION_JSON);
+                h.setBearerAuth(token);
+                String body = "{\"salaId\":" + idSala
+                        + ",\"professorId\":" + professorId
+                        + ",\"inicio\":\"2026-12-05T10:00:00-03:00\""
+                        + ",\"fim\":\"2026-12-05T11:00:00-03:00\"}";
+                ResponseEntity<String> resp = http.postForEntity("/reservas", new HttpEntity<>(body, h), String.class);
+                return resp.getStatusCode().value();
+            }));
+        }
+        largada.countDown();
+
+        AtomicInteger aceitas = new AtomicInteger();
+        AtomicInteger conflitos = new AtomicInteger();
+        AtomicInteger outros = new AtomicInteger();
+        try {
+            for (Future<Integer> futuro : futuros) {
+                int status = futuro.get(60, TimeUnit.SECONDS);
+                if (status == 201) aceitas.incrementAndGet();
+                else if (status == 409) conflitos.incrementAndGet();
+                else outros.incrementAndGet();
+            }
+        } finally {
+            pool.shutdownNow();
+        }
+
+        assertThat(aceitas.get()).as("exatamente uma reserva para o professor").isEqualTo(1);
+        assertThat(conflitos.get()).as("conflitos restantes para o professor").isEqualTo(n - 1);
+        assertThat(outros.get()).as("sem erros inesperados").isZero();
+        long gravadas = reservas.findAll().stream()
+                .filter(r -> r.getProfessor() != null && r.getProfessor().getId().equals(professorId))
+                .count();
+        assertThat(gravadas).as("uma unica reserva de professor no banco").isEqualTo(1L);
     }
 }

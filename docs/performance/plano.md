@@ -1,8 +1,8 @@
 # Plano de desempenho - Sistema de Organizacao de Recursos
 
-Status: executado em 2026-10-29, resultado em docs/performance/resultado-01.md.
-Data: 2026-10-29.
-Ambiente: notebook Linux Mint, aplicacao local, banco Postgres em container.
+Status: executado em 2026-11-10. Resultado original em docs/performance/resultado-01.md; repeticao no Codespace em docs/performance/resultado-02.md.
+Data do plano original: 2026-10-29.
+Ambiente da repeticao: Ubuntu 24.04 no Codespace, Java 21.0.5, JMeter 5.6.3, aplicacao local e Postgres 16 em container isolado.
 
 ## Requisitos de desempenho
 
@@ -22,12 +22,19 @@ RNF-02 Criacao de reserva
 
 - Usuarios: 50
 - Ramp-up: 10 segundos
-- Duracao: 5 iteracoes por usuario
+- Duracao: 5 iteracoes de consulta e reserva por usuario; login uma vez por usuario.
 - Mistura:
   - POST /auth/login (1x por usuario no inicio)
-  - GET /salas (consulta, 3x por iteracao)
+  - GET /salas (consulta, 1x por iteracao)
   - POST /reservas (criacao, 1x por iteracao)
 - Recursos disputados: mesma sala e mesmo horario para todos, forçando o conflito.
+
+## Reexecucao de 2026-11-10
+
+- Comando: `jmeter -n -t perf/reservas.jmx -Jcsv=perf/usuarios.csv -Jhost=localhost -Jport=8080 -JsalaId=1 -l /tmp/resultado.jtl -e -o /tmp/resultado`.
+- Total observado: 550 amostras: 50 logins, 250 consultas e 250 criacoes de reserva.
+- Resultado: uma reserva criada (201), 249 conflitos esperados (409), sem outras respostas nem falhas de assercao.
+- Valores medidos e avaliacao: docs/performance/resultado-02.md.
 
 ## Fora de escopo
 

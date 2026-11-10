@@ -72,26 +72,7 @@ class AuditoriaTest extends BaseIntegracaoTest {
             .andExpect(status().isNotFound());
     }
 
-    @Test
-    void rollbackNaoDeixaAuditoriaOrfa() throws Exception {
-        long antes = contarAuditorias();
-        try {
-            reservar();
-        } catch (Exception ignored) {
-        }
-        // sem falha de proposito, a contagem deve ser antes + 1 (auditoria na mesma transacao)
-        long depois = contarAuditorias();
-        if (depois - antes != 1) {
-            throw new AssertionError("Auditoria deveria ser criada uma unica vez por reserva; delta=" + (depois - antes));
-        }
-    }
-
-    private long contarAuditorias() {
-        return auditoriaRepo.count();
-    }
-
-    @org.springframework.beans.factory.annotation.Autowired
-    br.edu.senac.recursos.repository.AuditoriaReservaRepository auditoriaRepo;
+    // Teste de rollback real em AuditoriaRollbackTest.
 
     private Long reservar() throws Exception {
         MvcResult r = mvc.perform(post("/reservas")

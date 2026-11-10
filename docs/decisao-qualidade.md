@@ -1,6 +1,6 @@
 # Decisao de qualidade
 
-Data: 2026-10-30.
+Data: 2026-11-10.
 Decisao: liberar com ressalvas.
 
 ## Criterios usados
@@ -19,10 +19,10 @@ Decisao: liberar com ressalvas.
 | Criterio | Evidencia | Situacao |
 |---|---|---|
 | 1 | README.md com passo a passo | atende |
-| 2 | https://github.com/samsreis/tads-organizacao-recursos/actions?query=branch%3Av1.3.2. Tag final v1.3.2 no commit final da main. | atende |
+| 2 | `./mvnw -B verify`: BUILD SUCCESS, 145 testes locais. CI remoto e tag v1.3.3 pendentes. | atende localmente; CI pendente |
 | 3 | AutorizacaoPorPerfilTest, Matriz de autorizacao | atende |
 | 4 | ConcorrenciaTest, ADR-001, ADR-004 | atende |
-| 5 | 90% linha e 75% branch | atende |
+| 5 | 92,8% linha (655/706) e 77,1% branch (135/175), JaCoCo local | atende |
 | 6 | docs/rtm.md | atende |
 | 7 | docs/defeitos/ sem item critico aberto | atende |
 | 8 | README e matriz | atende |
@@ -31,15 +31,14 @@ Decisao: liberar com ressalvas.
 
 | Risco | Impacto | Justificativa | Responsavel |
 |---|---|---|---|
-| Login com p95 acima do alvo em carga simultanea | baixo | ambiente local, BCrypt e ajustavel em producao | grupo |
-| Uma unica rodada de carga | baixo | tempo limitado, resultado registrado como indicativo | grupo |
+| Medicoes de carga feitas em uma unica rodada no Codespace | baixo | Ambiente local compartilhado; resultado indicativo, nao representa producao | grupo |
 | Revisao por pares nao realizada | medio | grupo de um unico integrante, sem par disponivel; revisao formal impossivel. Compensado com teste de mutacao manual e matriz de autorizacao | grupo |
 
 ## Declaracao de cada integrante
 
-- Vitoria: execucao do projeto, testes automatizados, JMeter, documentacao e release.
+- Samuel Silva dos Reis: execucao do projeto, testes automatizados, JMeter, documentacao e release.
 
 ## Conclusao
 
-A decisao e liberar com ressalvas. O sistema atende o nucleo critico, o CI esta verde na main e os 14 requisitos funcionais estao cobertos. Nao e correto afirmar que esta pronto para producao: a carga foi feita em ambiente local, o login ficou acima do alvo de p95. O SonarCloud esta integrado, com Quality Gate verde.
-Quality Gate do SonarCloud: https://sonarcloud.io/project/overview?id=samsreis_tads-organizacao-recursos
+A decisao local e liberar com ressalvas: verify passou com 145 execucoes, e a rodada JMeter de 2026-11-10 atendeu os p95 definidos. Isso nao equivale a aprovacao de release: o CI remoto da branch, o merge e a tag v1.3.3 ainda estao pendentes. A carga foi feita uma unica vez em ambiente local e nao comprova desempenho em producao.
+Historico do SonarCloud na v1.3.2: https://sonarcloud.io/project/overview?id=samsreis_tads-organizacao-recursos. A branch atual aguarda nova analise remota.

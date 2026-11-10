@@ -4,7 +4,7 @@
 - ID: DEF-03
 - Severidade: critica
 - Prioridade: P0
-- Encontrado em: auditoria externa com Copilot do Codespace
+- Encontrado em: revisao externa do codigo
 - Corrigido em: commit 771e5d1
 
 ## Recurso observavel

@@ -18,8 +18,9 @@ class SobreposicaoRecursosTest extends BaseIntegracaoTest {
         Long profId = criarProfessor("ProfA", "profa@x.com", true);
         String inicio = "2026-12-03T10:00:00-03:00";
         String fim = "2026-12-03T11:00:00-03:00";
-        reservarComProfessor(profId, inicio, fim).andExpect(status().isCreated());
-        reservarComProfessor(profId, inicio, fim).andExpect(status().isConflict());
+        Long outraSala = criarSala("Sala Conflito Professor");
+        reservarComProfessor(salaId, profId, inicio, fim).andExpect(status().isCreated());
+        reservarComProfessor(outraSala, profId, inicio, fim).andExpect(status().isConflict());
     }
 
     @Test
@@ -34,8 +35,9 @@ class SobreposicaoRecursosTest extends BaseIntegracaoTest {
         Long matId = criarMaterial("ProjetorX", false);
         String inicio = "2026-12-03T10:00:00-03:00";
         String fim = "2026-12-03T11:00:00-03:00";
-        reservarComMaterial(matId, inicio, fim).andExpect(status().isCreated());
-        reservarComMaterial(matId, inicio, fim).andExpect(status().isConflict());
+        Long outraSala = criarSala("Sala Conflito Material");
+        reservarComMaterial(salaId, matId, inicio, fim).andExpect(status().isCreated());
+        reservarComMaterial(outraSala, matId, inicio, fim).andExpect(status().isConflict());
     }
 
     @Test
@@ -78,18 +80,26 @@ class SobreposicaoRecursosTest extends BaseIntegracaoTest {
     }
 
     private org.springframework.test.web.servlet.ResultActions reservarComProfessor(Long profId, String ini, String fim) throws Exception {
+        return reservarComProfessor(salaId, profId, ini, fim);
+    }
+
+    private org.springframework.test.web.servlet.ResultActions reservarComProfessor(Long sala, Long profId, String ini, String fim) throws Exception {
         return mvc.perform(post("/reservas")
                 .header("Authorization", "Bearer " + tokenSol)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"salaId\":" + salaId + ",\"professorId\":" + profId
+                .content("{\"salaId\":" + sala + ",\"professorId\":" + profId
                         + ",\"inicio\":\"" + ini + "\",\"fim\":\"" + fim + "\"}"));
     }
 
     private org.springframework.test.web.servlet.ResultActions reservarComMaterial(Long matId, String ini, String fim) throws Exception {
+        return reservarComMaterial(salaId, matId, ini, fim);
+    }
+
+    private org.springframework.test.web.servlet.ResultActions reservarComMaterial(Long sala, Long matId, String ini, String fim) throws Exception {
         return mvc.perform(post("/reservas")
                 .header("Authorization", "Bearer " + tokenSol)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"salaId\":" + salaId + ",\"materialId\":" + matId
+                .content("{\"salaId\":" + sala + ",\"materialId\":" + matId
                         + ",\"inicio\":\"" + ini + "\",\"fim\":\"" + fim + "\"}"));
     }
 
@@ -108,6 +118,15 @@ class SobreposicaoRecursosTest extends BaseIntegracaoTest {
                 .header("Authorization", "Bearer " + tokenAdm)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{\"nome\":\"" + nome + "\",\"tipo\":\"X\",\"quantidade\":1,\"emManutencao\":" + emManutencao + "}"))
+            .andExpect(status().isCreated()).andReturn();
+        return extrairId(r);
+    }
+
+    private Long criarSala(String nome) throws Exception {
+        MvcResult r = mvc.perform(post("/salas")
+                .header("Authorization", "Bearer " + tokenAdm)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{\"nome\":\"" + nome + "\",\"capacidade\":30,\"localizacao\":\"Bloco X\"}"))
             .andExpect(status().isCreated()).andReturn();
         return extrairId(r);
     }

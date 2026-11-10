@@ -1,6 +1,6 @@
 # Status dos requisitos
 
-Data: 2026-10-30.
+Data: 2026-11-10.
 
 ## Requisitos funcionais obrigatorios (14)
 
@@ -10,14 +10,14 @@ Data: 2026-10-30.
 | RF-02 | Cadastro e consulta de salas, professores e materiais | feito | SalaControllerTest, ProfessorMaterialTest, ProfessorMaterialCrudTest | limitador de nota: aplicacao nao cobre o basico |
 | RF-03 | Pesquisa por tipo, capacidade, localizacao, competencia e disponibilidade | feito | FiltroSalaTest cobre capacidade, localizacao e disponibilidade. Filtros de material e professor em ProfessorMaterialCrudTest | perde ponto em requisitos |
 | RF-04 | Criacao, alteracao e cancelamento de reservas | feito | RegrasReservaTest, AlteracaoReservaTest, PosseReservaTest, AutorizacaoPorPerfilTest | limitador de nota: fluxo principal |
-| RF-05 | Deteccao de sobreposicao, inclusive agenda do professor | feito | SobreposicaoTest, SobreposicaoRecursosTest | limitador de nota: dupla reserva |
-| RF-06 | Protecao contra dupla reserva em solicitacoes simultaneas | feito | ConcorrenciaTest, ADR-001, ADR-004 | limitador de nota: dupla reserva |
+| RF-05 | Deteccao de sobreposicao, inclusive agenda do professor | feito | SobreposicaoTest, SobreposicaoRecursosTest, ConcorrenciaTest.apenasUmaReservaAceitaParaProfessorEmSolicitacoesSimultaneas | limitador de nota: dupla reserva |
+| RF-06 | Protecao contra dupla reserva em solicitacoes simultaneas | feito | ConcorrenciaTest.apenasUmaReservaAceitaEmDezSolicitacoesSimultaneas, ConcorrenciaTest.apenasUmaReservaAceitaParaProfessorEmSolicitacoesSimultaneas, ADR-001, ADR-004 | limitador de nota: dupla reserva |
 | RF-07 | Aprovacao obrigatoria para recursos restritos | feito | AprovacaoTest, MaquinaEstadosTest | perde ponto em requisitos |
 | RF-08 | Bloqueio de recursos em manutencao | feito | RegrasReservaTest, SobreposicaoRecursosTest | perde ponto em requisitos |
 | RF-09 | Registro de retirada e devolucao de materiais | feito | MovimentacaoMaterialTest | perde ponto em requisitos |
-| RF-10 | Historico auditavel de mudancas | feito | AuditoriaTest, MaquinaEstadosTest | perde ponto em rastreabilidade |
+| RF-10 | Historico auditavel de mudancas | feito | AuditoriaTest, AuditoriaRollbackTest.falhaNaAuditoriaDesfazAReserva, MaquinaEstadosTest | perde ponto em rastreabilidade |
 | RF-11 | Notificacao simulada ou integracao externa | feito | NotificacaoTest com WireMock | perde ponto em integracao |
-| RF-12 | Relatorio de utilizacao por recurso, carga horaria e conflitos evitados | feito | RelatorioUtilizacaoTest | perde ponto em requisitos |
+| RF-12 | Relatorio de utilizacao por recurso, carga horaria e conflitos evitados | feito | RelatorioUtilizacaoTest.responsavelVeRelatorio, RelatorioUtilizacaoTest.conflitoEvitadoApareceNoRelatorio | perde ponto em requisitos |
 | RF-13 | Interface responsiva e mensagens de erro compreensiveis | feito | src/main/resources/static com login, filtro, reserva e aprovacao; mensagens de erro no TratadorGlobal | perde ponto em apresentacao |
 | RF-14 | Documentacao de API ou fluxos publicos | feito | README.md e docs/seguranca/matriz-autorizacao.md | perde ponto em organizacao |
 
@@ -31,19 +31,21 @@ Data: 2026-10-30.
 | Recursos em manutencao nao podem ser reservados | feito | RegrasReservaTest, SobreposicaoRecursosTest |
 | Maquina de estados completa | feito | MaquinaEstadosTest |
 | Somente RESPONSAVEL e ADMINISTRADOR aprovam restrito | feito | AprovacaoTest, MaquinaEstadosTest |
-| Reservas iniciadas nao podem ser apagadas | feito | AprovacaoTest |
+| Reservas em uso nao podem ser canceladas | feito | AprovacaoTest.cancelarReservaEmUsoRetorna409 |
 | Toda mudanca de estado gera auditoria | feito | AuditoriaTest, MaquinaEstadosTest |
 
 ## Pendencia aberta
 
-- SonarCloud integrado com Quality Gate verde. Requer SONAR_TOKEN nos secrets do repositorio. Pendencia justificada, nao e limitador de nota.
-- JMeter: login com p95 acima da meta (484 ms contra 300 ms). Hipotese registrada em docs/performance/resultado-01.md.
+- SonarCloud integrado; a ultima analise documentada e historica (v1.3.2). A branch atual ainda nao tem nova analise/Quality Gate remoto.
+- GitHub CI, merge e tag v1.3.3 ainda pendentes para esta branch.
+- JMeter executado em 2026-11-10 no Codespace: p95 de login 209,05 ms, salas 17,45 ms e reserva 39,9 ms; metas atendidas nesta rodada. Resultado em docs/performance/resultado-02.md.
 
 ## Estado do GitHub
 
-Repositorio publico: https://github.com/samsreis/tads-organizacao-recursos
-Tag final: v1.2.6 no commit final da main. Historico de release candidates: rc1 em da1b6ea (run 41076861945), rc2 em 2b5d9e7 (run 41079350944), v1.2.0 em 8d098ec, v1.2.1 em cbf282f.
+Repositorio publico: https://github.com/samsreis/tads-organizacao-recursos.
+Ultima tag publicada conhecida: v1.3.2. A tag v1.3.3 depende do PR e do CI desta branch; ainda nao criada.
 
 ## Nao cortar
 
-- Aplicacao executa, pipeline verde no GitHub, autorizacao testada, dupla reserva bloqueada.
+- Aplicacao executa; `./mvnw -B verify` passou localmente em 2026-11-10 com 145 testes. O CI remoto desta branch ainda esta pendente.
+- Autorizacao testada e sobreposicao de sala, professor e material bloqueada.
