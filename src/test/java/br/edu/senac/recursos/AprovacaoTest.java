@@ -16,7 +16,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class AprovacaoTest extends BaseIntegracaoTest {
 
     @Test
-    void responsavelAprovaReserva201() throws Exception {
+    void responsavelAprovaReserva200() throws Exception {
         Long id = reservar("2026-12-10T10:00:00-03:00", "2026-12-10T11:00:00-03:00");
         mvc.perform(post("/reservas/" + id + "/aprovar")
                 .header("Authorization", "Bearer " + tokenRes))
@@ -64,8 +64,12 @@ class AprovacaoTest extends BaseIntegracaoTest {
     }
 
     @Test
-    void cancelarReservaIiniciadaRetorna409() throws Exception {
-        Long id = reservar("2020-01-01T10:00:00-03:00", "2020-01-01T11:00:00-03:00");
+    void cancelarReservaEmUsoRetorna409() throws Exception {
+        Long id = reservar("2027-06-01T10:00:00-03:00", "2027-06-01T11:00:00-03:00");
+        mvc.perform(post("/reservas/" + id + "/aprovar").header("Authorization", "Bearer " + tokenRes))
+            .andExpect(status().isOk());
+        mvc.perform(post("/reservas/" + id + "/iniciar").header("Authorization", "Bearer " + tokenRes))
+            .andExpect(status().isOk());
         mvc.perform(delete("/reservas/" + id).header("Authorization", "Bearer " + tokenSol))
             .andExpect(status().isConflict());
     }

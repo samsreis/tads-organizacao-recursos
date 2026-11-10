@@ -1,10 +1,9 @@
 # Checklist de entrega
 
-Data: 2026-10-30.
-Clone limpo: sim, executado em /tmp/clone-teste a partir do GitHub em 2026-10-30. 144 testes, cobertura acima das metas, BUILD SUCCESS.
-Aplicacao executa: sim, ./mvnw spring-boot:run sobe em 8 segundos.
-Build verde: sim, ./mvnw -B verify com EXIT 0.
-Reverificacao: 2026-11-09, apos correcao do DEF-03. 144 testes, cobertura acima das metas, BUILD SUCCESS.
+Data: 2026-11-10.
+Clone limpo e execucao de 2026-10-30 sao evidencias historicas.
+Reverificacao local desta branch: `./mvnw -B verify`, 145 execucoes, zero falhas/erros, BUILD SUCCESS; JaCoCo 92,8% linha e 77,1% branch.
+JMeter: rodada local em 2026-11-10, detalhada em docs/performance/resultado-02.md.
 
 | Item | Existe | Atualizado | Caminho |
 |---|---|---|---|
@@ -19,11 +18,11 @@ Reverificacao: 2026-11-09, apos correcao do DEF-03. 144 testes, cobertura acima 
 | Relatorio de testes | sim | sim | docs/testes/relatorio.md |
 | Mutacao manual | sim | sim | docs/testes/mutacao-manual.md |
 | Pipeline CI | sim, arquivo presente | sim | .github/workflows/ci.yml |
-| Execucao do CI no GitHub | sim | sim | https://github.com/samsreis/tads-organizacao-recursos/actions/runs/42165085123 |
+| Execucao do CI no GitHub | existe para revisoes anteriores | nao para esta branch | https://github.com/samsreis/tads-organizacao-recursos/actions/runs/42165085123 |
 | JaCoCo | sim | sim | pom.xml e target/site/jacoco |
-| SonarCloud | sim | sim | https://sonarcloud.io/project/overview?id=samsreis_tads-organizacao-recursos |
+| SonarCloud | integrado em revisao anterior | sem nova analise nesta branch | https://sonarcloud.io/project/overview?id=samsreis_tads-organizacao-recursos |
 | Plano de carga | sim | sim | docs/performance/plano.md e perf/reservas.jmx |
-| Resultado de carga | sim | sim | docs/performance/resultado-01.md |
+| Resultado de carga | sim | sim | docs/performance/resultado-02.md (atual) e resultado-01.md (historico) |
 | Defeitos registrados | sim | sim | docs/defeitos/ |
 | Relatorio de qualidade | sim | sim | docs/relatorio-qualidade.md |
 | Decisao de qualidade | sim | sim | docs/decisao-qualidade.md |
@@ -31,12 +30,12 @@ Reverificacao: 2026-11-09, apos correcao do DEF-03. 144 testes, cobertura acima 
 | Matriz de autorizacao | sim | sim | docs/seguranca/matriz-autorizacao.md |
 | Licoes aprendidas | sim | sim | docs/licoes-aprendidas.md |
 | Revisao integrada | sim | sim | docs/revisao-integrada.md |
-| Tag de release | sim | sim | v1.3.2 no commit final da main. Historico: v1.0.0-rc1, v1.0.0-rc2, v1.0.0, v1.1.0, v1.2.0, v1.2.1, v1.2.2, v1.2.3, v1.2.4, v1.2.5, v1.2.6, v1.2.7, v1.2.8 e v1.3.2. Execucao: https://github.com/samsreis/tads-organizacao-recursos/actions?query=branch%3Av1.3.2 |
+| Tag de release | existe historicamente | nao atualizada nesta branch | Ultima tag publicada v1.3.2; v1.3.3 depende do PR, CI e merge. Historico em docs/evidencias/README.md |
 | Repositorio publico no GitHub | sim | sim | https://github.com/samsreis/tads-organizacao-recursos |
 
 ## Bloqueadores
 
-Nenhum. Repositorio publicado, CI verde. Tag final v1.3.2, CI verde na execucao da tag.
+CI remoto, PR, merge e tag v1.3.3 ainda pendentes para esta revisao.
 
 ## Pendencias nao bloqueantes
 

@@ -1,9 +1,9 @@
 # Relatorio final de qualidade
 
-Data: 2026-11-09.
+Data: 2026-11-10.
 Repositorio: https://github.com/samsreis/tads-organizacao-recursos.
-Commit avaliado: tag v1.3.2 no commit final da main, com documentos posteriores ja integrados na main em d545ba9.
-Ambiente de medicao: Linux Mint, Java 21, Maven wrapper, Docker com Testcontainers e Postgres 16.
+Revisao avaliada: branch local `fix/auditoria-completa`, antes do PR; ultima tag publicada conhecida: v1.3.2.
+Ambiente de medicao: Ubuntu 24.04, Java 21.0.5, Maven wrapper, Docker com Testcontainers e Postgres 16.
 
 ## Escopo avaliado
 
@@ -31,23 +31,23 @@ Ambiente de medicao: Linux Mint, Java 21, Maven wrapper, Docker com Testcontaine
 | API caixa-preta | MockMvc + tokens reais | AutorizacaoPorPerfilTest, RegrasReservaTest, AprovacaoTest, MaquinaEstadosTest |
 | Integracao externa | WireMock | NotificacaoTest |
 | Carga | JMeter 5.6.3 CLI | perf/reservas.jmx |
-| Mutacao manual | execucao controlada | docs/testes/mutacao-manual.md, com 10 regras e duas provas reexecutadas em 2026-11-09 |
+| Mutacao manual | execucao controlada | docs/testes/mutacao-manual.md, com 11 regras e prova do cancelamento em uso reexecutada em 2026-11-10 |
 
 ## Resultados contra as metas
 
 | Meta | Valor alvo | Medido | Situacao |
 |---|---|---|---|
-| Cobertura de linha | 80% | 90% no JaCoCo em clone limpo (3.396 de 3.741 linhas) e 89,1% no SonarCloud | atende |
-| Cobertura de branch | 70% | 75% no JaCoCo em clone limpo | atende |
+| Cobertura de linha | 80% | 92,8% no JaCoCo (655 de 706 linhas) | atende |
+| Cobertura de branch | 70% | 77,1% no JaCoCo (135 de 175 branches) | atende |
 | Requisitos criticos na RTM | 100% | 100% (todas as linhas com teste localizavel) | atende |
-| Bugs ou vulnerabilidades criticas | 0 | 0 issues, 0 security issues, 0 hotspots no SonarCloud, Security A, Reliability A, Maintainability A | atende |
+| Bugs ou vulnerabilidades criticas | 0 | ultima analise SonarCloud documentada (v1.3.2) nao registrava issues; branch atual ainda sem nova analise | pendente de reavaliacao remota |
 
 ## Contagem de testes
 
-- 144 metodos de teste em cerca de 21 classes.
-- Todos passam no ./mvnw -B verify local.
-- Pipeline do GitHub Actions verde nas tags v1.2.2, v1.2.3, v1.2.4, v1.2.5, v1.2.6, v1.2.7, v1.2.8 e v1.3.2, sempre com Quality Gate obrigatorio.
-- SonarCloud: projeto publico, Quality Gate Passed, 0 issues, 0 security issues, 0 hotspots, Security A, Reliability A, Maintainability A, coverage 89,1%, duplicacao 2,4%, 1.8k linhas.
+- 145 execucoes de teste em 23 classes.
+- `./mvnw -B verify` passou localmente em 2026-11-10, sem falhas ou erros.
+- As tags anteriores, incluindo v1.3.2, possuem execucoes historicas no GitHub Actions; a execucao de CI para esta revisao ainda esta pendente.
+- A ultima analise SonarCloud documentada e historica (v1.3.2): Quality Gate Passed, sem issues ou hotspots. Nao foi refeita para esta branch.
 
 ## Defeitos
 
@@ -57,18 +57,17 @@ Ambiente de medicao: Linux Mint, Java 21, Maven wrapper, Docker com Testcontaine
 
 ## Performance
 
-- POST login p95 484 ms, acima do alvo de 300 ms. Gargalo identificado: BCrypt em 50 requisicoes simultaneas.
-- GET salas p95 39 ms.
-- POST reserva p95 68 ms, com 1 aceita e 249 conflitos, zero 500.
-- Detalhe em docs/performance/resultado-01.md.
+- Rodada 02 no Codespace: login p95 209,05 ms, GET salas p95 17,45 ms, POST reserva p95 39,90 ms.
+- POST reserva teve uma resposta 201, 249 respostas 409 esperadas e nenhuma resposta 500.
+- Metas atendidas nesta rodada unica; detalhes em docs/performance/resultado-02.md.
 
 ## Limitacoes
 
-- Todos os numeros sao de ambiente local, nao de producao.
-- Uma unica rodada de carga.
+- Todos os numeros desta revisao sao de ambiente local, nao de producao.
+- Uma unica rodada JMeter na revisao atual.
 - Cobertura alta nao prova qualidade dos testes. A protecao foi conferida com mutacao manual.
 
 ## Conclusao
 
-O sistema atende os requisitos criticos e as metas mensuraveis. As pendencias sao parciais e nao bloqueiam a entrega. A decisao final esta em docs/decisao-qualidade.md.
-Quality Gate do SonarCloud: https://sonarcloud.io/project/overview?id=samsreis_tads-organizacao-recursos
+O verify local, as metas de cobertura e a rodada de carga atenderam aos criterios registrados. A aprovacao de release permanece condicionada ao CI remoto, merge e tag v1.3.3; essa evidência ainda nao existe para esta revisao. A decisao esta em docs/decisao-qualidade.md.
+Historico do SonarCloud na v1.3.2: https://sonarcloud.io/project/overview?id=samsreis_tads-organizacao-recursos. Esta branch aguarda nova analise remota.

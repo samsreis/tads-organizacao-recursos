@@ -158,15 +158,18 @@ Aprovar a reserva.
 - docs/arquitetura.md: diagramas C4 e sequencias.
 - docs/defeitos/: defeitos registrados.
 - docs/performance/: plano e resultado do teste de carga.
+- plano-tdd.md, CHANGELOG.md e retrospectiva-final.md: registro desta revisao.
 - docs/relatorio-qualidade.md: relatorio final de qualidade.
 - docs/decisao-qualidade.md: decisao do grupo sobre liberar ou nao.
 
 ## Como rodar o teste de carga
 
-    ~/ferramentas/apache-jmeter-5.6.3/bin/jmeter -n -t perf/reservas.jmx \
-      -l resultados/rodada-01.jtl -e -o resultados/rodada-01
+    jmeter -n -t perf/reservas.jmx \
+      -Jcsv=perf/usuarios.csv -Jhost=localhost -Jport=8080 -JsalaId=ID_DA_SALA \
+      -l resultados/rodada.jtl -e -o resultados/rodada
 
-Resultado em resultados/rodada-01/index.html. Analise escrita em docs/performance/resultado-01.md.
+O plano usa JMeter 5.6.3, faz login uma vez por usuario e repete cinco ciclos de consulta e reserva. Respostas 409 sao conflitos esperados, validados pela assercao do JMX. O resultado mais recente esta em docs/performance/resultado-02.md; a rodada anterior esta em docs/performance/resultado-01.md.
+Substitua `ID_DA_SALA` por uma sala existente. Os usuarios de `perf/usuarios.csv` devem estar cadastrados e a aplicacao e o banco precisam estar ativos.
 
 ## Como rodar o pipeline local
 

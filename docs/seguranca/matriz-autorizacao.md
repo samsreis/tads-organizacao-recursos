@@ -1,6 +1,6 @@
 # Matriz de autorizacao - Sistema de Organizacao de Recursos
 
-Data: 2026-10-29.
+Data: 2026-11-10.
 Fonte: SecurityConfig.java e controllers.
 Legenda: 200/201/204 = sucesso; 401 = sem token ou token invalido; 403 = perfil sem permissao; 409 = conflito de estado; 404 = recurso inexistente; 400 = erro de validacao.
 
@@ -89,7 +89,9 @@ Nenhuma divergencia pendente no momento desta revisao.
 ## Notas
 
 - 409 em transicao vem de transicao invalida na maquina de estados.
+- DELETE /reservas/{id} para reserva em EM_USO devolve 409; a transicao esta bloqueada em ReservaService.TRANSICOES.
 - 409 em criacao ou alteracao de reserva vem da constraint de exclusao no banco.
 - 401 vem de HttpStatusEntryPoint no SecurityConfig.
 - 403 vem de hasRole/hasAnyRole.
 - Validacao de entrada devolve 400 com corpo {"erro": "..."} sem stack trace.
+- A regra de cancelamento em uso foi revalidada por AprovacaoTest.cancelarReservaEmUsoRetorna409 e por mutacao temporaria na maquina de estados do servico.

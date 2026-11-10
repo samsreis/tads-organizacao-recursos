@@ -19,9 +19,9 @@ Formato: pergunta, resposta curta de referencia, evidencia no repositorio.
    Resposta: SOLICITADA, APROVADA, EM_USO, CONCLUIDA. Alternativos: REJEITADA, CANCELADA, NAO_COMPARECEU. Mapa TRANSICOES em ReservaService.
    Evidencia: MaquinaEstadosTest.
 
-5. Reserva ja iniciada pode ser cancelada?
+5. Reserva em uso pode ser cancelada?
    Resposta: nao. Retorna 409.
-   Evidencia: AprovacaoTest.cancelarReservaIiniciadaRetorna409.
+   Evidencia: AprovacaoTest.cancelarReservaEmUsoRetorna409; a mutacao no mapa de transicoes do ReservaService faz esse teste falhar.
 
 6. Quem aprova recurso restrito?
    Resposta: apenas RESPONSAVEL e ADMINISTRADOR.
@@ -61,24 +61,24 @@ Formato: pergunta, resposta curta de referencia, evidencia no repositorio.
 ## CI, cobertura e analise estatica
 
 14. Quais as metas de cobertura e qual o estado atual?
-    Resposta: meta 80% linha e 70% branch, com check ativo no pom. Estado atual medido em 2026-11-09: 90% linha (3.396 de 3.741) e 75% branch pelo JaCoCo, e 89,1% no SonarCloud.
+    Resposta: meta 80% linha e 70% branch, com check ativo no pom. Em 2026-11-10, o JaCoCo local mediu 92,8% de linhas (655/706) e 77,1% de branches (135/175). O SonarCloud nao foi reexecutado nesta branch.
     Evidencia: target/site/jacoco/index.html, SonarCloud samsreis_tads-organizacao-recursos.
 
 15. O que o workflow faz?
     Resposta: build, testes, cobertura e analise Sonar com qualitygate.wait=true a cada pull request, push na main e push de tag v*. .github/workflows/ci.yml.
 
 15a. O SonarCloud esta integrado?
-    Resposta: sim. Quality Gate Passed, 0 issues, 0 security issues, 0 hotspots, Security A, Reliability A, Maintainability A, cobertura 89,1%, duplicacao 2,4%, 1.8k linhas.
+    Resposta: a ultima analise documentada para v1.3.2 passou no Quality Gate. Nao ha nova analise desta branch; CI remoto pendente.
     Evidencia: https://sonarcloud.io/project/overview?id=samsreis_tads-organizacao-recursos.
 
 ## Performance
 
-16. Qual o resultado do teste de carga?
-    Resposta: login p95 484 ms (nao atende meta de 300), salas p95 39 ms, reserva p95 68 ms. 0 erro 500, 1 aceita, 249 conflitos 409.
-    Evidencia: docs/performance/resultado-01.md.
+16. Qual o resultado mais recente do teste de carga?
+    Resposta: no Codespace, login p95 209,05 ms, salas 17,45 ms e reserva 39,90 ms; uma resposta 201, 249 conflitos esperados 409 e zero respostas 500.
+    Evidencia: docs/performance/resultado-02.md. A rodada anterior esta em docs/performance/resultado-01.md.
 
-17. Por que o login ficou acima da meta?
-    Resposta: BCrypt e o custo de hash. Hipotese registrada com dado que a sustenta.
+17. O resultado de carga comprova desempenho em producao?
+    Resposta: nao. Foi uma unica rodada local, com ambiente compartilhado; nao substitui medicao em ambiente de producao.
 
 ## Rastreabilidade e qualidade
 
@@ -92,8 +92,8 @@ Formato: pergunta, resposta curta de referencia, evidencia no repositorio.
     Resposta: interface simples, sem animacao. Carga unica em ambiente local. Sem revisao por pares, por grupo de um integrante.
 
 21. Qual a tag final de entrega?
-    Resposta: v1.3.2 no commit final da main, CI verde na execucao da tag v1.3.2. Historico completo em docs/evidencias/README.md.
+    Resposta: v1.3.2 e a ultima tag publicada. A tag v1.3.3 depende de PR, CI verde e merge; ainda esta pendente.
 
 22. Como se prova que um teste protege a regra?
-    Resposta: mutacao manual. Quebra a regra, roda o teste, espera vermelho, restaura com git restore. Dez regras registradas, duas reexecutadas em 2026-11-09.
+    Resposta: mutacao manual. Quebra-se a regra, executa-se o teste e confirma-se o vermelho; depois restaura-se o codigo. Onze regras registradas, tres provas reexecutadas em 2026-11-09 e 2026-11-10.
     Evidencia: docs/testes/mutacao-manual.md.

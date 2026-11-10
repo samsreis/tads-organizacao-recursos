@@ -18,16 +18,16 @@ Roteiro de 8 minutos por integrante.
    - Interface em /index.html.
 
 4. Testes e CI (1 min 30)
-   - 144 testes, Testcontainers, MockMvc, WireMock.
-   - Cobertura 90% linha, 75% branch locais, 89,1% no SonarCloud.
-   - Workflow no GitHub Actions.
+   - 145 execucoes de teste, Testcontainers, MockMvc, WireMock.
+   - Cobertura local JaCoCo: 92,8% linha e 77,1% branch.
+   - CI desta branch ainda pendente.
 
 5. RTM e relatorio (1 min)
    - docs/rtm.md liga requisito a teste e evidencia.
    - docs/relatorio-qualidade.md com numeros reais.
 
 6. Limitacoes (1 min)
-   - Login acima da meta de p95.
+   - JMeter no Codespace: login p95 209,05 ms, salas 17,45 ms e reserva 39,9 ms nesta unica rodada.
    - Carga unica em ambiente local.
    - Interface minima, sem animacao.
 
@@ -37,12 +37,12 @@ Preencher por integrante apos rodar o roteiro cronometrado.
 
 | Integrante | Tempo | Pontos fortes | Lacunas |
 |------------|-------|---------------|---------|
-| Samuel Silva | 8 min | Explicou o fluxo de CI e o TDD da autorizacao. | Faltou citar o ADR do lock pessimista e as constraints do banco. |
-| Vitoria | nao cronometrado | Ensaio realizado em 2026-11-09 sobre o roteiro de 8 minutos, sem registro de tempo por bloco. | Sem lacuna declarada no ensaio. Plano de estudo mantido. |
+| Samuel Silva dos Reis | 8 min | Explicou o fluxo de CI e o TDD da autorizacao. | Faltou citar o ADR do lock pessimista e as constraints do banco. |
+| Samuel Silva dos Reis | nao cronometrado | Ensaio realizado em 2026-11-09 sobre o roteiro de 8 minutos, sem registro de tempo por bloco. | Sem lacuna declarada no ensaio. Plano de estudo mantido. |
 
 ## Lacunas mais frequentes
 
-1. Esquecer os numeros exatos de cobertura (90% linha, 75% branch, 89,1% SonarCloud).
+1. Esquecer os numeros exatos de cobertura (92,8% linha e 77,1% branch no JaCoCo local).
 2. Nao explicar a diferenca entre WireMock e Testcontainers.
 3. Nao citar a constraint de exclusao do banco de dados.
 
@@ -51,4 +51,4 @@ Preencher por integrante apos rodar o roteiro cronometrado.
 1. Ler o docs/rtm.md em voz alta uma vez por dia.
 2. Revisar o ADR da constraint de exclusao e do lock pessimista.
 3. Ensaiar a demonstracao do frontend no Codespaces com cronometro.
-4. Decorar o ID da execucao verde da tag v1.3.2: ver link da tag v1.3.2.
+4. Explicar que v1.3.2 e a ultima tag publicada e que a v1.3.3 depende de PR e CI.

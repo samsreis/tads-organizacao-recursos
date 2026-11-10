@@ -1,13 +1,13 @@
 # Relatorio de testes
 
-Data: 2026-11-09.
+Data: 2026-11-10.
 
 ## Resumo
 
-- Total: 144 metodos.
+- Total: 145 execucoes de teste em 23 classes (Surefire).
 - Taxa de sucesso local: 100%.
-- Cobertura de linha: 90% (clone limpo, 2026-11-09).
-- Cobertura de branch: 75% (clone limpo, 2026-11-09).
+- Cobertura de linha: 92,8% (655 de 706 linhas; JaCoCo).
+- Cobertura de branch: 77,1% (135 de 175 branches; JaCoCo).
 
 ## Distribuicao por classe
 
@@ -17,11 +17,12 @@ Data: 2026-11-09.
 - RegrasReservaTest: 6.
 - SobreposicaoTest: constraint no banco.
 - SobreposicaoRecursosTest: 8.
-- ConcorrenciaTest: 1 cenario com 10 threads.
+- ConcorrenciaTest: 2 cenarios com 10 threads, um deles concorrendo pelo mesmo professor em salas distintas.
 - PosseReservaTest: 2.
 - AprovacaoTest: 7.
 - AlteracaoReservaTest: 6.
-- AuditoriaTest: 7.
+- AuditoriaTest: 6.
+- AuditoriaRollbackTest: 1 falha de gravacao simulada, com rollback verificado.
 - RelatorioUtilizacaoTest: 4.
 - ProfessorMaterialTest: 10.
 - ProfessorMaterialCrudTest: 13.
@@ -34,10 +35,11 @@ Data: 2026-11-09.
 
 ## Execucao
 
-- Comando: ./mvnw -B verify
-- Ambiente: Linux Mint, Java 21, Docker com Testcontainers.
+- Comando: `./mvnw -B verify`
+- Ambiente: Ubuntu 24.04, Java 21.0.5, Docker com Testcontainers e Postgres 16.
 - Tempo medio: 3 a 4 minutos.
 
 ## Observacoes
 
-- As linhas de erro no log durante a execucao do ConcorrenciaTest sao esperadas: a constraint de exclusao rejeita as reservas concorrentes. O teste comprova que apenas uma reserva e aceita.
+- As mensagens de violacao das constraints de exclusao durante ConcorrenciaTest sao esperadas; os testes confirmam uma reserva aceita e os demais pedidos em conflito, tanto para sala quanto para professor.
+- O build local terminou com BUILD SUCCESS; a execucao de CI remota desta branch ainda esta pendente.
