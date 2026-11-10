@@ -1,11 +1,11 @@
 # Resultado do teste de carga - Rodada 02
 
+O arquivo .jtl bruto foi omitido deste repositório por boas práticas de engenharia de software, pois é um artefato de build. Os dados extraídos dele estão sumarizados abaixo e podem ser reproduzidos com perf/reservas.jmx.
+
 Data: 2026-11-10.
 Ambiente: Codespace Ubuntu 24.04, Java 21.0.5, JMeter 5.6.3, aplicacao local e Postgres 16 em container isolado.
 Plano: perf/reservas.jmx.
 CSV: perf/usuarios.csv.
-
-O arquivo .jtl bruto não é versionado por boas práticas (é um artefato de build), mas as métricas resumidas estão neste documento e podem ser reproduzidas com perf/reservas.jmx.
 
 ## Carga aplicada
 

@@ -1,10 +1,8 @@
 package br.edu.senac.recursos;
 
 import br.edu.senac.recursos.domain.Professor;
-import br.edu.senac.recursos.domain.Sala;
 import br.edu.senac.recursos.repository.ProfessorRepository;
 import br.edu.senac.recursos.suporte.BaseIntegracaoTest;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -46,9 +44,25 @@ class AutorizacaoPorPerfilTest extends BaseIntegracaoTest {
         );
     }
 
+    static Stream<Arguments> endpointsPorId() {
+        return Stream.of(
+            Arguments.of("/salas/{id}"),
+            Arguments.of("/professores/{id}")
+        );
+    }
+
     @ParameterizedTest(name = "{0} {1} como {2} => {3}")
     @MethodSource("matriz")
     void matrizDeAutorizacao(String metodo, String path, String perfil, int esperado) throws Exception {
+        if (path.equals("/salas/{id}")) {
+            path = "/salas/" + salaId;
+        } else if (path.equals("/professores/{id}")) {
+            Professor professor = new Professor();
+            professor.setNome("Professor de teste");
+            professor.setEmail(UUID.randomUUID() + "@teste.com");
+            professor.setCompetencia("Qualidade de Software");
+            path = "/professores/" + professores.save(professor).getId();
+        }
         MockHttpServletRequestBuilder req = switch (metodo) {
             case "GET" -> get(path);
             case "POST" -> post(path);
@@ -71,23 +85,25 @@ class AutorizacaoPorPerfilTest extends BaseIntegracaoTest {
         mvc.perform(req).andExpect(status().is(esperado));
     }
 
-    @Test
-    void solicitanteConsultaSalaPorId200() throws Exception {
-        mvc.perform(get("/salas/" + salaId)
-                .header("Authorization", "Bearer " + tokenSol))
+    @ParameterizedTest(name = "{0}: 401 sem token e 200 com token")
+    @MethodSource("endpointsPorId")
+    void endpointsPorIdExigemAutenticacao(String pathTemplate) throws Exception {
+        String path;
+        if (pathTemplate.equals("/salas/{id}")) {
+            path = "/salas/" + salaId;
+        } else if (pathTemplate.equals("/professores/{id}")) {
+            Professor professor = new Professor();
+            professor.setNome("Professor de teste");
+            professor.setEmail(UUID.randomUUID() + "@teste.com");
+            professor.setCompetencia("Qualidade de Software");
+            path = "/professores/" + professores.save(professor).getId();
+        } else {
+            throw new IllegalArgumentException(pathTemplate);
+        }
+
+        mvc.perform(get(path)).andExpect(status().isUnauthorized());
+        mvc.perform(get(path).header("Authorization", "Bearer " + tokenSol))
             .andExpect(status().isOk());
     }
 
-    @Test
-    void solicitanteConsultaProfessorPorId200() throws Exception {
-        Professor professor = new Professor();
-        professor.setNome("Professor de teste");
-        professor.setEmail(UUID.randomUUID() + "@teste.com");
-        professor.setCompetencia("Qualidade de Software");
-        Long professorId = professores.save(professor).getId();
-
-        mvc.perform(get("/professores/" + professorId)
-                .header("Authorization", "Bearer " + tokenSol))
-            .andExpect(status().isOk());
-    }
 }
