@@ -1,6 +1,6 @@
 # Changelog
 
-## v1.3.6 - Resolução das pendências da auditoria
+## v1.3.7 - Resolução das pendências da auditoria
 
 ### Testes e qualidade
 
