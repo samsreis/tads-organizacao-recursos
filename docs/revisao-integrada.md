@@ -1,6 +1,6 @@
 # Revisao integrada - regras criticas
 
-Data: 2026-11-10. Revisao local da branch `fix/auditoria-final-v1.3.7`; `./mvnw -B verify` passou com 147 execucoes. A versao candidata desta rodada e v1.3.7.
+Data: 2026-11-10. Revisao local da branch `fix/auditoria-final-v1.3.8`; `./mvnw -B verify` passou com 147 execucoes. A versao candidata desta rodada e v1.3.8.
 
 | Regra critica | Requisito | Risco | Tecnica usada | Automacao | Evidencia | Decisao |
 |---|---|---|---|---|---|---|
