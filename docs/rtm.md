@@ -8,8 +8,8 @@ Cada linha liga requisito critico, risco, teste automatizado localizavel por arq
 | RF-01 autenticacao por perfil | qualquer pessoa acessar dado alheio | AutorizacaoPorPerfilTest.matrizDeAutorizacao | API caixa-preta | pipeline verde |
 | RF-01 perfil errado recebe 403 | escalada de permissao | AutorizacaoPorPerfilTest.matrizDeAutorizacao | API caixa-preta | pipeline verde |
 | RF-01 sem token recebe 401 | acesso anonimo | AutorizacaoPorPerfilTest.matrizDeAutorizacao | API caixa-preta | pipeline verde |
-| RF-02 consulta sala por id | recurso existente nao e retornado | AutorizacaoPorPerfilTest.solicitanteConsultaSalaPorId200 | API caixa-preta | verify local |
-| RF-02 consulta professor por id | recurso existente nao e retornado | AutorizacaoPorPerfilTest.solicitanteConsultaProfessorPorId200 | API caixa-preta | verify local |
+| RF-02 consulta sala por id | recurso existente nao e retornado | AutorizacaoPorPerfilTest.endpointsPorIdExigemAutenticacao | API caixa-preta | verify local |
+| RF-02 consulta professor por id | recurso existente nao e retornado | AutorizacaoPorPerfilTest.endpointsPorIdExigemAutenticacao | API caixa-preta | verify local |
 | RF-04 criar reserva | fluxo principal quebrado | E2ETest.fluxoCompletoCadastroLoginReservaAprovacaoUsoConclusao | API caixa-preta | pipeline verde |
 | RF-04 alterar reserva pelo dono | dono nao consegue ajustar | AlteracaoReservaTest.donoAlteraPropriaReserva200 | API caixa-preta | pipeline verde |
 | RF-04 alterar reserva de outro | posse violada | AlteracaoReservaTest.outroSolicitanteNaoPodeAlterar403 | API caixa-preta | pipeline verde |
@@ -48,7 +48,7 @@ Cada linha liga requisito critico, risco, teste automatizado localizavel por arq
 
 ## Evidencia do commit avaliado
 
-Os testes locais desta RTM passaram no verify de 2026-11-10. A versao candidata desta rodada e v1.3.4; o CI remoto nao foi executado porque nao havia autenticacao GitHub.
+Os testes locais desta RTM passaram no verify de 2026-11-10. A versao candidata desta rodada e v1.3.6; o CI remoto nao foi executado porque nao havia autenticacao GitHub.
 
 ## Nota
 

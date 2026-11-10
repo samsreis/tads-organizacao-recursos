@@ -1,9 +1,11 @@
 package br.edu.senac.recursos.steps;
 
+import io.cucumber.junit.platform.engine.Cucumber;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.Quando;
 import io.cucumber.java.pt.Entao;
 
+@Cucumber
 public class AprovacaoSteps {
     @Dado("que existe uma reserva solicitada")
     public void que_existe_uma_reserva_solicitada() {

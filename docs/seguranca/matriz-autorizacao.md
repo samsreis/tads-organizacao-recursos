@@ -17,6 +17,7 @@ Legenda: 200/201/204 = sucesso; 401 = sem token ou token invalido; 403 = perfil 
 | Operacao | Anonimo | SOLICITANTE | RESPONSAVEL | ADMINISTRADOR |
 |---|---|---|---|---|
 | GET /salas | 401 | 200 | 200 | 200 |
+| GET /salas/{id} | 401 | 200 | 200 | 200 |
 | POST /salas | 401 | 403 | 403 | 201 |
 | PUT /salas/{id} | 401 | 403 | 403 | 200 / 404 |
 | DELETE /salas/{id} | 401 | 403 | 403 | 204 / 404 |
@@ -26,6 +27,7 @@ Legenda: 200/201/204 = sucesso; 401 = sem token ou token invalido; 403 = perfil 
 | Operacao | Anonimo | SOLICITANTE | RESPONSAVEL | ADMINISTRADOR |
 |---|---|---|---|---|
 | GET /professores | 401 | 200 | 200 | 200 |
+| GET /professores/{id} | 401 | 200 | 200 | 200 |
 | POST /professores | 401 | 403 | 403 | 201 |
 | PUT /professores/{id} | 401 | 403 | 403 | 200 / 404 |
 | DELETE /professores/{id} | 401 | 403 | 403 | 204 / 404 |

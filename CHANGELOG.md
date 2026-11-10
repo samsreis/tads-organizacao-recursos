@@ -1,6 +1,6 @@
 # Changelog
 
-## v1.3.4 - Finalização local concluída
+## v1.3.6 - Resolução das pendências da auditoria
 
 ### Testes e qualidade
 
