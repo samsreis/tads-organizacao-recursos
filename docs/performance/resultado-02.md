@@ -39,3 +39,5 @@ Percentis e tempos extraidos de `statistics.json` do Dashboard JMeter 5.6.3.
 - Esta foi uma unica rodada local, sem usuarios ou dados de producao.
 - Os resultados dependem dos recursos compartilhados do Codespace e nao sao diretamente comparaveis aos da rodada 01, executada em outro ambiente.
 - A rodada valida o perfil funcional e as metas definidas, mas nao substitui um teste de carga em ambiente representativo de producao.
+
+> **Nota de versionamento:** O arquivo `.jtl` bruto gerado pelo JMeter não é versionado neste repositório por boas práticas de engenharia (evitar versionar artefatos binários de build). Os resultados extraídos dele estão sumarizados nas tabelas acima.
