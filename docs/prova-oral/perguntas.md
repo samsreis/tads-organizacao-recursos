@@ -102,4 +102,4 @@ Formato: pergunta, resposta curta de referencia, evidencia no repositorio.
     Resposta: o sistema consulta o estado do recurso antes de gravar e recusa com 409. Ha teste em RegrasReservaTest que falha se a checagem for removida.
 
 24. Qual foi o defeito mais grave que voce corrigiu e como provou a correcao?
-    Resposta: ver docs/defeitos/. Explicar causa raiz com os 5 porques, o teste de regressao que falhava antes e passa depois, e o commit que liga teste e correcao.
+    Resposta: DEF-03, critica, P0. O cadastro publico aceitava perfil privilegiado, permitindo que qualquer pessoa se registrasse como ADMINISTRADOR ou RESPONSAVEL. Causa raiz: o endpoint /auth/registrar lia o campo perfil do corpo da requisicao e gravava direto no banco. Correcao em 771e5d1: o cadastro publico forca SOLICITANTE e a elevacao de perfil so acontece por endpoint administrativo com autorizacao. Teste de regressao em AuthControllerTest prova que POST /auth/registrar com perfil ADMINISTRADOR cria usuario SOLICITANTE e nao concede privilegio.
