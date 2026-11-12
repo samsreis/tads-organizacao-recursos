@@ -52,3 +52,72 @@ Preencher por integrante apos rodar o roteiro cronometrado.
 2. Revisar o ADR da constraint de exclusao e do lock pessimista.
 3. Ensaiar a demonstracao do frontend no Codespaces com cronometro.
 4. Explicar que a v1.4.2 e a candidata validada localmente e que a tag v1.4.2 foi publicada com CI verde.
+
+## Guia de comandos da apresentacao
+
+### O que eu rodo
+
+Bloco 3 - subir banco e aplicacao:
+docker compose up -d db
+./mvnw spring-boot:run > /tmp/app.log 2>&1 &
+sleep 40
+curl -sS http://localhost:8080/actuator/health
+
+Criar tres usuarios de teste:
+curl -sS -X POST http://localhost:8080/auth/registrar -H "Content-Type: application/json" -d '{"nome":"Solicitante Teste","email":"sol@teste.invalid","senha":"123456","perfil":"SOLICITANTE"}'
+curl -sS -X POST http://localhost:8080/auth/registrar -H "Content-Type: application/json" -d '{"nome":"Responsavel Teste","email":"resp@teste.invalid","senha":"123456","perfil":"RESPONSAVEL"}'
+curl -sS -X POST http://localhost:8080/auth/registrar -H "Content-Type: application/json" -d '{"nome":"Admin Teste","email":"adm@teste.invalid","senha":"123456","perfil":"ADMINISTRADOR"}'
+
+Elevar perfis (cadastro publico forca SOLICITANTE, comportamento do DEF-03):
+docker exec -it recursos-db psql -U recursos -d recursos -c "UPDATE usuarios SET perfil='RESPONSAVEL' WHERE email='resp@teste.invalid'; UPDATE usuarios SET perfil='ADMINISTRADOR' WHERE email='adm@teste.invalid';"
+
+Criar sala como admin:
+TOKEN=$(curl -sS -X POST http://localhost:8080/auth/login -H "Content-Type: application/json" -d '{"email":"adm@teste.invalid","senha":"123456"}' | sed -E 's/.*"token":"([^"]+)".*/\1/')
+curl -sS -X POST http://localhost:8080/salas -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN" -d '{"nome":"Sala 101","capacidade":30,"localizacao":"Bloco A","emManutencao":false}'
+
+Criar reserva como solicitante (esperado 201):
+SOL=$(curl -sS -X POST http://localhost:8080/auth/login -H "Content-Type: application/json" -d '{"email":"sol@teste.invalid","senha":"123456"}' | sed -E 's/.*"token":"([^"]+)".*/\1/')
+curl -sS -X POST http://localhost:8080/reservas -H "Content-Type: application/json" -H "Authorization: Bearer $SOL" -d '{"salaId":1,"inicio":"2032-04-01T10:00:00-03:00","fim":"2032-04-01T11:00:00-03:00"}'
+
+Testar sobreposicao (esperado 409):
+curl -sS -o /dev/null -w "%{http_code}\n" -X POST http://localhost:8080/reservas -H "Content-Type: application/json" -H "Authorization: Bearer $SOL" -d '{"salaId":1,"inicio":"2032-04-01T10:30:00-03:00","fim":"2032-04-01T11:30:00-03:00"}'
+
+Testar autorizacao (esperado 403):
+RESP=$(curl -sS -X POST http://localhost:8080/auth/login -H "Content-Type: application/json" -d '{"email":"resp@teste.invalid","senha":"123456"}' | sed -E 's/.*"token":"([^"]+)".*/\1/')
+curl -sS -X POST http://localhost:8080/reservas -H "Content-Type: application/json" -H "Authorization: Bearer $RESP" -d '{"salaId":1,"inicio":"2032-05-01T10:00:00-03:00","fim":"2032-05-01T11:00:00-03:00"}'
+curl -sS -o /dev/null -w "%{http_code}\n" -X DELETE http://localhost:8080/reservas/3 -H "Authorization: Bearer $SOL"
+
+Encerrar:
+kill %1
+docker compose down -v
+
+### O que o professor vai rodar (simular antes)
+
+Clone limpo e verify:
+cd /tmp && rm -rf sim-prof && git clone https://github.com/samsreis/tads-organizacao-recursos.git sim-prof && cd sim-prof && git checkout v1.4.3 && git describe --tags && docker compose up -d db && ./mvnw -B verify
+
+Teste de validacao (esperado 400 sem stack trace):
+curl -sS -X POST http://localhost:8080/reservas -H "Content-Type: application/json" -H "Authorization: Bearer $SOL" -d '{"salaId":1,"inicio":"2032-04-01T11:00:00-03:00","fim":"2032-04-01T10:00:00-03:00"}'
+
+Mutacao ao vivo (dupla reserva):
+cp src/main/java/br/edu/senac/recursos/config/InicializadorBanco.java /tmp/InicializadorBanco.bak
+# comentar a linha da constraint de sala no arquivo
+./mvnw -B test -Dtest=ConcorrenciaTest
+cp /tmp/InicializadorBanco.bak src/main/java/br/edu/senac/recursos/config/InicializadorBanco.java
+git diff --stat
+./mvnw -B test -Dtest=ConcorrenciaTest
+
+### O que mostrar no navegador
+
+- https://github.com/samsreis/tads-organizacao-recursos/actions?query=branch%3Av1.4.3 - CI verde
+- JaCoCo: 93,6% linha, 78,3% branch (target/site/jacoco/index.html)
+- SonarCloud: Quality Gate Passed, 89,7%, zero issues
+- docs/rtm.md linha Dupla reserva -> ConcorrenciaTest -> run da tag
+
+### Frases de apoio por bloco
+
+Bloco 1: o risco central e dupla reserva e sobreposicao. Se duas pessoas pedirem a mesma sala no mesmo horario, uma reserva e aceita e a outra recusada com mensagem clara.
+Bloco 2: duas camadas de defesa. Validacao na aplicacao e constraint de exclusao no banco. A segunda existe porque a primeira sozinha tem janela de corrida sob concorrencia.
+Bloco 4: 93,6% de linha e 78,3% de branch, acima de 80% e 70%. O build falha se cair, entao cobertura e gate, nao relatorio.
+Bloco 5: cada linha da RTM liga requisito, risco, teste e evidencia.
+Bloco 6: trabalho individual, sem revisao por pares. Carga unica local, nao comprova producao. Com mais tempo: revisao por pares, mais rodadas de carga, testes exploratorios.

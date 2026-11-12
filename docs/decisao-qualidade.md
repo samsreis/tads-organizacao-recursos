@@ -41,4 +41,4 @@ Decisao: liberar, com as ressalvas registradas em Riscos aceitos.
 ## Conclusao
 
 A decisao e liberar v1.4.2: verify passou, o CI da tag ficou verde e a rodada JMeter de 2026-11-10 atendeu os p95 definidos. A tag v1.4.2 foi publicada com CI verde em https://github.com/samsreis/tads-organizacao-recursos/actions?query=branch%3Av1.4.2. A carga foi feita uma unica vez em ambiente local e nao comprova desempenho em producao.
-Analise atual do SonarCloud no SHA ea9bc64: https://sonarcloud.io/project/overview?id=samsreis_tads-organizacao-recursos. Quality Gate Passed, 89,7% de cobertura, zero issues.
+Analise atual do SonarCloud: https://sonarcloud.io/project/overview?id=samsreis_tads-organizacao-recursos. Quality Gate Passed, 89,7% de cobertura, zero issues.
