@@ -40,5 +40,5 @@ Decisao: liberar com ressalvas apos o CI remoto.
 
 ## Conclusao
 
-A decisao local e liberar v1.3.8 com ressalvas apos CI remoto: verify passou, e a rodada JMeter de 2026-11-10 atendeu os p95 definidos. A publicacao remota nao foi executada por falta de autenticacao GitHub. A carga foi feita uma unica vez em ambiente local e nao comprova desempenho em producao.
+A decisao local e liberar v1.3.9 com ressalvas apos CI remoto: verify passou, e a rodada JMeter de 2026-11-10 atendeu os p95 definidos. A tag v1.3.9 foi publicada com CI verde em https://github.com/samsreis/tads-organizacao-recursos/actions/runs/43149556067. A carga foi feita uma unica vez em ambiente local e nao comprova desempenho em producao.
 Historico do SonarCloud na v1.3.2: https://sonarcloud.io/project/overview?id=samsreis_tads-organizacao-recursos. A branch atual aguarda nova analise remota.

@@ -30,12 +30,12 @@ JMeter: rodada local em 2026-11-10, detalhada em docs/performance/resultado-02.m
 | Matriz de autorizacao | sim | sim | docs/seguranca/matriz-autorizacao.md |
 | Licoes aprendidas | sim | sim | docs/licoes-aprendidas.md |
 | Revisao integrada | sim | sim | docs/revisao-integrada.md |
-| Tag de release | v1.3.2 e anteriores | v1.3.8 preparada localmente; tag nao enviada | docs/evidencias/README.md |
+| Tag de release | v1.3.2 e anteriores | v1.3.9 preparada localmente; tag v1.3.9 enviada com CI verde | docs/evidencias/README.md |
 | Repositorio publico no GitHub | sim | sim | https://github.com/samsreis/tads-organizacao-recursos |
 
-## Publicacao remota nao executada
+## Publicacao remota
 
-O ambiente nao tinha credencial GitHub valida para criar PR, fazer push, merge ou publicar a tag v1.3.8.
+A tag v1.3.9 foi publicada com CI verde em https://github.com/samsreis/tads-organizacao-recursos/actions/runs/43149556067.
 
 ## Limites aceitos
 

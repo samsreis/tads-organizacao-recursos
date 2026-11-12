@@ -4,7 +4,7 @@ Data: 2026-11-10.
 Repositorio: https://github.com/samsreis/tads-organizacao-recursos.
 Autor: Samuel Silva dos Reis.
 Integrante: Samuel Silva dos Reis (Trabalho Individual)
-Branch avaliada: `fix/auditoria-final-v1.3.8`.
+Branch avaliada: `main`.
 Commit atual no inicio desta rodada: commit atual.
 Ambiente de medicao: Ubuntu 24.04, Java 21.0.5, Maven wrapper, Docker com Testcontainers e Postgres 16.
 
@@ -49,7 +49,7 @@ Ambiente de medicao: Ubuntu 24.04, Java 21.0.5, Maven wrapper, Docker com Testco
 
 - 147 execucoes de teste em 23 classes.
 - `./mvnw -B verify` passou localmente em 2026-11-10, sem falhas ou erros.
-- As tags anteriores, incluindo v1.3.2, possuem execucoes historicas no GitHub Actions. A branch v1.3.8 foi validada localmente; o GitHub nao estava autenticado para publicar PR ou tag.
+- As tags anteriores, incluindo v1.3.2, possuem execucoes historicas no GitHub Actions. A tag v1.3.9 foi publicada com CI verde em https://github.com/samsreis/tads-organizacao-recursos/actions/runs/43149556067.
 - A ultima analise SonarCloud documentada e historica (v1.3.2): Quality Gate Passed, sem issues ou hotspots. Nao foi refeita para esta branch.
 
 ## Defeitos registrados
@@ -77,5 +77,5 @@ Ambiente de medicao: Ubuntu 24.04, Java 21.0.5, Maven wrapper, Docker com Testco
 
 ## Conclusao
 
-O verify local, as metas de cobertura e a rodada de carga atenderam aos criterios registrados. A versao candidata desta rodada e v1.3.8; a publicacao remota nao foi executada por falta de autenticacao GitHub. A decisao esta em docs/decisao-qualidade.md.
+O verify local, as metas de cobertura e a rodada de carga atenderam aos criterios registrados. A versao candidata desta rodada e v1.3.9; a tag v1.3.9 foi publicada com CI verde em https://github.com/samsreis/tads-organizacao-recursos/actions/runs/43149556067. A decisao esta em docs/decisao-qualidade.md.
 Historico do SonarCloud na v1.3.2: https://sonarcloud.io/project/overview?id=samsreis_tads-organizacao-recursos. Nova analise remota sera executada quando a branch puder ser publicada.

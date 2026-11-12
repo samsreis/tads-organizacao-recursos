@@ -1,8 +1,8 @@
 # Pacote de evidencias
 
-Ultima tag publicada conhecida: v1.3.2. Versao candidata local: v1.3.8. Repositorio: https://github.com/samsreis/tads-organizacao-recursos. Historico: v1.0.0-rc1, v1.0.0-rc2, v1.0.0, v1.1.0, v1.2.0, v1.2.1, v1.2.2, v1.2.3, v1.2.4, v1.2.5, v1.2.6, v1.2.7, v1.2.8 e v1.3.2.
+Ultima tag publicada: v1.3.9, com CI verde. Repositorio: https://github.com/samsreis/tads-organizacao-recursos. Historico: v1.0.0-rc1, v1.0.0-rc2, v1.0.0, v1.1.0, v1.2.0, v1.2.1, v1.2.2, v1.2.3, v1.2.4, v1.2.5, v1.2.6, v1.2.7, v1.3.2 e v1.3.9.
 
-Verificacao local desta revisao: `./mvnw -B verify`, 147 execucoes sem falhas, 92,8% de cobertura de linha e 77,1% de branch. PR, CI remoto, merge e tag v1.3.8 nao foram executados por falta de autenticacao GitHub.
+Verificacao local desta revisao: `./mvnw -B verify`, 147 execucoes sem falhas, 92,8% de cobertura de linha e 77,1% de branch. PR, CI remoto, merge e tag v1.3.9 foram executados; tag v1.3.9 com CI verde em https://github.com/samsreis/tads-organizacao-recursos/actions/runs/43149556067.
 
 ## Indice
 
@@ -34,7 +34,7 @@ Verificacao local desta revisao: `./mvnw -B verify`, 147 execucoes sem falhas, 9
 
 ## Execucao do CI
 
-Execucao da tag v1.3.2: https://github.com/samsreis/tads-organizacao-recursos/actions?query=branch%3Av1.3.2. A tag v1.3.8 nao foi enviada nesta rodada por falta de autenticacao GitHub.
+Execucao da tag v1.3.2: https://github.com/samsreis/tads-organizacao-recursos/actions?query=branch%3Av1.3.2. A tag v1.3.9 foi enviada e o CI ficou verde em https://github.com/samsreis/tads-organizacao-recursos/actions/runs/43149556067.
 
 ## Relatorio JaCoCo
 
@@ -46,7 +46,7 @@ Integracao e analise historica da v1.3.2 documentadas. A branch atual ainda nao 
 
 ## Regra
 
-Evidencias da tag v1.3.2 continuam imutaveis. As evidencias locais desta revisao estao associadas ao commit candidato da v1.3.8.
+Evidencias da tag v1.3.2 continuam imutaveis. As evidencias locais desta revisao estao associadas ao commit candidato da v1.3.9.
 
 
 ## SonarCloud
