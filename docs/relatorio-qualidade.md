@@ -50,7 +50,7 @@ Ambiente de medicao: Ubuntu 24.04, Java 21.0.5, Maven wrapper, Docker com Testco
 - 147 execucoes de teste em 23 classes.
 - `./mvnw -B verify` passou localmente em 2026-11-10, sem falhas ou erros.
 - As tags anteriores, incluindo v1.3.2, possuem execucoes historicas no GitHub Actions. A tag v1.4.2 foi publicada com CI verde em https://github.com/samsreis/tads-organizacao-recursos/actions?query=branch%3Av1.4.2.
-- A analise SonarCloud no SHA 7d92b83 com Quality Gate OK e zero issues BLOCKER/CRITICAL: Quality Gate Passed, sem issues ou hotspots. Nao foi refeita para esta branch.
+- A analise SonarCloud no SHA ea9bc64 com Quality Gate OK e zero issues BLOCKER/CRITICAL: Quality Gate Passed, sem issues ou hotspots. Nao foi refeita para esta branch.
 
 ## Defeitos registrados
 
@@ -78,4 +78,4 @@ Ambiente de medicao: Ubuntu 24.04, Java 21.0.5, Maven wrapper, Docker com Testco
 ## Conclusao
 
 O verify local, as metas de cobertura e a rodada de carga atenderam aos criterios registrados. A versao candidata desta rodada e v1.4.2; a tag v1.4.2 foi publicada com CI verde em https://github.com/samsreis/tads-organizacao-recursos/actions?query=branch%3Av1.4.2. A decisao esta em docs/decisao-qualidade.md.
-Analise atual do SonarCloud no SHA 7d92b83: https://sonarcloud.io/project/overview?id=samsreis_tads-organizacao-recursos. Nova analise remota sera executada quando a branch puder ser publicada.
+Analise atual do SonarCloud no SHA ea9bc64: https://sonarcloud.io/project/overview?id=samsreis_tads-organizacao-recursos. Quality Gate Passed, zero issues BLOCKER ou CRITICAL.

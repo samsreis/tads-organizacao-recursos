@@ -36,7 +36,7 @@ Data: 2026-11-10.
 
 ## Acompanhamento de qualidade
 
-- SonarCloud integrado; a analise atual no SHA 7d92b83 com Quality Gate OK passou no Quality Gate.
+- SonarCloud integrado; a analise atual no SHA ea9bc64 com Quality Gate OK passou no Quality Gate.
 - Revisao local e documentacao da versao candidata v1.4.2 concluidas. A tag v1.4.2 foi publicada com CI verde em https://github.com/samsreis/tads-organizacao-recursos/actions?query=branch%3Av1.4.2.
 - JMeter executado em 2026-11-10 no Codespace: p95 de login 209,05 ms, salas 17,45 ms e reserva 39,9 ms; metas atendidas nesta rodada. Resultado em docs/performance/resultado-02.md.
 

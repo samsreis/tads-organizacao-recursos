@@ -97,3 +97,9 @@ Formato: pergunta, resposta curta de referencia, evidencia no repositorio.
 22. Como se prova que um teste protege a regra?
     Resposta: mutacao manual. Quebra-se a regra, executa-se o teste e confirma-se o vermelho; depois restaura-se o codigo. Onze regras registradas, tres provas reexecutadas em 2026-11-09 e 2026-11-10.
     Evidencia: docs/testes/mutacao-manual.md.
+
+23. O que acontece se a aplicação tentar reservar uma sala em manutenção?
+    Resposta: o sistema consulta o estado do recurso antes de gravar e recusa com 409. Ha teste em RegrasReservaTest que falha se a checagem for removida.
+
+24. Qual foi o defeito mais grave que voce corrigiu e como provou a correcao?
+    Resposta: ver docs/defeitos/. Explicar causa raiz com os 5 porques, o teste de regressao que falhava antes e passa depois, e o commit que liga teste e correcao.
