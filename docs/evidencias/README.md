@@ -42,13 +42,13 @@ Artefato publicado pelo workflow em cada execucao. Caminho local: target/site/ja
 
 ## Quality Gate do SonarCloud
 
-Integracao e analise historica da v1.3.2 documentadas. A branch atual ainda nao recebeu nova analise/Quality Gate remoto. Link: https://sonarcloud.io/project/overview?id=samsreis_tads-organizacao-recursos
+Analise atual no SHA ea9bc64: Quality Gate Passed, 89,7% de cobertura, zero issues BLOCKER ou CRITICAL. Analise historica da v1.3.2 preservada. Link: https://sonarcloud.io/project/overview?id=samsreis_tads-organizacao-recursos
 
 ## Regra
 
-Evidencias da tag v1.3.2 continuam imutaveis. As evidencias locais desta revisao estao associadas ao commit candidato da v1.4.2.
+Evidencias da tag v1.3.2 continuam imutaveis. As evidencias desta revisao estao associadas ao commit ea9bc64, avaliado pela tag v1.4.2.
 
 
 ## SonarCloud
 
-Historico da analise da v1.3.2: [Ver painel no SonarCloud](https://sonarcloud.io/project/overview?id=samsreis_tads-organizacao-recursos)
+Analise atual no SHA ea9bc64 com Quality Gate Passed e analise historica da v1.3.2: [Ver painel no SonarCloud](https://sonarcloud.io/project/overview?id=samsreis_tads-organizacao-recursos)
