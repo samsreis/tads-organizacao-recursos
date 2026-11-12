@@ -12,7 +12,7 @@ Data: 2026-11-10.
 | RF-04 | Criacao, alteracao e cancelamento de reservas | feito | RegrasReservaTest, AlteracaoReservaTest, PosseReservaTest, AutorizacaoPorPerfilTest | limitador de nota: fluxo principal |
 | RF-05 | Deteccao de sobreposicao, inclusive agenda do professor | feito | SobreposicaoTest, SobreposicaoRecursosTest, ConcorrenciaTest.apenasUmaReservaAceitaParaProfessorEmSolicitacoesSimultaneas | limitador de nota: dupla reserva |
 | RF-06 | Protecao contra dupla reserva em solicitacoes simultaneas | feito | ConcorrenciaTest.apenasUmaReservaAceitaEmDezSolicitacoesSimultaneas, ConcorrenciaTest.apenasUmaReservaAceitaParaProfessorEmSolicitacoesSimultaneas, ADR-001, ADR-004 | limitador de nota: dupla reserva |
-| RF-07 | Aprovacao obrigatoria para recursos restritos | feito | AprovacaoTest, MaquinaEstadosTest | perde ponto em requisitos |
+| RF-07 | Aprovacao obrigatoria para recursos restritos | feito | AprovacaoTest, MaquinaEstadosTest. Decisao de design: toda reserva nasce SOLICITADA e exige aprovacao, entao todo recurso se comporta como restrito por padrao; nao ha campo restrito no modelo | perde ponto em requisitos |
 | RF-08 | Bloqueio de recursos em manutencao | feito | RegrasReservaTest, SobreposicaoRecursosTest | perde ponto em requisitos |
 | RF-09 | Registro de retirada e devolucao de materiais | feito | MovimentacaoMaterialTest | perde ponto em requisitos |
 | RF-10 | Historico auditavel de mudancas | feito | AuditoriaTest, AuditoriaRollbackTest.falhaNaAuditoriaDesfazAReserva, MaquinaEstadosTest | perde ponto em rastreabilidade |
