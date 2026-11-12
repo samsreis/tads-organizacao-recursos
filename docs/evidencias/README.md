@@ -1,8 +1,8 @@
 # Pacote de evidencias
 
-Ultima tag publicada: v1.4.2, com CI verde. Repositorio: https://github.com/samsreis/tads-organizacao-recursos. Historico: v1.0.0-rc1, v1.0.0-rc2, v1.0.0, v1.1.0, v1.2.0, v1.2.1, v1.2.2, v1.2.3, v1.2.4, v1.2.5, v1.2.6, v1.2.7, v1.3.2 e v1.4.2.
+Ultima tag publicada: v1.4.3, com CI verde. Repositorio: https://github.com/samsreis/tads-organizacao-recursos. Historico: v1.0.0-rc1, v1.0.0-rc2, v1.0.0, v1.1.0, v1.2.0, v1.2.1, v1.2.2, v1.2.3, v1.2.4, v1.2.5, v1.2.6, v1.2.7, v1.3.2, v1.4.2 e v1.4.3.
 
-Verificacao local desta revisao: `./mvnw -B verify`, 147 execucoes sem falhas, 93,6% de cobertura de linha e 78,3% de branch. PR, CI remoto, merge e tag v1.4.2 foram executados; tag v1.4.2 com CI verde em https://github.com/samsreis/tads-organizacao-recursos/actions?query=branch%3Av1.4.2.
+Verificacao local desta revisao: `./mvnw -B verify`, 147 execucoes sem falhas, 93,6% de cobertura de linha e 78,3% de branch. PR, CI remoto, merge e tag v1.4.3 foram executados; tag v1.4.3 com CI verde em https://github.com/samsreis/tads-organizacao-recursos/actions?query=branch%3Av1.4.3.
 
 ## Indice
 
@@ -34,7 +34,7 @@ Verificacao local desta revisao: `./mvnw -B verify`, 147 execucoes sem falhas, 9
 
 ## Execucao do CI
 
-Execucao da tag v1.3.2: https://github.com/samsreis/tads-organizacao-recursos/actions?query=branch%3Av1.3.2. A tag v1.4.2 foi enviada e o CI ficou verde em https://github.com/samsreis/tads-organizacao-recursos/actions?query=branch%3Av1.4.2.
+Execucao da tag v1.3.2: https://github.com/samsreis/tads-organizacao-recursos/actions?query=branch%3Av1.3.2. A tag v1.4.3 foi enviada e o CI ficou verde em https://github.com/samsreis/tads-organizacao-recursos/actions?query=branch%3Av1.4.3.
 
 ## Relatorio JaCoCo
 

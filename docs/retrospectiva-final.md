@@ -19,7 +19,7 @@ Data: 2026-11-10.
 ## A melhorar
 
 - Reexecutar a carga em ambiente representativo e com mais de uma rodada antes de assumir os valores como garantia operacional.
-- A verificacao local da candidata v1.4.2 foi concluida; a tag v1.4.2 foi publicada com CI verde em https://github.com/samsreis/tads-organizacao-recursos/actions?query=branch%3Av1.4.2.
+- A verificacao local da candidata v1.4.3 foi concluida; a tag v1.4.3 foi publicada com CI verde em https://github.com/samsreis/tads-organizacao-recursos/actions?query=branch%3Av1.4.3.
 
 ## Metricas semanais
 
@@ -43,4 +43,4 @@ Os dados abaixo sao o retrato semanal disponivel no relatorio de qualidade, cons
 
 ## Decisao
 
-Os resultados locais atendem aos criterios automatizados e metas de carga definidos para esta revisao. A versao candidata e v1.4.2; A tag v1.4.2 foi publicada com CI verde em https://github.com/samsreis/tads-organizacao-recursos/actions?query=branch%3Av1.4.2.
+Os resultados locais atendem aos criterios automatizados e metas de carga definidos para esta revisao. A versao candidata e v1.4.3; A tag v1.4.3 foi publicada com CI verde em https://github.com/samsreis/tads-organizacao-recursos/actions?query=branch%3Av1.4.3.

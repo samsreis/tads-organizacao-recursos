@@ -86,13 +86,13 @@ Formato: pergunta, resposta curta de referencia, evidencia no repositorio.
     Resposta: docs/rtm.md.
 
 19. Qual a decisao de qualidade do projeto?
-    Resposta: Samuel Silva dos Reis decidiu liberar v1.4.2 com ressalvas, conforme docs/decisao-qualidade.md.
+    Resposta: Samuel Silva dos Reis decidiu liberar v1.4.3 com ressalvas, conforme docs/decisao-qualidade.md.
 
 20. O que ficou de fora?
     Resposta: interface simples, sem animacao. Carga unica em ambiente local. Sem revisao por pares, pois o trabalho foi individual e nao havia equipe vizinha disponivel.
 
 21. Qual a tag final de entrega?
-    Resposta: v1.4.2 e a versao candidata local; a tag v1.4.2 foi publicada com CI verde.
+    Resposta: v1.4.3 e a versao candidata local; a tag v1.4.3 foi publicada com CI verde.
 
 22. Como se prova que um teste protege a regra?
     Resposta: mutacao manual. Quebra-se a regra, executa-se o teste e confirma-se o vermelho; depois restaura-se o codigo. Onze regras registradas, tres provas reexecutadas em 2026-11-09 e 2026-11-10.

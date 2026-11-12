@@ -19,7 +19,7 @@ Decisao: liberar, com as ressalvas registradas em Riscos aceitos.
 | Criterio | Evidencia | Situacao |
 |---|---|---|
 | 1 | README.md com passo a passo | atende |
-| 2 | `./mvnw -B verify`: BUILD SUCCESS. Tag v1.4.2 com CI verde em https://github.com/samsreis/tads-organizacao-recursos/actions?query=branch%3Av1.4.2. | atende |
+| 2 | `./mvnw -B verify`: BUILD SUCCESS. Tag v1.4.3 com CI verde em https://github.com/samsreis/tads-organizacao-recursos/actions?query=branch%3Av1.4.3. | atende |
 | 3 | AutorizacaoPorPerfilTest, Matriz de autorizacao | atende |
 | 4 | ConcorrenciaTest, ADR-001, ADR-004 | atende |
 | 5 | 93,6% linha (663/708) e 78,3% branch (137/175), JaCoCo local | atende |
@@ -40,5 +40,5 @@ Decisao: liberar, com as ressalvas registradas em Riscos aceitos.
 
 ## Conclusao
 
-A decisao e liberar v1.4.2: verify passou, o CI da tag ficou verde e a rodada JMeter de 2026-11-10 atendeu os p95 definidos. A tag v1.4.2 foi publicada com CI verde em https://github.com/samsreis/tads-organizacao-recursos/actions?query=branch%3Av1.4.2. A carga foi feita uma unica vez em ambiente local e nao comprova desempenho em producao.
+A decisao e liberar v1.4.3: verify passou, o CI da tag ficou verde e a rodada JMeter de 2026-11-10 atendeu os p95 definidos. A tag v1.4.3 foi publicada com CI verde em https://github.com/samsreis/tads-organizacao-recursos/actions?query=branch%3Av1.4.3. A carga foi feita uma unica vez em ambiente local e nao comprova desempenho em producao.
 Analise atual do SonarCloud: https://sonarcloud.io/project/overview?id=samsreis_tads-organizacao-recursos. Quality Gate Passed, 89,7% de cobertura, zero issues.

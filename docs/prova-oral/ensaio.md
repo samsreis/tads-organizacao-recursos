@@ -51,7 +51,7 @@ Preencher por integrante apos rodar o roteiro cronometrado.
 1. Ler o docs/rtm.md em voz alta uma vez por dia.
 2. Revisar o ADR da constraint de exclusao e do lock pessimista.
 3. Ensaiar a demonstracao do frontend no Codespaces com cronometro.
-4. Explicar que a v1.4.2 e a candidata validada localmente e que a tag v1.4.2 foi publicada com CI verde.
+4. Explicar que a v1.4.3 e a candidata validada localmente e que a tag v1.4.3 foi publicada com CI verde.
 
 ## Guia de comandos da apresentacao
 
