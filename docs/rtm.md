@@ -48,7 +48,7 @@ Cada linha liga requisito critico, risco, teste automatizado localizavel por arq
 
 ## Evidencia do commit avaliado
 
-Os testes locais desta RTM passaram no verify de 2026-11-10. A versao candidata desta rodada e v1.3.9; o CI da tag v1.3.9 ficou verde em https://github.com/samsreis/tads-organizacao-recursos/actions/runs/43149556067.
+Os testes locais desta RTM passaram no verify de 2026-11-10. A versao candidata desta rodada e v1.4.0; o CI da tag v1.4.0 ficou verde em https://github.com/samsreis/tads-organizacao-recursos/actions/runs/43150356823.
 
 ## Nota
 

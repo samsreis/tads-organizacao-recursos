@@ -37,13 +37,13 @@ Data: 2026-11-10.
 ## Acompanhamento de qualidade
 
 - SonarCloud integrado; a analise de referencia documentada para v1.3.2 passou no Quality Gate.
-- Revisao local e documentacao da versao candidata v1.3.9 concluidas. A tag v1.3.9 foi publicada com CI verde em https://github.com/samsreis/tads-organizacao-recursos/actions/runs/43149556067.
+- Revisao local e documentacao da versao candidata v1.4.0 concluidas. A tag v1.4.0 foi publicada com CI verde em https://github.com/samsreis/tads-organizacao-recursos/actions/runs/43150356823.
 - JMeter executado em 2026-11-10 no Codespace: p95 de login 209,05 ms, salas 17,45 ms e reserva 39,9 ms; metas atendidas nesta rodada. Resultado em docs/performance/resultado-02.md.
 
 ## Estado do GitHub
 
 Repositorio publico: https://github.com/samsreis/tads-organizacao-recursos.
-Versao candidata desta rodada: v1.3.9. A ultima tag publicada e a v1.3.9, com CI verde.
+Versao candidata desta rodada: v1.4.0. A ultima tag publicada e a v1.4.0, com CI verde.
 
 ## Nao cortar
 
