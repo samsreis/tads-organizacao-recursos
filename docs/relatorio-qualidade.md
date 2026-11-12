@@ -40,8 +40,8 @@ Ambiente de medicao: Ubuntu 24.04, Java 21.0.5, Maven wrapper, Docker com Testco
 
 | Meta | Valor alvo | Medido | Situacao |
 |---|---|---|---|
-| Cobertura de linha | 80% | 92,8% no JaCoCo (655 de 706 linhas) | atende |
-| Cobertura de branch | 70% | 77,1% no JaCoCo (135 de 175 branches) | atende |
+| Cobertura de linha | 80% | 93,6% no JaCoCo (655 de 706 linhas) | atende |
+| Cobertura de branch | 70% | 78,3% no JaCoCo (135 de 175 branches) | atende |
 | Requisitos criticos na RTM | 100% | 100% (todas as linhas com teste localizavel) | atende |
 | Bugs ou vulnerabilidades criticas abertas | 0 | DEF-03 (critica) foi corrigido; ultima analise SonarCloud documentada (v1.3.2) nao registrava issues | concluido para os defeitos registrados |
 
@@ -49,8 +49,8 @@ Ambiente de medicao: Ubuntu 24.04, Java 21.0.5, Maven wrapper, Docker com Testco
 
 - 147 execucoes de teste em 23 classes.
 - `./mvnw -B verify` passou localmente em 2026-11-10, sem falhas ou erros.
-- As tags anteriores, incluindo v1.3.2, possuem execucoes historicas no GitHub Actions. A tag v1.4.0 foi publicada com CI verde em https://github.com/samsreis/tads-organizacao-recursos/actions/runs/43150356823.
-- A ultima analise SonarCloud documentada e historica (v1.3.2): Quality Gate Passed, sem issues ou hotspots. Nao foi refeita para esta branch.
+- As tags anteriores, incluindo v1.3.2, possuem execucoes historicas no GitHub Actions. A tag v1.4.2 foi publicada com CI verde em https://github.com/samsreis/tads-organizacao-recursos/actions?query=branch%3Av1.4.2.
+- A analise SonarCloud no SHA 7d92b83 com Quality Gate OK e zero issues BLOCKER/CRITICAL: Quality Gate Passed, sem issues ou hotspots. Nao foi refeita para esta branch.
 
 ## Defeitos registrados
 
@@ -77,5 +77,5 @@ Ambiente de medicao: Ubuntu 24.04, Java 21.0.5, Maven wrapper, Docker com Testco
 
 ## Conclusao
 
-O verify local, as metas de cobertura e a rodada de carga atenderam aos criterios registrados. A versao candidata desta rodada e v1.4.0; a tag v1.4.0 foi publicada com CI verde em https://github.com/samsreis/tads-organizacao-recursos/actions/runs/43150356823. A decisao esta em docs/decisao-qualidade.md.
-Historico do SonarCloud na v1.3.2: https://sonarcloud.io/project/overview?id=samsreis_tads-organizacao-recursos. Nova analise remota sera executada quando a branch puder ser publicada.
+O verify local, as metas de cobertura e a rodada de carga atenderam aos criterios registrados. A versao candidata desta rodada e v1.4.2; a tag v1.4.2 foi publicada com CI verde em https://github.com/samsreis/tads-organizacao-recursos/actions?query=branch%3Av1.4.2. A decisao esta em docs/decisao-qualidade.md.
+Analise atual do SonarCloud no SHA 7d92b83: https://sonarcloud.io/project/overview?id=samsreis_tads-organizacao-recursos. Nova analise remota sera executada quando a branch puder ser publicada.

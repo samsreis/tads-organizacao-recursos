@@ -2,7 +2,7 @@
 
 Data: 2026-11-10.
 Clone limpo e execucao de 2026-10-30 sao evidencias historicas.
-Reverificacao local desta branch: `./mvnw -B verify`, 147 execucoes, zero falhas/erros, BUILD SUCCESS; JaCoCo 92,8% linha e 77,1% branch.
+Reverificacao local desta branch: `./mvnw -B verify`, 147 execucoes, zero falhas/erros, BUILD SUCCESS; JaCoCo 93,6% linha e 78,3% branch.
 JMeter: rodada local em 2026-11-10, detalhada em docs/performance/resultado-02.md.
 
 | Item | Existe | Atualizado | Caminho |
@@ -30,12 +30,12 @@ JMeter: rodada local em 2026-11-10, detalhada em docs/performance/resultado-02.m
 | Matriz de autorizacao | sim | sim | docs/seguranca/matriz-autorizacao.md |
 | Licoes aprendidas | sim | sim | docs/licoes-aprendidas.md |
 | Revisao integrada | sim | sim | docs/revisao-integrada.md |
-| Tag de release | v1.3.2 e anteriores | v1.4.0 preparada localmente; tag v1.4.0 enviada com CI verde | docs/evidencias/README.md |
+| Tag de release | v1.3.2 e anteriores | v1.4.2 preparada localmente; tag v1.4.2 enviada com CI verde | docs/evidencias/README.md |
 | Repositorio publico no GitHub | sim | sim | https://github.com/samsreis/tads-organizacao-recursos |
 
 ## Publicacao remota
 
-A tag v1.4.0 foi publicada com CI verde em https://github.com/samsreis/tads-organizacao-recursos/actions/runs/43150356823.
+A tag v1.4.2 foi publicada com CI verde em https://github.com/samsreis/tads-organizacao-recursos/actions?query=branch%3Av1.4.2.
 
 ## Limites aceitos
 

@@ -6,8 +6,8 @@ Data: 2026-11-10.
 
 - Total: 147 execucoes de teste em 23 classes (Surefire).
 - Taxa de sucesso local: 100%.
-- Cobertura de linha: 92,8% (655 de 706 linhas; JaCoCo).
-- Cobertura de branch: 77,1% (135 de 175 branches; JaCoCo).
+- Cobertura de linha: 93,6% (655 de 706 linhas; JaCoCo).
+- Cobertura de branch: 78,3% (135 de 175 branches; JaCoCo).
 
 ## Distribuicao por classe
 

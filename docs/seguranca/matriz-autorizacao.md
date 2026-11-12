@@ -53,15 +53,15 @@ Legenda: 200/201/204 = sucesso; 401 = sem token ou token invalido; 403 = perfil 
 
 ## Reservas - dono
 
-Regra de posse: SOLICITANTE so altera e cancela reserva em que ele e o solicitante. Tentativa de mexer em reserva de outro solicitante retorna 403.
+Regra de posse: alteracao e cancelamento exigem que o usuario autenticado seja o dono da reserva, independentemente do perfil. SOLICITANTE nao dono, RESPONSAVEL nao dono e ADMINISTRADOR nao dono recebem 403.
 
 | Operacao | Anonimo | SOLICITANTE dono | SOLICITANTE nao dono | RESPONSAVEL | ADMINISTRADOR |
 |---|---|---|---|---|---|
 | POST /reservas | 401 | 201 / 409 | 201 / 409 | 201 / 409 | 201 / 409 |
 | GET /reservas/minhas | 401 | 200 | 200 | 200 | 200 |
 | GET /reservas | 401 | 403 | 200 | 200 |
-| PUT /reservas/{id} | 401 | 200 / 404 / 409 | 403 | 200 / 404 / 409 | 200 / 404 / 409 |
-| DELETE /reservas/{id} | 401 | 204 / 404 / 409 | 403 | 204 / 404 / 409 | 204 / 404 / 409 |
+| PUT /reservas/{id} | 401 | 200 / 404 / 409 | 403 | 403 (nao dono); 200 / 404 / 409 (dono) | 403 (nao dono); 200 / 404 / 409 (dono) |
+| DELETE /reservas/{id} | 401 | 204 / 404 / 409 | 403 | 403 (nao dono); 204 / 404 / 409 (dono) | 403 (nao dono); 204 / 404 / 409 (dono) |
 
 ## Reservas - transicoes e historico
 
@@ -86,7 +86,7 @@ Nenhuma. A regra final anyRequest().authenticated() cobre qualquer rota nao list
 
 ## Divergencias conhecidas entre matriz e codigo
 
-Nenhuma divergencia identificada no momento desta revisao.
+Alinhado ao codigo em 2026-11-12: edicao e cancelamento de reserva exigem posse, inclusive para RESPONSAVEL e ADMINISTRADOR. A versao anterior da matriz descrevia permissao ampla que o codigo nao concede.
 
 ## Notas
 

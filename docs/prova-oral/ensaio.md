@@ -19,7 +19,7 @@ Roteiro individual de 8 minutos.
 
 4. Testes e CI (1 min 30)
    - 145 execucoes de teste, Testcontainers, MockMvc, WireMock.
-   - Cobertura local JaCoCo: 92,8% linha e 77,1% branch.
+   - Cobertura local JaCoCo: 93,6% linha e 78,3% branch.
    - Verify local aprovado; PR e CI remotos dependem de autenticacao GitHub.
 
 5. RTM e relatorio (1 min)
@@ -42,7 +42,7 @@ Preencher por integrante apos rodar o roteiro cronometrado.
 
 ## Lacunas mais frequentes
 
-1. Esquecer os numeros exatos de cobertura (92,8% linha e 77,1% branch no JaCoCo local).
+1. Esquecer os numeros exatos de cobertura (93,6% linha e 78,3% branch no JaCoCo local).
 2. Nao explicar a diferenca entre WireMock e Testcontainers.
 3. Nao citar a constraint de exclusao do banco de dados.
 
@@ -51,4 +51,4 @@ Preencher por integrante apos rodar o roteiro cronometrado.
 1. Ler o docs/rtm.md em voz alta uma vez por dia.
 2. Revisar o ADR da constraint de exclusao e do lock pessimista.
 3. Ensaiar a demonstracao do frontend no Codespaces com cronometro.
-4. Explicar que a v1.4.0 e a candidata validada localmente e que a tag v1.4.0 foi publicada com CI verde.
+4. Explicar que a v1.4.2 e a candidata validada localmente e que a tag v1.4.2 foi publicada com CI verde.

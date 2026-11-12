@@ -5,7 +5,7 @@ Data: 2026-11-10.
 ## Resultado
 
 - `./mvnw -B verify`: BUILD SUCCESS, 147 execucoes, sem falhas ou erros.
-- JaCoCo: 92,8% de linhas e 77,1% de branches.
+- JaCoCo: 93,6% de linhas e 78,3% de branches.
 - O teste de mutacao identificou a tentativa de cancelar reserva em uso ao receber 204 em vez de 409; a mutacao temporaria foi removida.
 - A rodada JMeter corrigida aplicou 550 amostras, com um 201 e 249 conflitos 409 esperados, sem falhas de assercao nem respostas 500.
 
@@ -19,7 +19,7 @@ Data: 2026-11-10.
 ## A melhorar
 
 - Reexecutar a carga em ambiente representativo e com mais de uma rodada antes de assumir os valores como garantia operacional.
-- A verificacao local da candidata v1.4.0 foi concluida; a tag v1.4.0 foi publicada com CI verde em https://github.com/samsreis/tads-organizacao-recursos/actions/runs/43150356823.
+- A verificacao local da candidata v1.4.2 foi concluida; a tag v1.4.2 foi publicada com CI verde em https://github.com/samsreis/tads-organizacao-recursos/actions?query=branch%3Av1.4.2.
 
 ## Metricas semanais
 
@@ -27,7 +27,7 @@ Os dados abaixo sao o retrato semanal disponivel no relatorio de qualidade, cons
 
 | Semana | Testes | Cobertura de linhas | Cobertura de branches | Login p95 | Salas p95 | Reserva p95 | Falhas HTTP 500 |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| 2026-11-09 a 2026-11-15 (medicao em 10/11) | 147 | 92,8% (655/706) | 77,1% (135/175) | 209,05 ms | 17,45 ms | 39,90 ms | 0 |
+| 2026-11-09 a 2026-11-15 (medicao em 10/11) | 147 | 93,6% (663/708) | 78,3% (137/175) | 209,05 ms | 17,45 ms | 39,90 ms | 0 |
 
 ## Divida tecnica remanescente
 
@@ -43,4 +43,4 @@ Os dados abaixo sao o retrato semanal disponivel no relatorio de qualidade, cons
 
 ## Decisao
 
-Os resultados locais atendem aos criterios automatizados e metas de carga definidos para esta revisao. A versao candidata e v1.4.0; A tag v1.4.0 foi publicada com CI verde em https://github.com/samsreis/tads-organizacao-recursos/actions/runs/43150356823.
+Os resultados locais atendem aos criterios automatizados e metas de carga definidos para esta revisao. A versao candidata e v1.4.2; A tag v1.4.2 foi publicada com CI verde em https://github.com/samsreis/tads-organizacao-recursos/actions?query=branch%3Av1.4.2.

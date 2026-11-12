@@ -23,8 +23,8 @@ Branch: `fix/ajustes-finais`.
 
 - Comando: `./mvnw -B verify`.
 - Resultado: BUILD SUCCESS, 147 execucoes, zero falhas, zero erros.
-- JaCoCo: 92,8% de linhas e 77,1% de branches.
-- Verify local aprovado; CI da tag v1.4.0 verde em https://github.com/samsreis/tads-organizacao-recursos/actions/runs/43150356823.
+- JaCoCo: 93,6% de linhas e 78,3% de branches.
+- Verify local aprovado; CI da tag v1.4.2 verde em https://github.com/samsreis/tads-organizacao-recursos/actions?query=branch%3Av1.4.2.
 
 ## Matriz TDD: regras, limites e falhas
 
